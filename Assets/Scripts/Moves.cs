@@ -32,6 +32,7 @@ public class Moves : ScriptableObject
         Defense,
         Speed,
         Magic,
+        Resistance,
         Skill,
         Efficiency,
         None
@@ -47,15 +48,20 @@ public class Moves : ScriptableObject
     [SerializeField] string movePowerString;
     [SerializeField] string moveCostString;
     [SerializeField] string moveExplanation;
-
-    //Could be a symbol, so may have to be a gameObject variable or Image var
     [SerializeField] string moveTypeString;
     [SerializeField] float movePower;
+    [SerializeField] float healPower;
     [SerializeField] float mpCost;
     [SerializeField] int lvlGotten;
+
+    //can be damaging and healing for drain type moves
     [SerializeField] MoveType[] moveTypes;
+
+    //will never be physical and magical
     [SerializeField] AttackType attackingType;
-    [SerializeField] StatusType charaStatusType;
+
+    //can have more than one status effect
+    [SerializeField] StatusType[] statusTypes;
     [SerializeField] Boost[] buffs;
     [SerializeField] Boost[] debuffs;
     [SerializeField] TargetNumber targetNumbers;
@@ -66,11 +72,12 @@ public class Moves : ScriptableObject
     public string MoveExplanation { get => moveExplanation; set => moveExplanation = value; }
     public string MoveTypeString { get => moveTypeString; set => moveTypeString = value; }
     public float MovePower { get => movePower; set => movePower = value; }
+    public float HealPower { get => healPower; set => healPower = value; }
     public float MpCost { get => mpCost; set => mpCost = value; }
     public int LvlGotten { get => lvlGotten; set => lvlGotten = value; }
     public MoveType[] MoveTypes { get => moveTypes; set => moveTypes = value; }
     public AttackType AttackingType { get => attackingType; set => attackingType = value; }
-    public StatusType CharaStatusType { get => charaStatusType; set => charaStatusType = value; }
+    public StatusType[] StatusTypes { get => statusTypes; set => statusTypes = value; }
     public Boost[] Buffs { get => buffs; set => buffs = value; }
     public Boost[] Debuffs { get => debuffs; set => debuffs = value; }
     public TargetNumber TargetNumbers { get => targetNumbers; set => targetNumbers = value; }
