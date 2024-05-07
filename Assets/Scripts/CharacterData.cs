@@ -5,5 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Character/New CharacterData")]
 public class CharacterData : ScriptableObject
 {
-    [SerializeField] Movesets moveset;
+    public Movesets moveset;
+
+    public StatsList charaStatList;
 }

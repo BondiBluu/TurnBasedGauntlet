@@ -5,11 +5,6 @@ using UnityEngine;
 public class CharacterTemplate : MonoBehaviour
 {
     public CharacterData characterData;
-
-    public StatsList charaStatList;
-
-    public Movesets moveset;
-
     bool isDowned;
 
     // Start is called before the first frame update
