@@ -8,21 +8,28 @@ public class ItemObject : ScriptableObject
     {
         Restorative,
         PermStatBoost,
-        Armor,
+        Equipment,
         Weapon,
-        KeyItem,
         Tool,
         Default,
-        Joke
     }
 
     [SerializeField] string itemName;
 
     [SerializeField] string itemPlural;
 
+    [SerializeField] ItemType type;
+
     [TextArea(15, 20)]
     [SerializeField] string itemDescription;
     [SerializeField] int itemPrice;
     [SerializeField] bool ableToSell;
+
+    public string ItemName{ get { return itemName; } }
+    public string ItemPlural{ get { return itemPlural; } }
+    public ItemType Type{ get => type; set => type = value;  }
+    public string ItemDescription{ get { return itemDescription; } }
+    public int ItemPrice{ get { return itemPrice; } }
+    public bool AbleToSell{ get { return ableToSell; } }
 
 }

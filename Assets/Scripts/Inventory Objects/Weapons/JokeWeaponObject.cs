@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "New Joke Weapon", menuName = "Items/Weapons/Joke Weapon")]
+public class JokeWeaponObject : WeaponObject
+{   
+    [SerializeField] string characterName;
+    [SerializeField] string trueDesc;
+    
+    public void Awake()
+    {
+        Type = ItemType.Equipment;
+        Weapon = WeaponType.Joke;
+    }
+}
