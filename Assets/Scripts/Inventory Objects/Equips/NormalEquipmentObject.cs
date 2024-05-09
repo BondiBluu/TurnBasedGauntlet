@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Normal Equipment", menuName = "Items/Equipment/Normal")]
+[CreateAssetMenu(fileName = "New Normal Equipment", menuName = "Items/Equipment/Normal Equipment")]
 public class NormalEquipmentObject : EquipmentObject
 {
     public void Awake()
