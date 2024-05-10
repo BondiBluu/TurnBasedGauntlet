@@ -56,6 +56,13 @@ public class CharacterTemplate : MonoBehaviour
         
     }
 
+    public void GainEXP(int exp){
+        //tentative method to gain exp
+        currentEXP += exp;
+        if(currentEXP >= maxEXP){
+            LevelUpRoll();
+        }
+    }
     //TODO: method to take away accumulated stat rolls and levels when failing a checkpoint
 
     public void FullLevelReset(){
