@@ -15,4 +15,6 @@ public class JokeEquipmentObject : EquipmentObject
         EquipmentType = EquipType.Joke;
     }
   
+    public string CharacterName { get { return characterName; } }
+    public string TrueDesc { get { return trueDesc; } }
 }

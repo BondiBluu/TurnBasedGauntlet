@@ -5,21 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Character/New CharacterData")]
 public class CharacterData : ScriptableObject
 {
-    public enum CharacterStatus
-    {
-        Normal,
-        Freeze,
-        Burn,
-        Poison,
-        Still,
-        Downed
-    }
-    public Movesets moveset;
-
-    public StatsList charaStatList;
-
-    public AnimationClip[] charaAnimations;
-    public SpriteRenderer charaSprite;
+    [SerializeField] Movesets moveset;
+    [SerializeField] StatsList charaStatList;
+    [SerializeField] AnimationClip[] charaAnimations;
+    [SerializeField] SpriteRenderer charaSprite;
+    public Movesets Moveset { get { return moveset; } }
+    public StatsList CharaStatList { get { return charaStatList; } }
+    public AnimationClip[] CharaAnimations { get { return charaAnimations; } }
+    public SpriteRenderer CharaSprite { get { return charaSprite; } }
 
     //character images willl be added here
 }

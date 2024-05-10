@@ -30,8 +30,8 @@ public class WeaponObject : ItemObject
         Type = ItemType.Weapon;
     }
     
-    public float AtkBoost { get => atkBoost; set => atkBoost = value; }
-    public float MagBoost { get => magBoost; set => magBoost = value; }
-    public StatusType[] StatusEffects { get => statusEffects; set => statusEffects = value; }
-    public WeaponType Weapon { get => weapon; set => weapon = value; }
+    public float AtkBoost { get { return atkBoost; } }
+    public float MagBoost { get { return magBoost; } }
+    public StatusType[] StatusEffects { get { return statusEffects; } }
+    public WeaponType Weapon { get { return weapon; } set { weapon = value; }}
 }

@@ -14,5 +14,5 @@ public class ExclusiveEquipmentObject : EquipmentObject
         EquipmentType = EquipType.Exclusive;
     }
 
-    public string CharacterName { get => characterName; set => characterName = value; }
+    public string CharacterName { get { return characterName; } }
 }

@@ -13,7 +13,7 @@ public class RestorativeObject : ItemObject
     {
         Type = ItemType.Restorative;
     }
-    
-    public float HpRestore { get => hpRestore; set => hpRestore = value; }
-    public float MpRestore { get => mpRestore; set => mpRestore = value; }
+
+    public float HpRestore { get { return hpRestore; } }
+    public float MpRestore { get { return mpRestore; } }
 }

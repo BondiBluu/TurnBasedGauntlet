@@ -24,7 +24,7 @@ public class ToolObject : ItemObject
         Type = ItemType.Tool;
     }
 
-    public float AtkPwr { get => atkPwr; set => atkPwr = value; }
-    public float MagPwr { get => magPwr; set => magPwr = value; }
-    public StatusType[] StatusEffects { get => statusEffects; set => statusEffects = value; }
+    public float AtkPwr { get { return atkPwr; } }
+    public float MagPwr { get { return magPwr; } }
+    public StatusType[] StatusEffects { get { return statusEffects; } }
 }

@@ -23,14 +23,14 @@ public class EquipmentObject : ItemObject
     [SerializeField] float spdBoost;
     [SerializeField] EquipType equipmentType;
 
-    public float HpBoost { get => hpBoost; set => hpBoost = value; }
-    public float MpBoost { get => mpBoost; set => mpBoost = value; }
-    public float AtkBoost { get => atkBoost; set => atkBoost = value; }
-    public float DefBoost { get => defBoost; set => defBoost = value; }
-    public float MagBoost { get => magBoost; set => magBoost = value; }
-    public float ResBoost { get => resBoost; set => resBoost = value; }
-    public float SkllBoost { get => skllBoost; set => skllBoost = value; }
-    public float EffBoost { get => effBoost; set => effBoost = value; }
-    public float SpdBoost { get => spdBoost; set => spdBoost = value; }
-    public EquipType EquipmentType { get => equipmentType; set => equipmentType = value; }
+    public float HPBoost { get { return hpBoost; } }
+    public float MPBoost { get { return mpBoost; } }
+    public float AtkBoost { get { return atkBoost; } }
+    public float DefBoost { get { return defBoost; } }
+    public float MagBoost { get { return magBoost; } }
+    public float ResBoost { get { return resBoost; } }
+    public float SkllBoost { get { return skllBoost; } }
+    public float EffBoost { get { return effBoost; } }
+    public float SpdBoost { get { return spdBoost; } }
+    public EquipType EquipmentType { get { return equipmentType; } set { equipmentType = value; }}
 }

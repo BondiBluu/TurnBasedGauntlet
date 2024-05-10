@@ -66,19 +66,19 @@ public class Moves : ScriptableObject
     [SerializeField] Boost[] debuffs;
     [SerializeField] TargetNumber targetNumbers;
 
-    public string MoveName { get => moveName; set => moveName = value; }
-    public string MovePowerString { get => movePowerString; set => movePowerString = value; }
-    public string MoveCostString { get => moveCostString; set => moveCostString = value; }
-    public string MoveExplanation { get => moveExplanation; set => moveExplanation = value; }
-    public string MoveTypeString { get => moveTypeString; set => moveTypeString = value; }
-    public float MovePower { get => movePower; set => movePower = value; }
-    public float HealPower { get => healPower; set => healPower = value; }
-    public float MpCost { get => mpCost; set => mpCost = value; }
-    public int LvlGotten { get => lvlGotten; set => lvlGotten = value; }
-    public MoveType[] MoveTypes { get => moveTypes; set => moveTypes = value; }
-    public AttackType AttackingType { get => attackingType; set => attackingType = value; }
-    public StatusType[] StatusTypes { get => statusTypes; set => statusTypes = value; }
-    public Boost[] Buffs { get => buffs; set => buffs = value; }
-    public Boost[] Debuffs { get => debuffs; set => debuffs = value; }
-    public TargetNumber TargetNumbers { get => targetNumbers; set => targetNumbers = value; }
+    public string MoveName { get { return moveName; } }
+    public string MovePowerString { get { return movePowerString; } }
+    public string MoveCostString { get { return moveCostString; } }
+    public string MoveExplanation { get { return moveExplanation; } }
+    public string MoveTypeString { get { return moveTypeString; } }
+    public float MovePower { get { return movePower; } }
+    public float HealPower { get { return healPower; } }
+    public float MPCost { get { return mpCost; } }
+    public int LvlGotten { get { return lvlGotten; } }
+    public MoveType[] MoveTypes { get { return moveTypes; } }
+    public AttackType AttackingType { get { return attackingType; } }
+    public StatusType[] StatusTypes { get { return statusTypes; } }
+    public Boost[] Buffs { get { return buffs; } }
+    public Boost[] Debuffs { get { return debuffs; } }
+    public TargetNumber TargetNumbers { get { return targetNumbers; } }
 }

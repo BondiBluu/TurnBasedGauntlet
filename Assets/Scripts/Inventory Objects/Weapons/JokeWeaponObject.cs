@@ -13,4 +13,7 @@ public class JokeWeaponObject : WeaponObject
         Type = ItemType.Equipment;
         Weapon = WeaponType.Joke;
     }
+
+    public string CharacterName { get { return characterName; } }
+    public string TrueDesc { get { return trueDesc; } }
 }

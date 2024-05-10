@@ -6,4 +6,6 @@ using UnityEngine;
 public class Movesets : ScriptableObject
 {
     [SerializeField] List<Moves> moves = new List<Moves>();
+
+    public List<Moves> Moves { get { return moves; } }
 }

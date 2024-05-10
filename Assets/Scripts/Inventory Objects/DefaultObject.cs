@@ -12,4 +12,8 @@ public class DefaultObject : ItemObject
         public void Awake(){
             Type = ItemType.Default;
         }
+
+    [SerializeField] DefaultType defaultItemType;
+
+    public DefaultType DefaultItemType { get { return defaultItemType; } }
 }

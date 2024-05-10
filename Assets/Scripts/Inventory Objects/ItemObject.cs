@@ -27,7 +27,8 @@ public class ItemObject : ScriptableObject
 
     public string ItemName{ get { return itemName; } }
     public string ItemPlural{ get { return itemPlural; } }
-    public ItemType Type{ get => type; set => type = value;  }
+    
+    public ItemType Type{ get { return type; } set { type = value; } }
     public string ItemDescription{ get { return itemDescription; } }
     public int ItemPrice{ get { return itemPrice; } }
     public bool AbleToSell{ get { return ableToSell; } }
