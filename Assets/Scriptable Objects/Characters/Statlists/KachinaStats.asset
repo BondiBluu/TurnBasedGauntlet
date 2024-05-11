@@ -27,4 +27,4 @@ MonoBehaviour:
   baseSkill: 0
   baseEfficiency: 0
   immunities: 
-  levelType: 0
+  levelType: 06000000

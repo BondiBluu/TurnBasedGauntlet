@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b15772e648ee42b8f0f0d5905ad46, type: 3}
   m_Name: LolaData
   m_EditorClassIdentifier: 
-  moveset: {fileID: 0}
-  charaStatList: {fileID: 0}
+  moveset: {fileID: 11400000, guid: d152636d963ebba43ad025dafafc798a, type: 2}
+  charaStatList: {fileID: 11400000, guid: dac624f7c67b8514f8da8ef449566b2c, type: 2}
   charaAnimations: []
   charaSprite: {fileID: 0}

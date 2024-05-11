@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b15772e648ee42b8f0f0d5905ad46, type: 3}
   m_Name: RosaData
   m_EditorClassIdentifier: 
-  moveset: {fileID: 0}
-  charaStatList: {fileID: 0}
+  moveset: {fileID: 11400000, guid: e8c63b926dbfbb7479c9e5c48faa701d, type: 2}
+  charaStatList: {fileID: 11400000, guid: 4df2bb0b57c8453448591c48d3273d39, type: 2}
   charaAnimations: []
   charaSprite: {fileID: 0}

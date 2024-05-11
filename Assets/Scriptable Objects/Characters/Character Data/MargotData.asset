@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b15772e648ee42b8f0f0d5905ad46, type: 3}
   m_Name: MargotData
   m_EditorClassIdentifier: 
-  moveset: {fileID: 0}
-  charaStatList: {fileID: 0}
+  moveset: {fileID: 11400000, guid: 8cb3b2ec67f09d6479c2315023c8276d, type: 2}
+  charaStatList: {fileID: 11400000, guid: 2c22579f2c45c0a40b8e348fcbd59fdc, type: 2}
   charaAnimations: []
   charaSprite: {fileID: 0}
