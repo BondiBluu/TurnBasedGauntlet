@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TurnBasedGauntlet.sln"
+    "dotnet.defaultSolution": "TurnBasedGauntlet.sln",
+    "FSharp.suggestGitignore": false
 }

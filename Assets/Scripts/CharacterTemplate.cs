@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterTemplate : MonoBehaviour
+[System.Serializable]
+public class CharacterTemplate 
 {
     public enum CharacterStatus
     {
