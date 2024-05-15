@@ -2082,6 +2082,8 @@ MonoBehaviour:
     currentEfficiency: 0
   partyInventory: []
   characterRoster: []
+  checkpoint:
+  - {fileID: 11400000, guid: c7b069c2bdb95004a96750cbb0d4a987, type: 2}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3785,7 +3787,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.66300005, y: 0}
   m_AnchorMax: {x: 1, y: 0.3331629}
-  m_AnchoredPosition: {x: -1.7379761, y: 3.592926}
+  m_AnchoredPosition: {x: -1.7379761, y: 3.593048}
   m_SizeDelta: {x: 4.0560303, y: 7.779999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1166854453
@@ -6097,7 +6099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.035318278, y: 0.16136953}
   m_AnchorMax: {x: 0.3404071, y: 0.2606848}
-  m_AnchoredPosition: {x: -2.3099976, y: -0.5540161}
+  m_AnchoredPosition: {x: -2.3099976, y: -0.55404663}
   m_SizeDelta: {x: 19.359985, y: 5.26001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2137200978

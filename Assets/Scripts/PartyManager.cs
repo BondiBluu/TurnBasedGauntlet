@@ -7,6 +7,10 @@ public class PartyManager : MonoBehaviour
     [SerializeField] List<CharacterTemplate> currentParty = new List<CharacterTemplate>();
     [SerializeField] List<CharacterTemplate> partyInventory = new List<CharacterTemplate>();
     [SerializeField] List<CharacterTemplate> characterRoster = new List<CharacterTemplate>();
+    
+    //for reference, groups are the character templated enemies- 10 to a seed, seed is a group of battles, and checkpoint is a group of seeds
+    //should be 10 seeds
+    [SerializeField] List<Seed> checkpoint = new List<Seed>();
 
     //if a character from the roster gets added to the party, give it a charactera template and add it to the party inventory
 
