@@ -6,7 +6,7 @@ public class PartyManager : MonoBehaviour
 {
     [SerializeField] List<CharacterTemplate> currentParty = new List<CharacterTemplate>();
     [SerializeField] List<CharacterTemplate> partyInventory = new List<CharacterTemplate>();
-    [SerializeField] List<CharacterData> characterRoster = new List<CharacterData>();
+    [SerializeField] List<CharacterTemplate> characterRoster = new List<CharacterTemplate>();
 
     //if a character from the roster gets added to the party, give it a charactera template and add it to the party inventory
 

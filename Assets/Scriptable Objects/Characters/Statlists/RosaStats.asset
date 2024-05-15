@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15bd5faef00337a4596fc25207b40c31, type: 3}
   m_Name: RosaStats
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: Rosa
   characterDesc: 
   characterAbility: 
   abilityDesc: 
-  baseLvl: 0
+  baseLvl: 1
   baseHP: 0
   baseMP: 0
   baseAttack: 0

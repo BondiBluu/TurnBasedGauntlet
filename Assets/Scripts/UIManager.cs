@@ -21,8 +21,10 @@ public class UIManager : MonoBehaviour
     public TMP_Text characterMP;
     public Slider characterHPSlider;
     public Slider characterMPSlider;
+    public Image characterActionImage;
 
     [Header("For Stats")]
+    public Image characterImage;
     public TMP_Text statsCharaName;
     public TMP_Text statsCharaLevel;
     public TMP_Text statsCharaHP;

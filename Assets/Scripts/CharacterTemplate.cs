@@ -66,7 +66,7 @@ public class CharacterTemplate
     }
     //TODO: method to take away accumulated stat rolls and levels when failing a checkpoint
 
-    public void FullLevelReset(){
+    public void TurnToBaseLevel(){
         currentLevel = characterData.CharaStatList.BaseLvl;
         maxHP = characterData.CharaStatList.BaseHP;
         currentHP = maxHP;

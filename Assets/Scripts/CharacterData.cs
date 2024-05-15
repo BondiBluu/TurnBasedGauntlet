@@ -8,11 +8,11 @@ public class CharacterData : ScriptableObject
     [SerializeField] Movesets moveset;
     [SerializeField] StatsList charaStatList;
     [SerializeField] AnimationClip[] charaAnimations;
-    [SerializeField] SpriteRenderer charaSprite;
+    [SerializeField] Sprite charaSprite;
     public Movesets Moveset { get { return moveset; } }
     public StatsList CharaStatList { get { return charaStatList; } }
     public AnimationClip[] CharaAnimations { get { return charaAnimations; } }
-    public SpriteRenderer CharaSprite { get { return charaSprite; } }
+    public Sprite CharaSprite { get { return charaSprite; } }
 
     //character images willl be added here
 }

@@ -15,4 +15,4 @@ MonoBehaviour:
   moveset: {fileID: 11400000, guid: d152636d963ebba43ad025dafafc798a, type: 2}
   charaStatList: {fileID: 11400000, guid: dac624f7c67b8514f8da8ef449566b2c, type: 2}
   charaAnimations: []
-  charaSprite: {fileID: 0}
+  charaSprite: {fileID: 21300000, guid: 30c765f2a3c9d754db0c3a971eb6c395, type: 3}
