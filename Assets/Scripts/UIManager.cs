@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [Header("For HUD")]
+    public GameObject characterContainer;
+    public GameObject enemyContainer;
+    public GameObject characterHUDContainer;
     public GameObject attackPanel;
     public GameObject statsPanel;
     public GameObject inventoryPanel;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PartyManager : MonoBehaviour
 {
-    [SerializeField] List<CharacterTemplate> currentParty = new List<CharacterTemplate>();
-    [SerializeField] List<CharacterTemplate> partyInventory = new List<CharacterTemplate>();
-    [SerializeField] List<CharacterTemplate> characterRoster = new List<CharacterTemplate>();
+    public List<CharacterTemplate> currentParty = new List<CharacterTemplate>();
+    public List<CharacterTemplate> partyInventory = new List<CharacterTemplate>();
+    public List<CharacterTemplate> characterRoster = new List<CharacterTemplate>();
     
     //for reference, groups are the character templated enemies- 10 to a seed, seed is a group of battles, and checkpoint is a group of seeds
     //should be 10 seeds
@@ -18,4 +18,5 @@ public class PartyManager : MonoBehaviour
 
     //if a character from the current party gets removed, destroy the game object and remove it from the current party- add it to the party inventory 
     
+
 }

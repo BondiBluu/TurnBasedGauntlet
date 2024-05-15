@@ -1835,6 +1835,7 @@ GameObject:
   - component: {fileID: 564971304}
   - component: {fileID: 564971308}
   - component: {fileID: 564971309}
+  - component: {fileID: 564971310}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1944,6 +1945,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d587b6684ea82f74897d9896f2d23df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterContainer: {fileID: 1942078340}
+  enemyContainer: {fileID: 1639767403}
+  characterHUDContainer: {fileID: 1795294156}
   attackPanel: {fileID: 63915736}
   statsPanel: {fileID: 416941953}
   inventoryPanel: {fileID: 717934531}
@@ -2084,6 +2088,29 @@ MonoBehaviour:
   characterRoster: []
   checkpoint:
   - {fileID: 11400000, guid: c7b069c2bdb95004a96750cbb0d4a987, type: 2}
+--- !u!114 &564971310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564971303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259204ecdddbe6f4cb84d11b143b4d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 130841449868711089, guid: 69df72b6854eff94fb9262f8583d50a6, type: 3}
+  playerBattleStations:
+  - {fileID: 371756732}
+  - {fileID: 1135161321}
+  - {fileID: 1013189926}
+  - {fileID: 1040783867}
+  enemyBattleStations:
+  - {fileID: 2035273}
+  - {fileID: 1962702952}
+  - {fileID: 1063802093}
+  - {fileID: 1932309527}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3726,6 +3753,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d587b6684ea82f74897d9896f2d23df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterContainer: {fileID: 0}
+  enemyContainer: {fileID: 0}
+  characterHUDContainer: {fileID: 0}
   attackPanel: {fileID: 0}
   statsPanel: {fileID: 0}
   inventoryPanel: {fileID: 0}

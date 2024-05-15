@@ -15,14 +15,16 @@ public class BattleSystem : MonoBehaviour
         Checkpoint    
     }
 
-    public BattleState currentState;
+    BattleState currentState;
     PartyManager partyManager;
     UIManager uiManager;
     Generator generator;
     ButtonController buttonController;
     DamageCalculations damageCalc;
     AttackSaver attackSaver;
-    CharacterHolder holder;
+    public GameObject characterPrefab;
+    public Transform[] playerBattleStations;
+    public Transform[] enemyBattleStations;
 
     // Start is called before the first frame update
     void Start()
@@ -40,12 +42,17 @@ public class BattleSystem : MonoBehaviour
     //instantiating the player characters
     public IEnumerator PlayerSetup()
     {
-        yield return new WaitForSeconds(1f);
-    }
+        for(int i = 0; i < partyManager.currentParty.Count; i++)
+        {
+            GameObject charaObject = Instantiate(characterPrefab, playerBattleStations[i]);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            CharacterHolder charaHolder = charaObject.GetComponent<CharacterHolder>();
+            charaHolder.characterTemplate = partyManager.currentParty[i];
+            
+            SpriteRenderer spriteRenderer = charaObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = partyManager.currentParty[i].characterData.CharaSprite;
+        }
+
+        yield return new WaitForSeconds(1f);
     }
 }
