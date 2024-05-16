@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454086e51b7b9fd44b5d9adb51eaf515, type: 3}
   m_Name: Battles 1-10
   m_EditorClassIdentifier: 
-  groupMembers:
+  groupSet:
   - {fileID: 11400000, guid: 081cd1e0492af75468ea61f82b8c5c42, type: 2}
   - {fileID: 11400000, guid: 770bf21724265cf42b312e5666490bda, type: 2}
   - {fileID: 11400000, guid: 6d8ed88b07e383749ba5ff1d83726eba, type: 2}

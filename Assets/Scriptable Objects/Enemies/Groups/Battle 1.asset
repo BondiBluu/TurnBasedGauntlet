@@ -15,7 +15,7 @@ MonoBehaviour:
   groupMembers:
   - characterType: 0
     characterStatus: 0
-    characterData: {fileID: 0}
+    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
     currentLevel: 0
     currentEXP: 0
     maxEXP: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
     currentEfficiency: 0
   - characterType: 0
     characterStatus: 0
-    characterData: {fileID: 0}
+    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
     currentLevel: 0
     currentEXP: 0
     maxEXP: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
     currentEfficiency: 0
   - characterType: 0
     characterStatus: 0
-    characterData: {fileID: 0}
+    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
     currentLevel: 0
     currentEXP: 0
     maxEXP: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
     currentEfficiency: 0
   - characterType: 0
     characterStatus: 0
-    characterData: {fileID: 0}
+    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
     currentLevel: 0
     currentEXP: 0
     maxEXP: 0
