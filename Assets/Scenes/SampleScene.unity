@@ -374,7 +374,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 38617964}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488274987}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: OnLogPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &38617964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,7 +1120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 355101433}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488274987}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: OnTurnOffPanels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &355101433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1649,6 +1673,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484731000}
   m_CullTransparentMesh: 1
+--- !u!1 &488274986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 488274988}
+  - component: {fileID: 488274987}
+  m_Layer: 0
+  m_Name: ButtonController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &488274987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488274986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c09419702e8e64394bf89e29eb6f48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkPanel: {fileID: 63915736}
+  itemPanel: {fileID: 717934531}
+  statsPanel: {fileID: 416941953}
+  logPanel: {fileID: 1511799344}
+  quitPanel: {fileID: 0}
+  allyPanel: {fileID: 1658479537}
+  enemyPanel: {fileID: 1993259801}
+  blockerPanel: {fileID: 0}
+  atkButton: {fileID: 1902828097}
+  itemButton: {fileID: 1331225474}
+  statsButton: {fileID: 619665781}
+  logButton: {fileID: 38617963}
+  quitButton: {fileID: 1691033326}
+--- !u!4 &488274988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488274986}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,15 +2027,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d587b6684ea82f74897d9896f2d23df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterContainer: {fileID: 1942078340}
-  enemyContainer: {fileID: 1639767403}
+  allyContainer: {fileID: 784352680}
+  enemyContainer: {fileID: 1575767702}
   characterHUDContainer: {fileID: 1795294156}
-  attackPanel: {fileID: 63915736}
-  statsPanel: {fileID: 416941953}
-  inventoryPanel: {fileID: 717934531}
-  fleePanel: {fileID: 0}
-  enemyPanel: {fileID: 1993259801}
-  allyPanel: {fileID: 1658479537}
   characterName: {fileID: 0}
   characterLevel: {fileID: 0}
   characterHP: {fileID: 0}
@@ -2129,6 +2204,8 @@ MonoBehaviour:
   buttonPrefab: {fileID: 3585171070752355505, guid: e956c5ad3d7d7ae4d9ca566af6924153, type: 3}
   moveContainer: {fileID: 1173678411}
   itemContainer: {fileID: 1656228823}
+  buttonSpacing: 0
+  movesAlreadyAdded: []
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,7 +2370,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 619665782}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488274987}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: OnStatsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &619665782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3149,6 +3238,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866518413}
   m_CullTransparentMesh: 1
+--- !u!1 &868833152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 868833153}
+  m_Layer: 0
+  m_Name: EventController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &868833153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868833152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902149673
 GameObject:
   m_ObjectHideFlags: 0
@@ -3771,15 +3891,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d587b6684ea82f74897d9896f2d23df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterContainer: {fileID: 0}
+  allyContainer: {fileID: 0}
   enemyContainer: {fileID: 0}
   characterHUDContainer: {fileID: 0}
-  attackPanel: {fileID: 0}
-  statsPanel: {fileID: 0}
-  inventoryPanel: {fileID: 0}
-  fleePanel: {fileID: 0}
-  enemyPanel: {fileID: 0}
-  allyPanel: {fileID: 0}
   characterName: {fileID: 0}
   characterLevel: {fileID: 0}
   characterHP: {fileID: 0}
@@ -4186,7 +4300,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1232474452}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488274987}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: OnTurnOffPanels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1232474452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4307,7 +4433,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1331225475}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488274987}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: OnItemPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1331225475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4562,7 +4700,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1396221821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488274987}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: OnTurnOffPanels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1396221821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5720,7 +5870,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1902828098}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488274987}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: OnAttackPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1902828098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6501,7 +6663,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5487388281594707739}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 488274987}
+        m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
+        m_MethodName: OnTurnOffPanels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6512,3 +6686,5 @@ SceneRoots:
   - {fileID: 1626617258}
   - {fileID: 1942078341}
   - {fileID: 1639767404}
+  - {fileID: 488274988}
+  - {fileID: 868833153}

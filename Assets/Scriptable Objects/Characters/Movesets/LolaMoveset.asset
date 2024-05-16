@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4d5d84c1c61b947a9855b739cd1d3e, type: 3}
   m_Name: LolaMoveset
   m_EditorClassIdentifier: 
-  moves: []
+  moves:
+  - {fileID: 11400000, guid: bbc60a0116eff104e9327f5fe9954679, type: 2}
+  - {fileID: 11400000, guid: cb0fc23cacedbbe4ab7e63a5e0de82e2, type: 2}
+  - {fileID: 11400000, guid: 14c9f7c7c865dcc44ac7a40647ce3b57, type: 2}
+  - {fileID: 11400000, guid: 6eed431c039aa6e4c979be78fc31a027, type: 2}
+  - {fileID: 11400000, guid: ea70788d9cf7f444db08096d47081f22, type: 2}
