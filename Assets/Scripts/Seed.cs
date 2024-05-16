@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Seed", menuName = "Groups/Seed")]
 public class Seed : ScriptableObject
 {
-    [SerializeField] List<Groups> groupMembers = new List<Groups>();
+    [SerializeField] List<Groups> groupSet = new List<Groups>();
 
+    public List<Groups> GroupSet { get { return groupSet; } }
 }
