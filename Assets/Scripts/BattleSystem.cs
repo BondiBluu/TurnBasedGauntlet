@@ -43,16 +43,7 @@ public class BattleSystem : MonoBehaviour
     //instantiating the player characters
     public IEnumerator PlayerSetup()
     {
-        for(int i = 0; i < partyManager.currentParty.Count; i++)
-        {
-            GameObject charaObject = Instantiate(characterPrefab, playerBattleStations[i]);
-
-            CharacterHolder charaHolder = charaObject.GetComponent<CharacterHolder>();
-            charaHolder.characterTemplate = partyManager.currentParty[i];
-            
-            SpriteRenderer spriteRenderer = charaObject.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = partyManager.currentParty[i].characterData.CharaSprite;
-        }
+        Setup(partyManager.currentParty.Count, playerBattleStations, partyManager.currentParty);
 
         yield return new WaitForSeconds(.01f);
         currentState = BattleState.EnemySetup;
@@ -62,20 +53,26 @@ public class BattleSystem : MonoBehaviour
     //instantiating the enemy characters
     public IEnumerator EnemySetup()
     {
-        for(int i = 0; i < partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers.Count; i++)
-        {
-            GameObject charaObject = Instantiate(characterPrefab, enemyBattleStations[i]);
-
-            CharacterHolder charaHolder = charaObject.GetComponent<CharacterHolder>();
-            charaHolder.characterTemplate = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[i];
-            
-            SpriteRenderer spriteRenderer = charaObject.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[i].characterData.CharaSprite;
-        }
+        List <CharacterTemplate> enemyMembers = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers;
+        Setup(enemyMembers.Count, enemyBattleStations, enemyMembers);
 
         yield return new WaitForSeconds(1f);
         currentState = BattleState.PlayerTurn;
         StartCoroutine(PlayerTurn());
+    }
+
+    public void Setup(int groupCount, Transform[] battleStations, List <CharacterTemplate> charaTemplate){
+        
+        for(int i = 0; i < groupCount; i++)
+        {
+            GameObject charaObject = Instantiate(characterPrefab, battleStations[i]);
+
+            CharacterHolder charaHolder = charaObject.GetComponent<CharacterHolder>();
+            charaHolder.characterTemplate = charaTemplate[i];
+            
+            SpriteRenderer spriteRenderer = charaObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = charaTemplate[i].characterData.CharaSprite;
+        }
     }
 
     public IEnumerator PlayerTurn()
