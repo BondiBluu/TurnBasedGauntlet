@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55ca6b08bc7ff24a8b725f0c649c188, type: 3}
   m_Name: Move 3
   m_EditorClassIdentifier: 
-  moveName: Move 2
+  moveName: Move 3
   movePowerString: 
   moveCostString: 
   moveExplanation: 
