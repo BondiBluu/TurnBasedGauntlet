@@ -106,4 +106,35 @@ public class UIManager : MonoBehaviour
             currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
         }
     }
+
+    public void InstantiateAllyPanels(List <CharacterTemplate> charas){
+
+        float currentPosY = 0f;
+
+        for(int i = 0; i < charas.Count; i++){
+
+            //set the character's name
+            Button characterButton = allyHUDPanelPrefab.transform.GetChild(0).GetComponent<Button>();
+            characterButton.GetComponentInChildren<TMP_Text>().text = charas[i].characterData.CharaStatList.CharacterName;
+            
+            //set the max value of the slider to the character's max HP
+            Image whiteHPBar = allyHUDPanelPrefab.transform.GetChild(1).GetComponent<Image>();
+            Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
+            mainHPSlider.maxValue = charas[i].maxHP;
+            mainHPSlider.value = charas[i].currentHP;
+
+            //set the max value of the slider to the character's max MP
+            Image whiteMPBar = allyHUDPanelPrefab.transform.GetChild(2).GetComponent<Image>();
+            Slider mainMPSlider = whiteMPBar.transform.GetChild(2).GetComponent<Slider>();
+            mainMPSlider.maxValue = charas[i].maxMP;
+            mainMPSlider.value = charas[i].currentMP;
+
+            //instantiate the panel
+            GameObject panel = Instantiate(allyHUDPanelPrefab, allyContainer);
+
+            //have the next panel be directly below the previous panel
+            panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
+            currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
+        }
+    }
 }

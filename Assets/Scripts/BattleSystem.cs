@@ -45,6 +45,7 @@ public class BattleSystem : MonoBehaviour
     {
         Setup(partyManager.currentParty.Count, playerBattleStations, partyManager.currentParty);
         uiManager.InstantiateCharacterPanels(partyManager.currentParty);
+        uiManager.InstantiateAllyPanels(partyManager.currentParty);
         
         yield return new WaitForSeconds(.01f);
         currentState = BattleState.EnemySetup;
