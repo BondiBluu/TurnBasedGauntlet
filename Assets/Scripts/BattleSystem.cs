@@ -44,7 +44,8 @@ public class BattleSystem : MonoBehaviour
     public IEnumerator PlayerSetup()
     {
         Setup(partyManager.currentParty.Count, playerBattleStations, partyManager.currentParty);
-
+        uiManager.InstantiateCharacterPanels(partyManager.currentParty);
+        
         yield return new WaitForSeconds(.01f);
         currentState = BattleState.EnemySetup;
         StartCoroutine(EnemySetup());
@@ -77,6 +78,7 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator PlayerTurn()
     {
+        buttonController.atkButton.Select();
         yield return new WaitForSeconds(1f);
     }
 }
