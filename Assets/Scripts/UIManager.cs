@@ -137,4 +137,28 @@ public class UIManager : MonoBehaviour
             currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
         }
     }
+
+    public void InstantiateEnemyPanels(List <CharacterTemplate> charas){
+        float currentPosY = 0f;
+
+        for(int i = 0; i < charas.Count; i++){
+
+            //set the character's name
+            Button characterButton = allyHUDPanelPrefab.transform.GetChild(0).GetComponent<Button>();
+            characterButton.GetComponentInChildren<TMP_Text>().text = charas[i].characterData.CharaStatList.CharacterName;
+            
+            //set the max value of the slider to the character's max HP
+            Image whiteHPBar = allyHUDPanelPrefab.transform.GetChild(1).GetComponent<Image>();
+            Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
+            mainHPSlider.maxValue = charas[i].maxHP;
+            mainHPSlider.value = charas[i].currentHP;
+
+            //instantiate the panel
+            GameObject panel = Instantiate(enemyHUDPanelPrefab, enemyContainer);
+
+            //have the next panel be directly below the previous panel
+            panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
+            currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
+        }
+    }
 }
