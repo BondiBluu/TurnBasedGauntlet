@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Generator : MonoBehaviour
@@ -10,10 +12,24 @@ public class Generator : MonoBehaviour
     public Transform moveContainer;
     public Transform itemContainer;
     public float buttonSpacing;
+    public Moves savedMove;
+    public ItemObject savedItem;
     public List<Moves> movesAlreadyAdded = new List<Moves>();
+    ButtonController buttonCon;
 
-    //takes the character unit’s characterData’s moveLlist 
+    public InvenObject playerInven;
+    
+    public void Start(){
+        buttonCon = FindObjectOfType<ButtonController>();
+    }
+
+    //takes the character unit’s characterData’s movelist 
     public void GenerateMoves(CharacterTemplate character){
+
+        //destroy all the buttons in the move container before generating new ones
+        foreach(Transform button in moveContainer){
+            Destroy(button.gameObject);
+        }
 
         float currentPosY = 0f;
 
@@ -23,25 +39,63 @@ public class Generator : MonoBehaviour
                 
                 GameObject button = Instantiate(buttonPrefab, moveContainer);
 
-                //give space between buttons
-                button.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
-                currentPosY += buttonSpacing + button.GetComponent<RectTransform>().sizeDelta.y;
+                //we use these a lot so we store them in variables
+                RectTransform buttonRect = button.GetComponent<RectTransform>();
+                Button buttonComp = button.GetComponent<Button>();
+                TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
 
-                button.GetComponentInChildren<TMP_Text>().text = move.MoveName;
-                //button.GetComponent<Button>().onClick.AddListener(delegate {SelectMove(move);});
+                //give space between buttons
+                buttonRect.anchoredPosition = new Vector2(0, -currentPosY);
+                currentPosY += buttonSpacing + buttonRect.sizeDelta.y;
+
+                buttonText.text = move.MoveName;
+                buttonComp.onClick.AddListener(() => SaveMove(move));
+
+                //representing the method that will be called when the button is clicked
+                UnityAction panelAction;
+
+                switch(move.MovesType){
+                    case Moves.MoveType.Damaging:
+                    case Moves.MoveType.Drain:
+                        panelAction = buttonCon.OnEnemyPanel;
+                        break;
+                    case Moves.MoveType.Healing:
+                        panelAction = buttonCon.OnAllyPanel;
+                        break;
+                    case Moves.MoveType.Supplementary:
+                    //ternary operator to check if the move has any debuffs or buffs
+                        panelAction = move.Debuffs.Length > 0 || move.Buffs.Length > 0 ? buttonCon.OnEnemyPanel : buttonCon.OnAllyPanel;
+                        break;
+                    default:
+                        continue;
+                }
+
+                buttonComp.onClick.AddListener(() => panelAction());
             }
         }
-    
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public void GenerateItems(){
+        //destroy all the buttons in the item container before generating new ones
+        foreach(Transform button in itemContainer){
+            Destroy(button.gameObject);
+        }
+
+        float currentPosY = 0f;
+
         
+
     }
+
+        public void SaveMove(Moves move){
+        savedMove = move;
+        }
+
+        public void SaveItem(ItemObject item){
+        savedItem = item;
+        }
 }
+
+    
+    
+
