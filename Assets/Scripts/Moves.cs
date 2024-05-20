@@ -9,13 +9,15 @@ public class Moves : ScriptableObject
     {
         Damaging,
         Healing,
-        Supplementary
+        Supplementary,
+        Drain
     }
 
     public enum AttackType
     {
         Physical,
-        Magical
+        Magical,
+        None
     }
 
     public enum StatusType{
@@ -55,7 +57,7 @@ public class Moves : ScriptableObject
     [SerializeField] int lvlGotten;
 
     //can be damaging and healing for drain type moves
-    [SerializeField] MoveType[] moveTypes;
+    [SerializeField] MoveType movesType;
 
     //will never be physical and magical
     [SerializeField] AttackType attackingType;
@@ -75,7 +77,7 @@ public class Moves : ScriptableObject
     public float HealPower { get { return healPower; } }
     public float MPCost { get { return mpCost; } }
     public int LvlGotten { get { return lvlGotten; } }
-    public MoveType[] MoveTypes { get { return moveTypes; } }
+    public MoveType MovesType { get { return movesType; } }
     public AttackType AttackingType { get { return attackingType; } }
     public StatusType[] StatusTypes { get { return statusTypes; } }
     public Boost[] Buffs { get { return buffs; } }
