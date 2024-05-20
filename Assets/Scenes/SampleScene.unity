@@ -2068,7 +2068,7 @@ MonoBehaviour:
   characterHUDContainer: {fileID: 1795294157}
   characterHUDPanelPrefab: {fileID: 5787071367713111083, guid: 111750eeee075c74b8ac10e469e95c8f, type: 3}
   allyHUDPanelPrefab: {fileID: 2450307146178161321, guid: 46c7fa6cf5da794499c2377b07c01a50, type: 3}
-  enemyHUDPanelPrefab: {fileID: 3090774606504341935, guid: b0ba5837e515f2140986c495d858c1c9, type: 3}
+  enemyHUDPanelPrefab: {fileID: 2450307146178161321, guid: 46c7fa6cf5da794499c2377b07c01a50, type: 3}
   characterActionImage: {fileID: 0}
   characterImage: {fileID: 1119484189}
   statsCharaName: {fileID: 294873152}
@@ -2264,7 +2264,10 @@ MonoBehaviour:
   moveContainer: {fileID: 1173678411}
   itemContainer: {fileID: 1656228823}
   buttonSpacing: 75
+  savedMove: {fileID: 0}
+  savedItem: {fileID: 0}
   movesAlreadyAdded: []
+  playerInven: {fileID: 11400000, guid: 6ef7b36f02996314d8b19b4f94c0c123, type: 2}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,7 +4052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.66300005, y: 0}
   m_AnchorMax: {x: 1, y: 0.3331629}
-  m_AnchoredPosition: {x: -1.7379761, y: 3.593048}
+  m_AnchoredPosition: {x: -1.7379761, y: 3.5930176}
   m_SizeDelta: {x: 4.0560303, y: 7.779999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1166854453

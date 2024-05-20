@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55ca6b08bc7ff24a8b725f0c649c188, type: 3}
   m_Name: Move 2
   m_EditorClassIdentifier: 
-  moveName: Move 2
+  moveName: Buffing Move
   movePowerString: 
   moveCostString: 
   moveExplanation: 
@@ -21,9 +21,9 @@ MonoBehaviour:
   healPower: 0
   mpCost: 0
   lvlGotten: 0
-  moveTypes: 
-  attackingType: 0
+  movesType: 2
+  attackingType: 2
   statusTypes: 
-  buffs: 
+  buffs: 0000000004000000
   debuffs: 
   targetNumbers: 0
