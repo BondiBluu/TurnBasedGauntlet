@@ -144,11 +144,11 @@ public class UIManager : MonoBehaviour
         for(int i = 0; i < charas.Count; i++){
 
             //set the character's name
-            Button characterButton = allyHUDPanelPrefab.transform.GetChild(0).GetComponent<Button>();
+            Button characterButton = enemyHUDPanelPrefab.transform.GetChild(0).GetComponent<Button>();
             characterButton.GetComponentInChildren<TMP_Text>().text = charas[i].characterData.CharaStatList.CharacterName;
             
             //set the max value of the slider to the character's max HP
-            Image whiteHPBar = allyHUDPanelPrefab.transform.GetChild(1).GetComponent<Image>();
+            Image whiteHPBar = enemyHUDPanelPrefab.transform.GetChild(1).GetComponent<Image>();
             Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
             mainHPSlider.maxValue = charas[i].maxHP;
             mainHPSlider.value = charas[i].currentHP;
