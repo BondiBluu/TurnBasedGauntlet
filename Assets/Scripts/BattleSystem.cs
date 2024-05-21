@@ -124,14 +124,14 @@ public class BattleSystem : MonoBehaviour
         selectedTarget = partyManager.currentParty[index];
         Debug.Log("Ally selected: " + selectedTarget.characterData.CharaStatList.CharacterName);
         attackSaver.SaveMove(savedCharacter, generator.selectedMove, selectedTarget);
-        //targetSelected = true;
+        targetSelected = true;
     }
 
     public void OnEnemyClick(int index){
         selectedTarget = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[index];
         attackSaver.SaveMove(savedCharacter, generator.selectedMove, selectedTarget);
         Debug.Log("Enemy selected: " + selectedTarget.characterData.CharaStatList.CharacterName);
-        //targetSelected = true;
+        targetSelected = true;
     }
 
     //set up move generation for current character    
