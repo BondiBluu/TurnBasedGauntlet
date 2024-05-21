@@ -18,6 +18,7 @@ public class Generator : MonoBehaviour
     ButtonController buttonCon;
 
     public InvenObject playerInven;
+    public CharacterTemplate savedTarget;
     
     public void Start(){
         buttonCon = FindObjectOfType<ButtonController>();
@@ -63,8 +64,8 @@ public class Generator : MonoBehaviour
                         panelAction = buttonCon.OnAllyPanel;
                         break;
                     case Moves.MoveType.Supplementary:
-                    //ternary operator to check if the move has any debuffs or buffs
-                        panelAction = move.Debuffs.Length > 0 || move.Buffs.Length > 0 ? buttonCon.OnEnemyPanel : buttonCon.OnAllyPanel;
+                    //if the move has debuffs, the panel action will be to open the enemy panel, if it has buffs, the panel action will be to open the ally panel
+                        panelAction = move.Debuffs.Length > 0 ? buttonCon.OnEnemyPanel : move.Buffs.Length > 0 ? buttonCon.OnAllyPanel : null;
                         break;
                     default:
                         continue;
