@@ -147,7 +147,7 @@ public class UIManager : MonoBehaviour
             
             int index = i;
             characterButton.onClick.AddListener(() => battleSystem.OnAllyClick(index));
-            // characterButton.onClick.AddListener(() => buttonController.OnTurnOffPanels());
+            characterButton.onClick.AddListener(() => buttonController.OnTurnOffPanels());
         }
     }
 
@@ -177,7 +177,7 @@ public class UIManager : MonoBehaviour
 
             int index = i;
             characterButton.GetComponent<Button>().onClick.AddListener(() => battleSystem.OnEnemyClick(index));
-            // characterButton.GetComponent<Button>().onClick.AddListener(() => buttonController.OnTurnOffPanels());
+            characterButton.GetComponent<Button>().onClick.AddListener(() => buttonController.OnTurnOffPanels());
         }
     }
 
