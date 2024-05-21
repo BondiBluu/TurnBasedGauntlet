@@ -1953,6 +1953,7 @@ GameObject:
   - component: {fileID: 564971309}
   - component: {fileID: 564971310}
   - component: {fileID: 564971311}
+  - component: {fileID: 564971312}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2068,7 +2069,7 @@ MonoBehaviour:
   characterHUDContainer: {fileID: 1795294157}
   characterHUDPanelPrefab: {fileID: 5787071367713111083, guid: 111750eeee075c74b8ac10e469e95c8f, type: 3}
   allyHUDPanelPrefab: {fileID: 2450307146178161321, guid: 46c7fa6cf5da794499c2377b07c01a50, type: 3}
-  enemyHUDPanelPrefab: {fileID: 2450307146178161321, guid: 46c7fa6cf5da794499c2377b07c01a50, type: 3}
+  enemyHUDPanelPrefab: {fileID: 1871695250015255346, guid: 3ce6fed7efd269043ab659d1aca886b2, type: 3}
   characterActionImage: {fileID: 0}
   characterImage: {fileID: 1119484189}
   statsCharaName: {fileID: 294873152}
@@ -2248,6 +2249,32 @@ MonoBehaviour:
     currentSkill: 0
     maxEfficiency: 0
     currentEfficiency: 0
+  selectedTarget:
+    characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 0}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+  targetSelected: 0
 --- !u!114 &564971311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2264,10 +2291,47 @@ MonoBehaviour:
   moveContainer: {fileID: 1173678411}
   itemContainer: {fileID: 1656228823}
   buttonSpacing: 75
-  savedMove: {fileID: 0}
-  savedItem: {fileID: 0}
+  selectedMove: {fileID: 0}
+  selectedItem: {fileID: 0}
   movesAlreadyAdded: []
   playerInven: {fileID: 11400000, guid: 6ef7b36f02996314d8b19b4f94c0c123, type: 2}
+  savedTarget:
+    characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 0}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+--- !u!114 &564971312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564971303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957fc83a0cb5a4241bccb134afa39ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -6599,6 +6663,18 @@ MonoBehaviour:
       - m_Target: {fileID: 564971310}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
         m_MethodName: OnChosenAttackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 564971311}
+        m_TargetAssemblyTypeName: Generator, Assembly-CSharp
+        m_MethodName: SelectFirstMove
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
