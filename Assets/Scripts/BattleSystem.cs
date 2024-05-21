@@ -29,6 +29,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] int currentGroupSet;
 
     [SerializeField] CharacterTemplate savedCharacter;
+    [SerializeField] CharacterTemplate selectedAlly;
+    [SerializeField] CharacterTemplate selectedEnemy;
     
     // Start is called before the first frame update
     void Start()
@@ -108,6 +110,18 @@ public class BattleSystem : MonoBehaviour
             SpriteRenderer spriteRenderer = charaObject.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = charaTemplate[i].characterData.CharaSprite;
         }
+    }
+
+    public void OnAllyClick(int index){
+        //selectedAlly = partyManager.currentParty[index];
+        //Debug.Log("Ally selected: " + selectedAlly.characterData.CharaStatList.CharacterName);
+        Debug.Log("Current Character: " + index);
+    }
+
+    public void OnEnemyClick(int index){
+        //selectedEnemy = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[index];
+        //Debug.Log("Enemy selected: " + selectedEnemy.characterData.CharaStatList.CharacterName);
+        Debug.Log("Current Enemy: " + index);
     }
 
     //set up move generation for current character    
