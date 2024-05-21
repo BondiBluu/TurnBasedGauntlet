@@ -29,8 +29,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] int currentGroupSet;
 
     [SerializeField] CharacterTemplate savedCharacter;
-    [SerializeField] CharacterTemplate selectedAlly;
-    [SerializeField] CharacterTemplate selectedEnemy;
+    [SerializeField] CharacterTemplate selectedTarget;
+    [SerializeField] bool targetSelected = false;
     
     // Start is called before the first frame update
     void Start()
@@ -78,6 +78,8 @@ public class BattleSystem : MonoBehaviour
 
         for(int i = currentCharacter; i < partyManager.currentParty.Count; i++)
         {
+            
+
             //if the character is downed, skip to the next character
             // if(partyManager.currentParty[i].currentHP > 0)
             // {
@@ -90,12 +92,18 @@ public class BattleSystem : MonoBehaviour
             
             currentCharacter = i;
             savedCharacter = partyManager.currentParty[currentCharacter];
+            Debug.Log("Current Character: " + savedCharacter.characterData.CharaStatList.CharacterName + "'s turn.");   
 
-           //wait until the player has selected a move, and a target
-           yield return new WaitUntil(() => currentCharacter == 2);
-           
+            yield return new WaitUntil(() => targetSelected == true);
+
+            //reset the selected target, move, and item
+            generator.selectedMove = null;
+            generator.selectedItem = null;          
+            selectedTarget = null;       
+            targetSelected = false;
         }
         yield return new WaitForSeconds(1f);
+        Debug.Log("Player Turn End");
     }
 
     public void Setup(int groupCount, Transform[] battleStations, List <CharacterTemplate> charaTemplate){
@@ -113,15 +121,17 @@ public class BattleSystem : MonoBehaviour
     }
 
     public void OnAllyClick(int index){
-        //selectedAlly = partyManager.currentParty[index];
-        //Debug.Log("Ally selected: " + selectedAlly.characterData.CharaStatList.CharacterName);
-        Debug.Log("Current Character: " + index);
+        selectedTarget = partyManager.currentParty[index];
+        Debug.Log("Ally selected: " + selectedTarget.characterData.CharaStatList.CharacterName);
+        attackSaver.SaveMove(savedCharacter, generator.selectedMove, selectedTarget);
+        //targetSelected = true;
     }
 
     public void OnEnemyClick(int index){
-        //selectedEnemy = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[index];
-        //Debug.Log("Enemy selected: " + selectedEnemy.characterData.CharaStatList.CharacterName);
-        Debug.Log("Current Enemy: " + index);
+        selectedTarget = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[index];
+        attackSaver.SaveMove(savedCharacter, generator.selectedMove, selectedTarget);
+        Debug.Log("Enemy selected: " + selectedTarget.characterData.CharaStatList.CharacterName);
+        //targetSelected = true;
     }
 
     //set up move generation for current character    
