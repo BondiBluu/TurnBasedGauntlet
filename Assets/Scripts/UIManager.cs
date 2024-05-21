@@ -35,6 +35,13 @@ public class UIManager : MonoBehaviour
     public TMP_Text charaPointToNextLvl;
 
     public float buttonSpacing = 50f;
+    BattleSystem battleSystem;
+    ButtonController buttonController;
+
+    private void Start() {
+        battleSystem = FindObjectOfType<BattleSystem>();
+        buttonController = FindObjectOfType<ButtonController>();
+    }
 
     public void ShowStats(CharacterTemplate character)
     {
@@ -67,21 +74,24 @@ public class UIManager : MonoBehaviour
 
         for(int i = 0; i < charas.Count; i++){
 
+            //instantiate the panel
+            GameObject panel = Instantiate(characterHUDPanelPrefab, characterHUDContainer);
+
             //set the character's name, level, HP, and MP
-            TMP_Text characterName = characterHUDPanelPrefab.transform.GetChild(0).GetComponent<TMP_Text>();
+            TMP_Text characterName = panel.transform.GetChild(0).GetComponent<TMP_Text>();
             characterName.text = charas[i].characterData.CharaStatList.CharacterName;
 
-            TMP_Text characterLevel = characterHUDPanelPrefab.transform.GetChild(1).GetComponent<TMP_Text>();
+            TMP_Text characterLevel = panel.transform.GetChild(1).GetComponent<TMP_Text>();
             characterLevel.text = "Level: " + charas[i].currentLevel;
 
-            TMP_Text characterHP = characterHUDPanelPrefab.transform.GetChild(2).GetComponent<TMP_Text>();
+            TMP_Text characterHP = panel.transform.GetChild(2).GetComponent<TMP_Text>();
             characterHP.text = charas[i].currentHP + "/" + charas[i].maxHP;
 
-            TMP_Text characterMP = characterHUDPanelPrefab.transform.GetChild(3).GetComponent<TMP_Text>();
+            TMP_Text characterMP = panel.transform.GetChild(3).GetComponent<TMP_Text>();
             characterMP.text =  charas[i].currentMP + "/" + charas[i].maxMP;
             
             //set the max value of the slider to the character's max HP
-            Image whiteHPBar = characterHUDPanelPrefab.transform.GetChild(4).GetComponent<Image>();
+            Image whiteHPBar = panel.transform.GetChild(4).GetComponent<Image>();
             Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
             subHPSlider.maxValue = charas[i].maxHP;
             subHPSlider.value = charas[i].currentHP;
@@ -90,16 +100,13 @@ public class UIManager : MonoBehaviour
             mainHPSlider.value = charas[i].currentHP;
 
             //set the max value of the slider to the character's max MP
-            Image whiteMPBar = characterHUDPanelPrefab.transform.GetChild(5).GetComponent<Image>();
+            Image whiteMPBar = panel.transform.GetChild(5).GetComponent<Image>();
             Slider subMPSlider = whiteMPBar.transform.GetChild(3).GetComponent<Slider>();
             subMPSlider.maxValue = charas[i].maxMP;
             subMPSlider.value = charas[i].currentMP;
             Slider mainMPSlider = whiteMPBar.transform.GetChild(4).GetComponent<Slider>();
             mainMPSlider.maxValue = charas[i].maxMP;
             mainMPSlider.value = charas[i].currentMP;
-
-            //instantiate the panel
-            GameObject panel = Instantiate(characterHUDPanelPrefab, characterHUDContainer);
 
             //have the next panel be directly below the previous panel
             panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
@@ -113,28 +120,34 @@ public class UIManager : MonoBehaviour
 
         for(int i = 0; i < charas.Count; i++){
 
+            //instantiate the panel
+            GameObject panel = Instantiate(allyHUDPanelPrefab, allyContainer);
+
             //set the character's name
-            Button characterButton = allyHUDPanelPrefab.transform.GetChild(0).GetComponent<Button>();
+            Button characterButton = panel.transform.GetChild(0).GetComponent<Button>();
             characterButton.GetComponentInChildren<TMP_Text>().text = charas[i].characterData.CharaStatList.CharacterName;
             
             //set the max value of the slider to the character's max HP
-            Image whiteHPBar = allyHUDPanelPrefab.transform.GetChild(1).GetComponent<Image>();
+            Image whiteHPBar = panel.transform.GetChild(1).GetComponent<Image>();
             Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
             mainHPSlider.maxValue = charas[i].maxHP;
             mainHPSlider.value = charas[i].currentHP;
 
             //set the max value of the slider to the character's max MP
-            Image whiteMPBar = allyHUDPanelPrefab.transform.GetChild(2).GetComponent<Image>();
+            Image whiteMPBar = panel.transform.GetChild(2).GetComponent<Image>();
             Slider mainMPSlider = whiteMPBar.transform.GetChild(2).GetComponent<Slider>();
             mainMPSlider.maxValue = charas[i].maxMP;
             mainMPSlider.value = charas[i].currentMP;
 
-            //instantiate the panel
-            GameObject panel = Instantiate(allyHUDPanelPrefab, allyContainer);
+            
 
             //have the next panel be directly below the previous panel
             panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
             currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
+            
+            int index = i;
+            characterButton.onClick.AddListener(() => battleSystem.OnAllyClick(index));
+            // characterButton.onClick.AddListener(() => buttonController.OnTurnOffPanels());
         }
     }
 
@@ -143,22 +156,30 @@ public class UIManager : MonoBehaviour
 
         for(int i = 0; i < charas.Count; i++){
 
+            //instantiate the panel
+            GameObject panel = Instantiate(enemyHUDPanelPrefab, enemyContainer);
+
             //set the character's name
-            Button characterButton = enemyHUDPanelPrefab.transform.GetChild(0).GetComponent<Button>();
+            Button characterButton = panel.transform.GetChild(0).GetComponent<Button>();
             characterButton.GetComponentInChildren<TMP_Text>().text = charas[i].characterData.CharaStatList.CharacterName;
             
             //set the max value of the slider to the character's max HP
-            Image whiteHPBar = enemyHUDPanelPrefab.transform.GetChild(1).GetComponent<Image>();
+            Image whiteHPBar = panel.transform.GetChild(1).GetComponent<Image>();
             Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
             mainHPSlider.maxValue = charas[i].maxHP;
             mainHPSlider.value = charas[i].currentHP;
 
-            //instantiate the panel
-            GameObject panel = Instantiate(enemyHUDPanelPrefab, enemyContainer);
+            
 
             //have the next panel be directly below the previous panel
             panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
             currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
+
+            int index = i;
+            characterButton.GetComponent<Button>().onClick.AddListener(() => battleSystem.OnEnemyClick(index));
+            // characterButton.GetComponent<Button>().onClick.AddListener(() => buttonController.OnTurnOffPanels());
         }
     }
+
+    
 }
