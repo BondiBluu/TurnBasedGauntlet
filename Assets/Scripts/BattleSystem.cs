@@ -42,6 +42,8 @@ public class BattleSystem : MonoBehaviour
         damageCalc = FindObjectOfType<DamageCalculations>();
         attackSaver = FindObjectOfType<AttackSaver>();
         currentState = BattleState.PlayerSetup;
+        //disabling all buttons
+        buttonController.DisableButtons();
         StartCoroutine(PlayerSetup());
     }
 
@@ -71,10 +73,11 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator PlayerTurn()
     {
+        buttonController.EnableButtons();
         buttonController.atkButton.Select();
         Debug.Log("Battle Start. Player Turn");
 
-        int currentCharacter = 0;
+        int currentCharacter = 0; 
 
         for(int i = currentCharacter; i < partyManager.currentParty.Count; i++)
         {
@@ -104,7 +107,50 @@ public class BattleSystem : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         Debug.Log("Player Turn End");
+        currentState = BattleState.EnemyTurn;
+        StartCoroutine(EnemyTurn());
     }
+
+    public IEnumerator EnemyTurn()
+    {
+        Debug.Log("Enemy Turn");
+        buttonController.DisableButtons();
+
+        int enemyCount = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers.Count;
+
+        for(int i = 0; i < enemyCount; i++)
+        {
+            //if the character is downed, skip to the next character
+            if(savedCharacter.characterStatus != CharacterTemplate.CharacterStatus.Downed)
+            {
+                savedCharacter = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[i];
+                Debug.Log("Current Character: " + savedCharacter.characterData.CharaStatList.CharacterName + "'s turn.");
+
+                //randomly select a target from the player party
+                int targetIndex = Random.Range(0, partyManager.currentParty.Count);
+
+                //TODO: if the target is downed, skip to the next target
+                
+                selectedTarget = partyManager.currentParty[targetIndex];
+
+                //chosing a random move from the enemy's move list
+                int moveIndex = Random.Range(0, savedCharacter.characterData.Moveset.Moves.Count);
+                Moves selectedMove = savedCharacter.characterData.Moveset.Moves[moveIndex];
+
+                //add the move to the attack saver
+                attackSaver.SaveMove(savedCharacter, selectedMove, selectedTarget);
+
+            } 
+            else {
+                continue;
+            }
+        }
+
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Enemy Turn End");
+    }
+
+    
 
     public void Setup(int groupCount, Transform[] battleStations, List <CharacterTemplate> charaTemplate){
         
