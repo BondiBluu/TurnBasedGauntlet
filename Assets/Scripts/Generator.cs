@@ -85,6 +85,46 @@ public class Generator : MonoBehaviour
         NavButtons(navButtons);
     }
 
+    public void GenerateItems(){
+        //destroy all the buttons in the item container before generating new ones
+        foreach(Transform button in itemContainer){
+            Destroy(button.gameObject);
+        }
+
+        navButtons.Clear();
+        float currentPosY = 0f; 
+
+        for(int i = 0; i < playerInven.container.Count; i++){
+            InvenSlot slot = playerInven.container[i];
+
+            ItemObject item = slot.item;
+
+            if(item.Type == ItemObject.ItemType.Restorative || item.Type == ItemObject.ItemType.Tool)
+            {
+                GameObject button = Instantiate(buttonPrefab, itemContainer);
+
+                RectTransform buttonRect = button.GetComponent<RectTransform>();
+                Button buttonComp = button.GetComponent<Button>();
+                TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
+
+                navButtons.Add(buttonComp);
+
+                buttonRect.anchoredPosition = new Vector2(0, -currentPosY);
+                currentPosY += buttonSpacing + buttonRect.sizeDelta.y;
+
+                buttonText.text = $"{item.ItemName} x {slot.amount}";
+
+                buttonComp.onClick.AddListener(() => SaveItem(item));
+
+                //if the item is a restorative item, the panel action will be to open the ally panel, if it is a tool, the panel action will be to open the enemy panel
+                UnityAction panelAction = item.Type == ItemObject.ItemType.Restorative ? buttonCon.OnAllyPanel : buttonCon.OnEnemyPanel;
+
+                buttonComp.onClick.AddListener(() => panelAction());
+            }
+        }
+           NavButtons(navButtons);
+    }
+
     //navigation for the buttons
     public void NavButtons(List<Button> navButtons){
         for(int i = 0; i < navButtons.Count; i++){
@@ -98,18 +138,6 @@ public class Generator : MonoBehaviour
 
             navButtons[i].navigation = nav;
         }
-    }
-
-    public void GenerateItems(){
-        //destroy all the buttons in the item container before generating new ones
-        foreach(Transform button in itemContainer){
-            Destroy(button.gameObject);
-        }
-
-        float currentPosY = 0f;
-
-        
-
     }
 
         public void SaveMove(Moves move){
