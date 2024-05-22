@@ -102,4 +102,22 @@ public class ButtonController : MonoBehaviour
         enemyPanel.SetActive(false);
         blockerPanel.SetActive(false);
     }
+
+    //disable all buttons
+    public void DisableButtons(){
+        atkButton.interactable = false;
+        itemButton.interactable = false;
+        statsButton.interactable = false;
+        logButton.interactable = false;
+        quitButton.interactable = false;
+    }
+
+    //enable all buttons
+    public void EnableButtons(){
+        atkButton.interactable = true;
+        itemButton.interactable = true;
+        statsButton.interactable = true;
+        logButton.interactable = true;
+        quitButton.interactable = true;
+    }
 }
