@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: KachinaMoveset
   m_EditorClassIdentifier: 
   moves:
-  - {fileID: 11400000, guid: 14c9f7c7c865dcc44ac7a40647ce3b57, type: 2}
+  - {fileID: 11400000, guid: cb0fc23cacedbbe4ab7e63a5e0de82e2, type: 2}
   - {fileID: 11400000, guid: ea70788d9cf7f444db08096d47081f22, type: 2}
