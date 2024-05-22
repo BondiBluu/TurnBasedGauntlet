@@ -20,6 +20,7 @@ public class ButtonController : MonoBehaviour
     public Button statsButton;
     public Button logButton;
     public Button quitButton;
+    public Button undoButton;
     
     UIManager uiManager;
     private void Start() {
@@ -119,5 +120,13 @@ public class ButtonController : MonoBehaviour
         statsButton.interactable = true;
         logButton.interactable = true;
         quitButton.interactable = true;
+    }
+
+    public void ShowUndoButton(){
+        undoButton.gameObject.SetActive(true);
+    }
+
+    public void HideUndoButton(){
+        undoButton.gameObject.SetActive(false);
     }
 }
