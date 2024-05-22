@@ -15,7 +15,7 @@ public class Generator : MonoBehaviour
     public Moves selectedMove;
     public ItemObject selectedItem;
     public List<Moves> movesAlreadyAdded = new List<Moves>();
-    List<Button> navButtons = new List<Button>();
+    public List<Button> navButtons = new List<Button>();
     ButtonController buttonCon;
 
     public InvenObject playerInven;
@@ -81,11 +81,11 @@ public class Generator : MonoBehaviour
                 buttonComp.onClick.AddListener(() => panelAction());
             }
         }
-        NavButtons();
+        NavButtons(navButtons);
     }
 
     //navigation for the buttons
-    public void NavButtons(){
+    public void NavButtons(List<Button> navButtons){
         for(int i = 0; i < navButtons.Count; i++){
             //get the navigation of the button
             Navigation nav = navButtons[i].navigation;

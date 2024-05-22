@@ -34,13 +34,18 @@ public class UIManager : MonoBehaviour
     public TMP_Text charaSpd;
     public TMP_Text charaPointToNextLvl;
 
+    public List <Button> allyButtons = new List<Button>();
+    public List <Button> enemyButtons = new List<Button>();
+
     public float buttonSpacing = 50f;
     BattleSystem battleSystem;
     ButtonController buttonController;
+    Generator generator;
 
     private void Start() {
         battleSystem = FindObjectOfType<BattleSystem>();
         buttonController = FindObjectOfType<ButtonController>();
+        generator = FindObjectOfType<Generator>();
     }
 
     public void ShowStats(CharacterTemplate character)
@@ -117,6 +122,7 @@ public class UIManager : MonoBehaviour
     public void InstantiateAllyPanels(List <CharacterTemplate> charas){
 
         float currentPosY = 0f;
+        generator.navButtons.Clear();
 
         for(int i = 0; i < charas.Count; i++){
 
@@ -125,6 +131,7 @@ public class UIManager : MonoBehaviour
 
             //set the character's name
             Button characterButton = panel.transform.GetChild(0).GetComponent<Button>();
+            allyButtons.Add(characterButton);
             characterButton.GetComponentInChildren<TMP_Text>().text = charas[i].characterData.CharaStatList.CharacterName;
             
             //set the max value of the slider to the character's max HP
@@ -149,10 +156,12 @@ public class UIManager : MonoBehaviour
             characterButton.onClick.AddListener(() => battleSystem.OnAllyClick(index));
             characterButton.onClick.AddListener(() => buttonController.OnTurnOffPanels());
         }
+        generator.NavButtons(allyButtons);
     }
 
     public void InstantiateEnemyPanels(List <CharacterTemplate> charas){
         float currentPosY = 0f;
+        generator.navButtons.Clear();
 
         for(int i = 0; i < charas.Count; i++){
 
@@ -161,6 +170,7 @@ public class UIManager : MonoBehaviour
 
             //set the character's name
             Button characterButton = panel.transform.GetChild(0).GetComponent<Button>();
+            enemyButtons.Add(characterButton);
             characterButton.GetComponentInChildren<TMP_Text>().text = charas[i].characterData.CharaStatList.CharacterName;
             
             //set the max value of the slider to the character's max HP
@@ -179,7 +189,13 @@ public class UIManager : MonoBehaviour
             characterButton.GetComponent<Button>().onClick.AddListener(() => battleSystem.OnEnemyClick(index));
             characterButton.GetComponent<Button>().onClick.AddListener(() => buttonController.OnTurnOffPanels());
         }
+        generator.NavButtons(enemyButtons);
     }
 
+    public void SelectFirstMove(List<Button> navButtons){
+            if(navButtons.Count > 0){
+                navButtons[0].Select();
+            }
+        }
     
 }

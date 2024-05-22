@@ -78,7 +78,7 @@ public class BattleSystem : MonoBehaviour
 
         for(int i = currentCharacter; i < partyManager.currentParty.Count; i++)
         {
-            
+            buttonController.atkButton.Select();
 
             //if the character is downed, skip to the next character
             // if(partyManager.currentParty[i].currentHP > 0)
@@ -134,7 +134,7 @@ public class BattleSystem : MonoBehaviour
         targetSelected = true;
     }
 
-    //set up move generation for current character    
+    //set up move generation for current character. DO NOT REMOVE- used for attack button
     public void OnChosenAttackButton(){
         generator.GenerateMoves(savedCharacter);
     }

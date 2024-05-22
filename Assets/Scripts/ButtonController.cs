@@ -20,6 +20,11 @@ public class ButtonController : MonoBehaviour
     public Button statsButton;
     public Button logButton;
     public Button quitButton;
+    
+    UIManager uiManager;
+    private void Start() {
+        uiManager = FindObjectOfType<UIManager>();
+    }
 
     public void OnAttackPanel(){
         atkPanel.SetActive(true);
@@ -74,6 +79,7 @@ public class ButtonController : MonoBehaviour
     public void OnAllyPanel(){
         allyPanel.SetActive(true);
         blockerPanel.SetActive(true);
+        uiManager.SelectFirstMove(uiManager.allyButtons);
 
         enemyPanel.SetActive(false);
     }
@@ -81,6 +87,7 @@ public class ButtonController : MonoBehaviour
     public void OnEnemyPanel(){
         enemyPanel.SetActive(true);
         blockerPanel.SetActive(true);
+        uiManager.SelectFirstMove(uiManager.enemyButtons);
 
         allyPanel.SetActive(false);
     }
