@@ -29,6 +29,7 @@ public class Generator : MonoBehaviour
     public void GenerateMoves(CharacterTemplate character){
 
         navButtons.Clear();
+        movesAlreadyAdded.Clear();
 
         //destroy all the buttons in the move container before generating new ones
         foreach(Transform button in moveContainer){
