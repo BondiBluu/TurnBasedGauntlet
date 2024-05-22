@@ -44,6 +44,7 @@ public class BattleSystem : MonoBehaviour
         currentState = BattleState.PlayerSetup;
         //disabling all buttons
         buttonController.DisableButtons();
+        buttonController.HideUndoButton();
         StartCoroutine(PlayerSetup());
     }
 
@@ -68,32 +69,35 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         currentState = BattleState.PlayerTurn;
-        StartCoroutine(PlayerTurn());
+        StartCoroutine(PlayerTurn(0));
     }
 
-    public IEnumerator PlayerTurn()
+    public IEnumerator PlayerTurn(int startingCycle)
     {
         buttonController.EnableButtons();
         buttonController.atkButton.Select();
         Debug.Log("Battle Start. Player Turn");
 
-        int currentCharacter = 0; 
 
-        for(int i = currentCharacter; i < partyManager.currentParty.Count; i++)
+        for(int i = startingCycle; i < partyManager.currentParty.Count; i++)
         {
             buttonController.atkButton.Select();
 
+            if(i > 0)
+            {
+             buttonController.ShowUndoButton();
+            } else
+            {
+                buttonController.HideUndoButton();
+            }
+
             //if the character is downed, skip to the next character
-            // if(partyManager.currentParty[i].currentHP > 0)
-            // {
-            //     currentCharacter = i;
-            //     savedCharacter = partyManager.currentParty[currentCharacter];
-            // } 
-            // else {
-            //     continue;
-            // }
+            if(savedCharacter.characterStatus == CharacterTemplate.CharacterStatus.Downed)
+            {
+                continue;
+            }
             
-            currentCharacter = i;
+            int currentCharacter = i;
             savedCharacter = partyManager.currentParty[currentCharacter];
             Debug.Log("Current Character: " + savedCharacter.characterData.CharaStatList.CharacterName + "'s turn.");   
 
@@ -115,15 +119,20 @@ public class BattleSystem : MonoBehaviour
     {
         Debug.Log("Enemy Turn");
         buttonController.DisableButtons();
+        buttonController.HideUndoButton();
 
         int enemyCount = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers.Count;
 
         for(int i = 0; i < enemyCount; i++)
         {
             //if the character is downed, skip to the next character
-            if(savedCharacter.characterStatus != CharacterTemplate.CharacterStatus.Downed)
+            if(savedCharacter.characterStatus == CharacterTemplate.CharacterStatus.Downed)
             {
-                savedCharacter = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[i];
+                continue;
+
+            } 
+
+            savedCharacter = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[i];
                 Debug.Log("Current Character: " + savedCharacter.characterData.CharaStatList.CharacterName + "'s turn.");
 
                 //randomly select a target from the player party
@@ -139,11 +148,6 @@ public class BattleSystem : MonoBehaviour
 
                 //add the move to the attack saver
                 attackSaver.SaveMove(savedCharacter, selectedMove, selectedTarget);
-
-            } 
-            else {
-                continue;
-            }
         }
 
         yield return new WaitForSeconds(1f);
@@ -164,6 +168,16 @@ public class BattleSystem : MonoBehaviour
             SpriteRenderer spriteRenderer = charaObject.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = charaTemplate[i].characterData.CharaSprite;
         }
+    }
+
+    public void OnUndoButton(){
+        int lastAction = attackSaver.characterActionsContainer.Count - 1;
+        attackSaver.characterActionsContainer.RemoveAt(attackSaver.characterActionsContainer.Count - 1);
+
+        //making sure the target is unselected so wait until still works
+        targetSelected = false;
+        Debug.Log($"Last action undone. {attackSaver.characterActionsContainer.Count} actions have been saved.");
+        StartCoroutine(PlayerTurn(lastAction));
     }
 
     public void OnAllyClick(int index){
