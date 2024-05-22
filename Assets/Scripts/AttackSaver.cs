@@ -8,7 +8,7 @@ public class AttackSaver : MonoBehaviour
 
     //save the move used by the character 
     public void SaveMove(CharacterTemplate user, Moves move, CharacterTemplate target){
-        //characterActionsContainer.Add(new SaveActions(user, move, target));
+        characterActionsContainer.Add(new SaveActions(user, move, target));
         Debug.Log($"Actions in the container: {characterActionsContainer.Count}");
         Debug.Log($"Move saved. {user.characterData.CharaStatList.CharacterName} used {move.MoveName} on {target.characterData.CharaStatList.CharacterName}");
     }
