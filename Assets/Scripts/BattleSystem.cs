@@ -123,15 +123,27 @@ public class BattleSystem : MonoBehaviour
     public void OnAllyClick(int index){
         selectedTarget = partyManager.currentParty[index];
         Debug.Log("Ally selected: " + selectedTarget.characterData.CharaStatList.CharacterName);
-        attackSaver.SaveMove(savedCharacter, generator.selectedMove, selectedTarget);
-        targetSelected = true;
+        if(generator.selectedMove != null){
+            attackSaver.SaveMove(savedCharacter, generator.selectedMove, selectedTarget);
+            targetSelected = true;
+        }
+        else if(generator.selectedItem != null){
+            attackSaver.SaveItem(savedCharacter, generator.selectedItem, selectedTarget);
+            targetSelected = true;
+        }
     }
 
     public void OnEnemyClick(int index){
         selectedTarget = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[index];
-        attackSaver.SaveMove(savedCharacter, generator.selectedMove, selectedTarget);
         Debug.Log("Enemy selected: " + selectedTarget.characterData.CharaStatList.CharacterName);
-        targetSelected = true;
+        if(generator.selectedMove != null){
+            attackSaver.SaveMove(savedCharacter, generator.selectedMove, selectedTarget);
+            targetSelected = true;
+        }
+        else if(generator.selectedItem != null){
+            attackSaver.SaveItem(savedCharacter, generator.selectedItem, selectedTarget);
+            targetSelected = true;
+        }
     }
 
     //set up move generation for current character. DO NOT REMOVE- used for attack button
