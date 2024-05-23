@@ -183,11 +183,37 @@ public class BattleSystem : MonoBehaviour
         //performing the actions
         foreach(AttackSaver.SaveActions action in sortedActions)
         {
+            int damage = 0;
+            int healing = 0;
+            int magic = 0;
+            string message = "";
             if(action.move != null)
             {
+                switch(action.move.MovesType){
+                    case Moves.MoveType.Damaging:
+                    damage = damageCalc.CalculateDamagingMove(action.user, action.move, action.target);
+                    break;
+                    case Moves.MoveType.Drain:
+                    (damage, healing) = damageCalc.CalculateDrainMove(action.user, action.move, action.target);
+                    break;
+                    case Moves.MoveType.Healing:
+                    healing = damageCalc.CalcHealingMove(action.user, action.move, action.target);
+                    break;
+                    case Moves.MoveType.Supplementary:
+                    message = damageCalc.DescribeBuffsAndDebuffs(action.user, action.move, action.target);
+                    break;
+                }
             }
             else if(action.item != null)
             {
+                switch(action.item.Type){
+                    case ItemObject.ItemType.Tool:
+                    damage = damageCalc.CalcTool(action.user, action.item, action.target);
+                    break;
+                    case ItemObject.ItemType.Restorative:
+                    (healing, magic) = damageCalc.CalcPotions(action.user, action.item, action.target);
+                    break;
+                }
             }
         }
 
