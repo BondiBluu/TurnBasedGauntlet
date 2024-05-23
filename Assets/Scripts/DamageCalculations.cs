@@ -6,12 +6,6 @@ using UnityEngine;
 
 public class DamageCalculations : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public int CalculateDamagingMove(CharacterTemplate user, Moves move, CharacterTemplate target){
         return CalcMove(user, move, target);
     }
@@ -78,7 +72,7 @@ public class DamageCalculations : MonoBehaviour
         return (hp, mp);
     }
 
-    public int CalcHealingMove(CharacterTemplate user, Moves move){
+    public int CalcHealingMove(CharacterTemplate user, Moves move, CharacterTemplate target){
         //TODO: add healing move calculations. Talk with Elle
         int healing = 0;
         return healing;
@@ -87,5 +81,25 @@ public class DamageCalculations : MonoBehaviour
     public int CalcMPLoss(Moves move){
         int mpLoss = (int)move.MPCost;
         return mpLoss;
+    }
+
+    public string DescribeBuffsAndDebuffs(CharacterTemplate user, Moves move, CharacterTemplate target){
+        string message = "";
+
+        message += $"{user.characterData.name} used {move.MoveName} on {target.characterData.name}! {target.characterData.name}'s";
+
+        if(move.Buffs.Length > 0){
+            for(int i = 0; i < move.Buffs.Length; i++){
+                message += $" {move.Buffs[i]} increased!";
+            }
+        }
+
+        if(move.Debuffs.Length > 0){
+            for(int i = 0; i < move.Debuffs.Length; i++){
+                message += $" {move.Debuffs[i]} decreased!";
+            }
+        }
+                 
+        return message; 
     }
 }
