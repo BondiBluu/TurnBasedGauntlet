@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class EventController : MonoBehaviour
 {
-    //an event that will generate attack moves
-    public UnityEvent GenerateAttackMoves;
+    //an event that'll be called when the target loses hp
+    
     // Start is called before the first frame update
     void Start()
     {
