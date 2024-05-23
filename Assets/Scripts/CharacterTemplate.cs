@@ -57,6 +57,13 @@ public class CharacterTemplate
         
     }
 
+    public void TakeMP(float mp){
+        currentMP -= mp;
+        if(currentMP < 0){
+            currentMP = 0;
+        }
+    }
+
     public void GainEXP(int exp){
         //tentative method to gain exp
         currentEXP += exp;
