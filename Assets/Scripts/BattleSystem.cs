@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
@@ -27,7 +28,6 @@ public class BattleSystem : MonoBehaviour
     public Transform[] enemyBattleStations;
     [SerializeField] int currentSeed;
     [SerializeField] int currentGroupSet;
-
     [SerializeField] CharacterTemplate savedCharacter;
     [SerializeField] CharacterTemplate selectedTarget;
     [SerializeField] bool targetSelected = false;
@@ -152,6 +152,51 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         Debug.Log("Enemy Turn End");
+        currentState = BattleState.BattleCalc;
+        StartCoroutine(BattleCalculations());
+    }
+
+    public IEnumerator BattleCalculations(){
+        Debug.Log("Battle Calculations");
+
+        //sort actions by speed
+        List<AttackSaver.SaveActions> sortedActions = attackSaver.characterActionsContainer.OrderByDescending(x => x.user.currentSpeed).ToList();
+
+        //grabbing users who used healing items
+        List<AttackSaver.SaveActions> healingActions = new List<AttackSaver.SaveActions>();
+
+        foreach(AttackSaver.SaveActions action in sortedActions)
+        {
+            if(action.item != null && action.item.Type == ItemObject.ItemType.Restorative)
+            {
+                healingActions.Add(action);
+                sortedActions.Remove(action);
+            }
+        }
+
+        //putting healing actions back into the top of the sorted actions list
+        foreach(AttackSaver.SaveActions action in healingActions)
+        {
+            sortedActions.Insert(0, action);
+        }
+
+        //performing the actions
+        foreach(AttackSaver.SaveActions action in sortedActions)
+        {
+            if(action.move != null)
+            {
+            }
+            else if(action.item != null)
+            {
+            }
+        }
+
+        //clear the actions for the next turn
+        attackSaver.characterActionsContainer.Clear();
+        healingActions.Clear();
+        sortedActions.Clear();
+        
+        yield return new WaitForSeconds(1f);
     }
 
     
