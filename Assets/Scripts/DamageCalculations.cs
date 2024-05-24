@@ -86,7 +86,7 @@ public class DamageCalculations : MonoBehaviour
     public string DescribeBuffsAndDebuffs(CharacterTemplate user, Moves move, CharacterTemplate target){
         string message = "";
 
-        message += $"{user.characterData.name} used {move.MoveName} on {target.characterData.name}! {target.characterData.name}'s";
+        message += $" {target.characterData.name}'s";
 
         if(move.Buffs.Length > 0){
             for(int i = 0; i < move.Buffs.Length; i++){
@@ -101,5 +101,31 @@ public class DamageCalculations : MonoBehaviour
         }
                  
         return message; 
+    }
+
+    public string DescribeMove(CharacterTemplate user, Moves move, CharacterTemplate target){
+        string message = "";
+
+        message += $"{user.characterData.name} used {move.MoveName} on {target.characterData.name}!";
+
+        return message;
+    }
+
+        //putting everything together for the attack 
+    public void OnAttack(CharacterTemplate user, Moves move, CharacterTemplate target){
+        //character loses mp
+        //update the mp bar
+        //user animation plays 
+        //target pain animation plays
+        //target takes damage, so the health bar goes down
+        //if buffs or debuffs are applied, they are applied
+        //words describing what just happened appear on the screen
+        //seconds pass
+
+    }
+
+    public void OnAttack(CharacterTemplate user, ItemObject item, CharacterTemplate target){
+        
+        
     }
 }
