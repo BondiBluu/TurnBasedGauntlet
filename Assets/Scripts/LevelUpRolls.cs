@@ -17,6 +17,16 @@ public class LevelUpRolls : MonoBehaviour
                 }
             }
         }
+        //if there are multiple leveluptypes, character level rolls once
+        else{
+            foreach(StatsList.LevelUpType type in character.characterData.CharaStatList.LevelType){
+                switch(type){
+                    case StatsList.LevelUpType.PhysicalTank:
+                        LevelTank(character);
+                        break;
+                }
+            }
+        }
 
         return levelRoll;
 
