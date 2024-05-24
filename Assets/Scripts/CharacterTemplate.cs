@@ -45,13 +45,15 @@ public class CharacterTemplate
     public float currentEfficiency;
 
     LevelUpRolls levelUpRolls = new LevelUpRolls();
-
+    
     // Start is called before the first frame update
     void Start()
     {
         RevertStats();
         characterStatus = CharacterStatus.Normal;
     }
+
+    
 
     public void TakeMP(float mp){
         currentMP -= mp;
