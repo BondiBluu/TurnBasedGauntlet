@@ -51,16 +51,39 @@ public class CharacterTemplate
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeMP(float mp){
         currentMP -= mp;
         if(currentMP < 0){
             currentMP = 0;
+        }
+    }
+
+    //ApplyBuffandDebuff using the Boost enum from Moves.cs
+    public void ApplyBuffandDebuff(Moves.Boost[] boosts, float value){
+        foreach(Moves.Boost boostType in boosts){
+            switch(boostType){
+                case Moves.Boost.Attack:
+                    currentAttack += (int)(characterData.CharaStatList.BaseAttack * value);
+                    break;
+                case Moves.Boost.Defense:
+                    currentDefense += (int)(characterData.CharaStatList.BaseDefense * value);
+                    break;
+                case Moves.Boost.Speed:
+                    currentSpeed += (int)(characterData.CharaStatList.BaseSpeed * value);
+                    break;
+                case Moves.Boost.Magic:
+                    currentMagic += (int)(characterData.CharaStatList.BaseMagic * value);
+                    break;
+                case Moves.Boost.Resistance:
+                    currentResistance += (int)(characterData.CharaStatList.BaseResistance * value);
+                    break;
+                case Moves.Boost.Skill:
+                    currentSkill += (int)(characterData.CharaStatList.BaseSkill * value);
+                    break;
+                case Moves.Boost.Efficiency:
+                    currentEfficiency += (int)(characterData.CharaStatList.BaseEfficiency * value);
+                    break;
+            }
         }
     }
 
