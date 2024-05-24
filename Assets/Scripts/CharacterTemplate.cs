@@ -44,6 +44,8 @@ public class CharacterTemplate
     public float maxEfficiency;
     public float currentEfficiency;
 
+    LevelUpRolls levelUpRolls = new LevelUpRolls();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,7 +124,7 @@ public class CharacterTemplate
         //tentative method to gain exp
         currentEXP += exp;
         if(currentEXP >= maxEXP){
-            LevelUpRoll();
+            levelUpRolls.LevelRoll(this);
         }
     }
     //TODO: method to take away accumulated stat rolls and levels when failing a checkpoint
