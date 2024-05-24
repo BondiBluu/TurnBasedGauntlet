@@ -22,7 +22,6 @@ public class CharacterTemplate
     public CharacterType characterType;
     public CharacterStatus characterStatus;
     public CharacterData characterData;
-    bool isDowned;
     public int currentLevel;
     public int currentEXP;
     public int maxEXP;
@@ -48,13 +47,34 @@ public class CharacterTemplate
     // Start is called before the first frame update
     void Start()
     {
-        
+        RevertStats();
+        characterStatus = CharacterStatus.Normal;
     }
 
     public void TakeMP(float mp){
         currentMP -= mp;
         if(currentMP < 0){
             currentMP = 0;
+        }
+    }
+
+    public void TakeDamage(float damage){
+        currentHP -= damage;
+        if(currentHP < 0){
+            currentHP = 0;
+            //characterStatus = CharacterStatus.Downed;
+        }
+    }
+
+    public void HealDamage(float heal, float healMP){
+        currentHP += heal;
+        currentMP += healMP;
+
+        if(currentHP > maxHP){
+            currentHP = maxHP;
+        }
+        if(currentMP > maxMP){
+            currentMP = maxMP;
         }
     }
 
@@ -87,6 +107,17 @@ public class CharacterTemplate
         }
     }
 
+    //revert stats back at the start of battle
+    public void RevertStats(){
+        currentAttack = maxAttack;
+        currentDefense = maxDefense;
+        currentSpeed = maxSpeed;
+        currentMagic = maxMagic;
+        currentResistance = maxResistance;
+        currentSkill = maxSkill;
+        currentEfficiency = maxEfficiency;
+    }
+
     public void GainEXP(int exp){
         //tentative method to gain exp
         currentEXP += exp;
@@ -116,6 +147,15 @@ public class CharacterTemplate
         currentSkill = maxSkill;
         maxEfficiency = characterData.CharaStatList.BaseEfficiency;
         currentEfficiency = maxEfficiency;
+    }
+
+    //if current level is more than 0, level up before the start of the game
+    public void LevelUpToBase(){
+        if(currentLevel > 0){
+            for(int i = 0; i < currentLevel; i++){
+                LevelUpRoll();
+            }
+        }
     }
 
     public void LevelUpRoll(){
