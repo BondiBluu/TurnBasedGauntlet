@@ -197,5 +197,70 @@ public class UIManager : MonoBehaviour
                 navButtons[0].Select();
             }
         }
+
+    //updating character hp
+    public void UpdateHP(CharacterTemplate character){
+        foreach(Transform child in characterHUDContainer){
+            if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+                TMP_Text characterHP = child.GetChild(2).GetComponent<TMP_Text>();
+                characterHP.text = character.currentHP + "/" + character.maxHP;
+
+                Image whiteHPBar = child.GetChild(4).GetComponent<Image>();
+                Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
+                subHPSlider.value = character.currentHP;
+                Slider mainHPSlider = whiteHPBar.transform.GetChild(4).GetComponent<Slider>();
+                mainHPSlider.value = character.currentHP;
+            }
+        }
+    }
+
+    //updating character hp panels
+    public void UpdateHPPanel(CharacterTemplate character){
+        foreach(Transform child in allyContainer){
+            if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+                Image whiteHPBar = child.GetChild(1).GetComponent<Image>();
+                Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
+                mainHPSlider.value = character.currentHP;
+            }
+        }
+    }
+
+    //updating enemy hp panels
+    public void UpdateEnemyHPPanel(CharacterTemplate character){
+        foreach(Transform child in enemyContainer){
+            if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+                Image whiteHPBar = child.GetChild(1).GetComponent<Image>();
+                Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
+                mainHPSlider.value = character.currentHP;
+            }
+        }
+    }
+
+    //updating character mp
+    public void UpdateMP(CharacterTemplate character){
+        foreach(Transform child in characterHUDContainer){
+            if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+                TMP_Text characterMP = child.GetChild(3).GetComponent<TMP_Text>();
+                characterMP.text = character.currentMP + "/" + character.maxMP;
+
+                Image whiteMPBar = child.GetChild(5).GetComponent<Image>();
+                Slider subMPSlider = whiteMPBar.transform.GetChild(3).GetComponent<Slider>();
+                subMPSlider.value = character.currentMP;
+                Slider mainMPSlider = whiteMPBar.transform.GetChild(4).GetComponent<Slider>();
+                mainMPSlider.value = character.currentMP;
+            }
+        }
+    }
+
+    //updating character mp panels
+    public void UpdateMPPanel(CharacterTemplate character){
+        foreach(Transform child in allyContainer){
+            if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+                Image whiteMPBar = child.GetChild(2).GetComponent<Image>();
+                Slider mainMPSlider = whiteMPBar.transform.GetChild(2).GetComponent<Slider>();
+                mainMPSlider.value = character.currentMP;
+            }
+        }
+    }
     
 }
