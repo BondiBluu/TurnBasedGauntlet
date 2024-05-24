@@ -17,11 +17,13 @@ public class StatsList : ScriptableObject
     }
 
     public enum LevelUpType{
-        Tank,
+        PhysicalTank,
+        MagicalTank,
+        Jammer,
         PhysicalDPS,
+        MagicalDPS,
         Support,
         Balanced,
-        MagicalDPS,
         Speedster,
         LateBloomer,
         All
