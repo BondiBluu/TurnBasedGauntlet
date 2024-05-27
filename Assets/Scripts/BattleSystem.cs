@@ -29,6 +29,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] int currentSeed;
     [SerializeField] int currentGroupSet;
     [SerializeField] CharacterTemplate savedCharacter;
+    [SerializeField] int savedCharacterIndex; //for stats
     [SerializeField] CharacterTemplate selectedTarget;
     [SerializeField] bool targetSelected = false;
     
@@ -97,8 +98,9 @@ public class BattleSystem : MonoBehaviour
                 continue;
             }
             
-            int currentCharacter = i;
-            savedCharacter = partyManager.currentParty[currentCharacter];
+            //grabbing the current character for the stats list
+            savedCharacterIndex = i;
+            savedCharacter = partyManager.currentParty[i];
             Debug.Log("Current Character: " + savedCharacter.characterData.CharaStatList.CharacterName + "'s turn.");   
 
             yield return new WaitUntil(() => targetSelected == true);
@@ -280,5 +282,22 @@ public class BattleSystem : MonoBehaviour
     //set up move generation for current character. DO NOT REMOVE- used for attack button
     public void OnChosenAttackButton(){
         generator.GenerateMoves(savedCharacter);
+    }
+
+    //showing stats
+    public void OnStatsButton(){
+        uiManager.ShowStats(savedCharacter);
+        //setting the saved character index to the current character
+        savedCharacterIndex = partyManager.currentParty.IndexOf(savedCharacter);
+    }
+
+    //show next character's stats
+    public void OnNextStatsButton(){
+        savedCharacterIndex++;
+        if(savedCharacterIndex >= partyManager.currentParty.Count){
+            savedCharacterIndex = 0;
+        }
+        uiManager.ShowStats(partyManager.currentParty[savedCharacterIndex]);
+        
     }
 }
