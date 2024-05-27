@@ -47,6 +47,7 @@ public class StatsList : ScriptableObject
     [SerializeField] float baseResistance;
     [SerializeField] float baseSkill;
     [SerializeField] float baseEfficiency;
+    [SerializeField] int baseExp;
     [SerializeField] Immunity[] immunities;
     [SerializeField] LevelUpType[] levelType;
 
@@ -64,6 +65,7 @@ public class StatsList : ScriptableObject
     public float BaseResistance { get { return baseResistance; } }
     public float BaseSkill { get { return baseSkill; } }
     public float BaseEfficiency { get { return baseEfficiency; } }
+    public int BaseExp { get { return baseExp; } }
     public Immunity[] Immunities { get { return immunities; } }
     public LevelUpType[] LevelType { get { return levelType; } }
     }
