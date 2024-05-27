@@ -92,15 +92,17 @@ public class BattleSystem : MonoBehaviour
                 buttonController.HideUndoButton();
             }
 
+            //grabbing the current character for the stats list
+            savedCharacterIndex = i;
+            savedCharacter = partyManager.currentParty[i];
+
             //if the character is downed, skip to the next character
             if(savedCharacter.characterStatus == CharacterTemplate.CharacterStatus.Downed)
             {
                 continue;
             }
             
-            //grabbing the current character for the stats list
-            savedCharacterIndex = i;
-            savedCharacter = partyManager.currentParty[i];
+            
             Debug.Log("Current Character: " + savedCharacter.characterData.CharaStatList.CharacterName + "'s turn.");   
 
             yield return new WaitUntil(() => targetSelected == true);
@@ -240,6 +242,11 @@ public class BattleSystem : MonoBehaviour
             
             SpriteRenderer spriteRenderer = charaObject.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = charaTemplate[i].characterData.CharaSprite;
+
+            //reverting the character's stats back to the base stats
+            charaTemplate[i].RevertStats();
+            //reverting the character's status back to normal
+            charaTemplate[i].characterStatus = CharacterTemplate.CharacterStatus.Normal;
         }
     }
 
