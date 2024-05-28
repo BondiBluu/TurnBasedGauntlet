@@ -190,13 +190,27 @@ public class BattleSystem : MonoBehaviour
             if(action.move != null)
             {
                 switch(action.move.MovesType){
+                    case Moves.MoveType.Damaging:
+                    case Moves.MoveType.Drain:
+                    damageCalc.OnAttack(action.user, action.move, action.target);
+                    break;
+                    case Moves.MoveType.Healing:
+                    damageCalc.OnHeal(action.user, action.move, action.target);
+                    break;
+                    case Moves.MoveType.Supplementary:
                     
+                    break;
                 }
             }
             else if(action.item != null)
             {
                 switch(action.item.Type){
-                    
+                    case ItemObject.ItemType.Restorative:
+                    damageCalc.OnPotion(action.user, action.item, action.target);
+                    break;
+                    case ItemObject.ItemType.Tool:
+                    damageCalc.OnAttack(action.user, action.item, action.target);
+                    break;
                 }
             }
         }
