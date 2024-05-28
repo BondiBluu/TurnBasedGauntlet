@@ -111,6 +111,8 @@ public class DamageCalculations : MonoBehaviour
     public void OnAttack(CharacterTemplate user, Moves move, CharacterTemplate target){
        //if the user is friendly, mp loss and mp bar update
         if(user.characterType == CharacterTemplate.CharacterType.Friendly){
+            //mp loss
+            user.TakeMP(CalcMPLoss(move));
             uiManager.UpdateMP(user); //going to be decremented
             uiManager.UpdateMPPanel(user);
         }
@@ -170,5 +172,42 @@ public class DamageCalculations : MonoBehaviour
         //debuff application if any
         target.ApplyBuffandDebuff(tool.Debuffs.Cast<Moves.Boost>().ToArray(), tool.DebuffAmount);
         //status effects, if any
+    }
+
+    //only player heals
+    public void OnHeal(CharacterTemplate user, Moves move, CharacterTemplate target){
+        //mp loss and mp bar update
+        user.TakeMP(CalcMPLoss(move));
+        uiManager.UpdateMP(user); //going to be decremented
+        uiManager.UpdateMPPanel(user);
+
+        //user anim plays
+        //target healed (?)anim plays
+        //target heals
+        target.HealDamage(CalcHealingMove(user, move, target), 0);
+        //update the target health bar
+        uiManager.UpdateHP(target);
+        uiManager.UpdateHPPanel(target);
+
+        //cure status, if status is matches the cure status
+    
+        //seconds pass
+    }
+
+    public void OnPotion(CharacterTemplate user, ItemObject item, CharacterTemplate target){
+        //item object will now be restorative object
+        RestorativeObject potion = (RestorativeObject)item;
+        //user used this
+        //user anim plays
+        //target healed (?)anim plays
+        //target heals
+        (int hp, int mp) = CalcPotions(user, item, target);
+        target.HealDamage(hp, mp);
+        //update the target health bar
+        uiManager.UpdateHP(target);
+        uiManager.UpdateHPPanel(target);
+        uiManager.UpdateMP(target);
+        uiManager.UpdateMPPanel(target);
+
     }
 }
