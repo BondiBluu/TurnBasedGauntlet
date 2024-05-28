@@ -1,11 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 public class DamageCalculations : MonoBehaviour
 {
+    UIManager uiManager;
+    void Start(){
+        uiManager = FindObjectOfType<UIManager>();
+    }
+
     public int CalculateDamagingMove(CharacterTemplate user, Moves move, CharacterTemplate target){
         return CalcMove(user, move, target);
     }
@@ -36,10 +42,8 @@ public class DamageCalculations : MonoBehaviour
         return damage;
     }
 
-    public int CalcTool(CharacterTemplate user, ItemObject item, CharacterTemplate target){
+    public int CalcTool(CharacterTemplate user, ToolObject tool, CharacterTemplate target){
         int damage = 0;
-
-        ToolObject tool = (ToolObject)item;
 
         if(tool.AtkPwr > 0){
             damage = (int)Math.Ceiling(tool.AtkPwr + (.15f * user.currentEfficiency));
@@ -103,29 +107,68 @@ public class DamageCalculations : MonoBehaviour
         return message; 
     }
 
-    public string DescribeMove(CharacterTemplate user, Moves move, CharacterTemplate target){
-        string message = "";
-
-        message += $"{user.characterData.name} used {move.MoveName} on {target.characterData.name}!";
-
-        return message;
-    }
-
         //putting everything together for the attack 
     public void OnAttack(CharacterTemplate user, Moves move, CharacterTemplate target){
-        //character loses mp
-        //update the mp bar
-        //user animation plays 
+       //if the user is friendly, mp loss and mp bar update
+        if(user.characterType == CharacterTemplate.CharacterType.Friendly){
+            uiManager.UpdateMP(user); //going to be decremented
+            uiManager.UpdateMPPanel(user);
+        }
+        //user animation plays
         //target pain animation plays
-        //target takes damage, so the health bar goes down
-        //if buffs or debuffs are applied, they are applied
-        //words describing what just happened appear on the screen
-        //seconds pass
+        //target takes damage, but if the move is drain, the target heals as well
+        if(move.MovesType == Moves.MoveType.Drain){
+            (int damage, int healing) = CalculateDrainMove(user, move, target);
+            target.TakeDamage(damage);
+            user.HealDamage(healing, 0);
+        } else if (move.MovesType == Moves.MoveType.Damaging){
+            target.TakeDamage(CalculateDamagingMove(user, move, target));
+        }
+        //update the attacker health bar, if draining move, update the target and user health bars
+        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
+            //target is friendly and user is enemy
+            uiManager.UpdateHP(target); //going to be decremented
+            uiManager.UpdateHPPanel(target);
 
+            if(move.MovesType == Moves.MoveType.Drain){
+                //TODO: add and link enemy health bar to decrement
+                uiManager.UpdateEnemyHPPanel(user);
+            }
+        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
+            //target is enemy and user is friendly
+            uiManager.UpdateEnemyHPPanel(target);
+
+            if(move.MovesType == Moves.MoveType.Drain){
+                uiManager.UpdateHP(user);
+                uiManager.UpdateHPPanel(user);
+                
+            }
+        }
+        //debuff application if any
+        target.ApplyBuffandDebuff(move.Debuffs, move.DebuffValue);
+
+        //TODO: add status to the target if any
+
+        //seconds pass
     }
 
     public void OnAttack(CharacterTemplate user, ItemObject item, CharacterTemplate target){
-        
-        
+        ToolObject tool = (ToolObject)item;
+        //user used this
+        //user anim plays
+        //target pain anim plays
+        //damage to target
+        target.TakeDamage(CalcTool(user, tool, target));
+        //update the target health bar
+        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
+            uiManager.UpdateHP(target);
+            uiManager.UpdateHPPanel(target);
+        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
+            uiManager.UpdateEnemyHPPanel(target);
+        }
+
+        //debuff application if any
+        target.ApplyBuffandDebuff(tool.Debuffs.Cast<Moves.Boost>().ToArray(), tool.DebuffAmount);
+        //status effects, if any
     }
 }
