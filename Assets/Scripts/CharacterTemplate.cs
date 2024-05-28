@@ -100,6 +100,36 @@ public class CharacterTemplate
         }
     }
 
+    //remove debuffs
+    public void RemoveDebuffs(Moves.Boost[] debuffs){
+        foreach (Moves.Boost debuffType in debuffs){
+            switch(debuffType){
+                case Moves.Boost.Attack:
+                    currentAttack = maxAttack;
+                    break;
+                case Moves.Boost.Defense:
+                    currentDefense = maxDefense;
+                    break;
+                case Moves.Boost.Speed:
+                    currentSpeed = maxSpeed;
+                    break;
+                case Moves.Boost.Magic:
+                    currentMagic = maxMagic;
+                    break;
+                case Moves.Boost.Resistance:
+                    currentResistance = maxResistance;
+                    break;
+                case Moves.Boost.Skill:
+                    currentSkill = maxSkill;
+                    break;
+                case Moves.Boost.Efficiency:
+                    currentEfficiency = maxEfficiency;
+                    break;
+                }
+                
+        }
+    }
+
     //revert stats back at the start of battle
     public void RevertStats(){
         currentAttack = maxAttack;

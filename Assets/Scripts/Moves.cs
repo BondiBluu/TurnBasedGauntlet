@@ -7,9 +7,11 @@ public class Moves : ScriptableObject
 {
     public enum MoveType
     {
+        //needs to be changed to Damaging, Healing, and Supplementary
         Damaging,
         Healing,
         Supplementary,
+        Cure,
         Drain
     }
 

@@ -144,8 +144,12 @@ public class DamageCalculations : MonoBehaviour
                 
             }
         }
+        
         //debuff application if any
-        target.ApplyBuffandDebuff(move.Debuffs, move.DebuffValue);
+        if(move.Debuffs.Length > 0)
+        {
+            target.ApplyBuffandDebuff(move.Debuffs, move.DebuffValue);
+        }
 
         //TODO: add status to the target if any
 
@@ -168,7 +172,10 @@ public class DamageCalculations : MonoBehaviour
         }
 
         //debuff application if any
-        target.ApplyBuffandDebuff(tool.Debuffs.Cast<Moves.Boost>().ToArray(), tool.DebuffAmount);
+        if(tool.Debuffs.Length > 0)
+        {
+            target.ApplyBuffandDebuff(tool.Debuffs.Cast<Moves.Boost>().ToArray(), tool.DebuffAmount);
+        }
         //status effects, if any
     }
 
@@ -188,6 +195,7 @@ public class DamageCalculations : MonoBehaviour
         uiManager.UpdateHPPanel(target);
 
         //cure status, if status is matches the cure status
+
     
         //seconds pass
     }
@@ -207,5 +215,45 @@ public class DamageCalculations : MonoBehaviour
         uiManager.UpdateMP(target);
         uiManager.UpdateMPPanel(target);
 
+        //cure status, if status is matches the cure status
+        if(potion.StatusCures.Length > 0){
+            target.RemoveDebuffs(potion.StatusCures.Cast<Moves.Boost>().ToArray());
+        }
+
+        //can revive downed characters
+    }
+
+    public void OnStatus(CharacterTemplate user, Moves move, CharacterTemplate target){
+        //mp loss and mp bar update
+        user.TakeMP(CalcMPLoss(move));
+        uiManager.UpdateMP(user); //going to be decremented
+        uiManager.UpdateMPPanel(user);
+
+        //user anim plays
+        //if move type is supplementary target is buffed or debuffed
+        target.ApplyBuffandDebuff(move.Buffs, move.BuffValue);
+
+
+        //status applied to target
+        //cures debuffs if the move is a cure move
+        //cure status, if status is matches the cure status
+        //seconds pass
+    }
+
+    public void OnStatusCure(CharacterTemplate user, Moves move, CharacterTemplate target){
+        //mp loss and mp bar update
+        user.TakeMP(CalcMPLoss(move));
+        uiManager.UpdateMP(user); //going to be decremented
+        uiManager.UpdateMPPanel(user);
+
+        //user anim plays
+        //target healed (?)anim plays
+        //target is cured of debuffs
+        target.RemoveDebuffs(move.Debuffs);
+
+
+        //cure status, if status is matches the cure status
+    
+        //seconds pass
     }
 }

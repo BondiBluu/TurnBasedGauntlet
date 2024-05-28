@@ -75,6 +75,9 @@ public class Generator : MonoBehaviour
                     //if the move has debuffs, the panel action will be to open the enemy panel, if it has buffs, the panel action will be to open the ally panel
                         panelAction = move.Debuffs.Length > 0 ? buttonCon.OnEnemyPanel : move.Buffs.Length > 0 ? buttonCon.OnAllyPanel : null;
                         break;
+                    case Moves.MoveType.Cure:
+                        panelAction = buttonCon.OnAllyPanel;
+                        break;
                     default:
                         continue;
                 }

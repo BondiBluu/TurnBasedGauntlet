@@ -198,7 +198,10 @@ public class BattleSystem : MonoBehaviour
                     damageCalc.OnHeal(action.user, action.move, action.target);
                     break;
                     case Moves.MoveType.Supplementary:
-                    
+                    damageCalc.OnStatus(action.user, action.move, action.target);
+                    break;
+                    case Moves.MoveType.Cure:
+                    damageCalc.OnStatusCure(action.user, action.move, action.target);
                     break;
                 }
             }
