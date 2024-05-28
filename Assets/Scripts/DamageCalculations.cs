@@ -59,11 +59,9 @@ public class DamageCalculations : MonoBehaviour
         return damage;
     }
 
-    public (int hp, int mp) CalcPotions(CharacterTemplate user, ItemObject item, CharacterTemplate target){
+    public (int hp, int mp) CalcPotions(CharacterTemplate user, RestorativeObject potion, CharacterTemplate target){
         int hp = 0;
         int mp = 0;
-
-        RestorativeObject potion = (RestorativeObject)item;
 
         if(potion.HpRestore > 0){
             hp = (int)Math.Ceiling(potion.HpRestore + (.15f * user.currentEfficiency));
@@ -201,7 +199,7 @@ public class DamageCalculations : MonoBehaviour
         //user anim plays
         //target healed (?)anim plays
         //target heals
-        (int hp, int mp) = CalcPotions(user, item, target);
+        (int hp, int mp) = CalcPotions(user, potion, target);
         target.HealDamage(hp, mp);
         //update the target health bar
         uiManager.UpdateHP(target);
