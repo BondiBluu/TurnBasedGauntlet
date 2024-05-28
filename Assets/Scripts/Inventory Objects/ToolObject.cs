@@ -15,9 +15,23 @@ public class ToolObject : ItemObject
         None
     }
 
+    public enum Debuff{
+        Attack,
+        Defense,
+        Speed,
+        Magic,
+        Resistance,
+        Skill,
+        Efficiency,
+        None
+        }
+
+
     [SerializeField] float atkPwr;
     [SerializeField] float magPwr;
     [SerializeField] StatusType[] statusEffects;
+    [SerializeField] Debuff[] debuffs;
+    [SerializeField] int debuffAmount;
 
     public void Awake()
     {
@@ -27,4 +41,6 @@ public class ToolObject : ItemObject
     public float AtkPwr { get { return atkPwr; } }
     public float MagPwr { get { return magPwr; } }
     public StatusType[] StatusEffects { get { return statusEffects; } }
+    public Debuff[] Debuffs { get { return debuffs; } }
+    public int DebuffAmount { get { return debuffAmount; } }
 }
