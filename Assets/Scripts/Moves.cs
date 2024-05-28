@@ -66,6 +66,8 @@ public class Moves : ScriptableObject
     [SerializeField] StatusType[] statusTypes;
     [SerializeField] Boost[] buffs;
     [SerializeField] Boost[] debuffs;
+    [SerializeField] float buffValue;
+    [SerializeField] float debuffValue;
     [SerializeField] TargetNumber targetNumbers;
 
     public string MoveName { get { return moveName; } }
@@ -82,5 +84,7 @@ public class Moves : ScriptableObject
     public StatusType[] StatusTypes { get { return statusTypes; } }
     public Boost[] Buffs { get { return buffs; } }
     public Boost[] Debuffs { get { return debuffs; } }
+    public float BuffValue { get { return buffValue; } }
+    public float DebuffValue { get { return debuffValue; } }
     public TargetNumber TargetNumbers { get { return targetNumbers; } }
 }
