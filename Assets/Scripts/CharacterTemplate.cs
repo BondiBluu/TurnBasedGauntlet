@@ -43,15 +43,6 @@ public class CharacterTemplate
     public float currentSkill;
     public float maxEfficiency;
     public float currentEfficiency;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        RevertStats();
-        characterStatus = CharacterStatus.Normal;
-    }
-
-    
 
     public void TakeMP(float mp){
         currentMP -= mp;
@@ -125,12 +116,15 @@ public class CharacterTemplate
         currentEXP += exp;
         if(currentEXP >= maxEXP){
             //level up
+            currentLevel++;
+            //level roll system
             //have maxEXP increase by a certain amount and retain the remaining exp
             currentEXP -= maxEXP;
             //increase max exp
             maxEXP += 100;
         }
     }
+    
     //TODO: method to take away accumulated stat rolls and levels when failing a checkpoint
 
     public void TurnToBaseLevel(){
@@ -156,7 +150,7 @@ public class CharacterTemplate
     }
 
     //if current level is more than 0, level up before the start of the game
-    public void LevelUpToBase(){
+    public void LevelUpFromBase(){
         if(currentLevel > 0){
             for(int i = 0; i < currentLevel; i++){
                 LevelUpRoll();
