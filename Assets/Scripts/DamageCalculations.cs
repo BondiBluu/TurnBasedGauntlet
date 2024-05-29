@@ -12,26 +12,27 @@ public class DamageCalculations : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
     }
 
-    public int CalculateDamagingMove(CharacterTemplate user, Moves move, CharacterTemplate target){
-        return CalcMove(user, move, target);
-    }
-
-    public (int damage, int healing) CalculateDrainMove(CharacterTemplate user, Moves move, CharacterTemplate target){
+    //calculating damaging moves
+    public (int damage, int healing) CalcDamagingMove(CharacterTemplate user, DamagingMoves move, CharacterTemplate target){
         int damage = CalcMove(user, move, target);
-        int healing = damage / 2;
+        int healing = 0;
+
+        if(move.DmgType == DamagingMoves.DamagingType.Drain){
+            healing = damage / 2;
+        }
+
         return (damage, healing);
     }
 
-    public int CalcMove(CharacterTemplate user, Moves move, CharacterTemplate target){
-        DamagingMoves damagingMove = (DamagingMoves)move;
+    public int CalcMove(CharacterTemplate user, DamagingMoves move, CharacterTemplate target){
         int damage = 0;
 
-        switch(damagingMove.AtkType){
+        switch(move.AtkType){
             case DamagingMoves.AttackType.Physical:
-                damage = (int)Math.Ceiling(user.currentAttack * damagingMove.MovePower / (2 * Mathf.Max(1, target.currentDefense)));
+                damage = (int)Math.Ceiling(user.currentAttack * move.MovePower / (2 * Mathf.Max(1, target.currentDefense)));
                 break;
             case DamagingMoves.AttackType.Magical:
-                damage = (int)Math.Ceiling(user.currentMagic * damagingMove.MovePower / (2 * Mathf.Max(1, target.currentResistance)));
+                damage = (int)Math.Ceiling(user.currentMagic * move.MovePower / (2 * Mathf.Max(1, target.currentResistance)));
                 break;
         }
 
@@ -75,7 +76,7 @@ public class DamageCalculations : MonoBehaviour
         return (hp, mp);
     }
 
-    public int CalcHealingMove(CharacterTemplate user, Moves move, CharacterTemplate target){
+    public int CalcHealingMove(CharacterTemplate user, HealingMoves move, CharacterTemplate target){
         //TODO: add healing move calculations. Talk with Elle
         int healing = 0;
         return healing;
@@ -97,12 +98,12 @@ public class DamageCalculations : MonoBehaviour
 
                 if(supplementaryMove.Buffs.Length > 0){
                     for(int i = 0; i < supplementaryMove.Buffs.Length; i++){
-                    message += $" {supplementaryMove.Buffs[i]} increased!";
+                        message += $" {supplementaryMove.Buffs[i]} increased!";
                     }
                 }
-            if(supplementaryMove.Debuffs.Length > 0){
-                for(int i = 0; i < supplementaryMove.Debuffs.Length; i++){
-                    message += $" {supplementaryMove.Debuffs[i]} decreased!";
+                if(supplementaryMove.Debuffs.Length > 0){
+                    for(int i = 0; i < supplementaryMove.Debuffs.Length; i++){
+                        message += $" {supplementaryMove.Debuffs[i]} decreased!";
                     }
                 }
                 break;
@@ -178,7 +179,6 @@ public class DamageCalculations : MonoBehaviour
         //user anim plays
         //target healed (?)anim plays
         //target heals
-        target.HealDamage(CalcHealingMove(user, move, target), 0);
         //update the target health bar
         uiManager.UpdateHP(target);
         uiManager.UpdateHPPanel(target);
