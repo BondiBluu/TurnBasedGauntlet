@@ -31,7 +31,7 @@ public class ToolObject : ItemObject
     [SerializeField] float magPwr;
     [SerializeField] StatusType[] statusEffects;
     [SerializeField] Debuff[] debuffs;
-    [SerializeField] int debuffAmount;
+    [SerializeField] float debuffAmount;
 
     public void Awake()
     {
@@ -42,5 +42,5 @@ public class ToolObject : ItemObject
     public float MagPwr { get { return magPwr; } }
     public StatusType[] StatusEffects { get { return statusEffects; } }
     public Debuff[] Debuffs { get { return debuffs; } }
-    public int DebuffAmount { get { return debuffAmount; } }
+    public float DebuffAmount { get { return debuffAmount; } }
 }
