@@ -44,6 +44,12 @@ public class CharacterTemplate
     public float maxEfficiency;
     public float currentEfficiency;
 
+    void Awake(){
+        if(characterStatus != CharacterStatus.Downed){
+            characterStatus = CharacterStatus.Normal;
+        }
+    }
+
     public void TakeMP(float mp){
         currentMP -= mp;
         if(currentMP < 0){
@@ -103,8 +109,34 @@ public class CharacterTemplate
     }
 
     //remove debuffs
-    public void RemoveDebuffs(){
-
+    public void RemoveDebuffs(HealingMoves.HealDebuff[] healDebuffs){
+        foreach(HealingMoves.HealDebuff healDebuff in healDebuffs){
+            switch(healDebuff){
+                case HealingMoves.HealDebuff.Attack:
+                    currentAttack = maxAttack;
+                    break;
+                case HealingMoves.HealDebuff.Defense:
+                    currentDefense = maxDefense;
+                    break;
+                case HealingMoves.HealDebuff.Speed:
+                    currentSpeed = maxSpeed;
+                    break;
+                case HealingMoves.HealDebuff.Magic:
+                    currentMagic = maxMagic;
+                    break;
+                case HealingMoves.HealDebuff.Resistance:
+                    currentResistance = maxResistance;
+                    break;
+                case HealingMoves.HealDebuff.Skill:
+                    currentSkill = maxSkill;
+                    break;
+                case HealingMoves.HealDebuff.Efficiency:
+                    currentEfficiency = maxEfficiency;
+                    break;
+                case HealingMoves.HealDebuff.None:
+                    break;
+            }
+        }
     }
 
     //revert stats back at the start of battle
