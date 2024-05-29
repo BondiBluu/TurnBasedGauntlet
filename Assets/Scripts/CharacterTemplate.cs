@@ -72,62 +72,13 @@ public class CharacterTemplate
     }
 
     //ApplyBuffandDebuff using the Boost enum from Moves.cs
-    public void ApplyBuffandDebuff(Moves.Boost[] boosts, float value){
-        foreach(Moves.Boost boostType in boosts){
-            switch(boostType){
-                case Moves.Boost.Attack:
-                    currentAttack += (int)(characterData.CharaStatList.BaseAttack * value);
-                    break;
-                case Moves.Boost.Defense:
-                    currentDefense += (int)(characterData.CharaStatList.BaseDefense * value);
-                    break;
-                case Moves.Boost.Speed:
-                    currentSpeed += (int)(characterData.CharaStatList.BaseSpeed * value);
-                    break;
-                case Moves.Boost.Magic:
-                    currentMagic += (int)(characterData.CharaStatList.BaseMagic * value);
-                    break;
-                case Moves.Boost.Resistance:
-                    currentResistance += (int)(characterData.CharaStatList.BaseResistance * value);
-                    break;
-                case Moves.Boost.Skill:
-                    currentSkill += (int)(characterData.CharaStatList.BaseSkill * value);
-                    break;
-                case Moves.Boost.Efficiency:
-                    currentEfficiency += (int)(characterData.CharaStatList.BaseEfficiency * value);
-                    break;
-            }
-        }
+    public void ApplyBuffandDebuff(){
+
     }
 
     //remove debuffs
-    public void RemoveDebuffs(Moves.Boost[] debuffs){
-        foreach (Moves.Boost debuffType in debuffs){
-            switch(debuffType){
-                case Moves.Boost.Attack:
-                    currentAttack = maxAttack;
-                    break;
-                case Moves.Boost.Defense:
-                    currentDefense = maxDefense;
-                    break;
-                case Moves.Boost.Speed:
-                    currentSpeed = maxSpeed;
-                    break;
-                case Moves.Boost.Magic:
-                    currentMagic = maxMagic;
-                    break;
-                case Moves.Boost.Resistance:
-                    currentResistance = maxResistance;
-                    break;
-                case Moves.Boost.Skill:
-                    currentSkill = maxSkill;
-                    break;
-                case Moves.Boost.Efficiency:
-                    currentEfficiency = maxEfficiency;
-                    break;
-                }
-                
-        }
+    public void RemoveDebuffs(){
+
     }
 
     //revert stats back at the start of battle

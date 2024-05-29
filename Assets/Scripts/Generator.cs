@@ -65,18 +65,16 @@ public class Generator : MonoBehaviour
 
                 switch(move.MovesType){
                     case Moves.MoveType.Damaging:
-                    case Moves.MoveType.Drain:
                         panelAction = buttonCon.OnEnemyPanel;
                         break;
                     case Moves.MoveType.Healing:
                         panelAction = buttonCon.OnAllyPanel;
                         break;
                     case Moves.MoveType.Supplementary:
-                    //if the move has debuffs, the panel action will be to open the enemy panel, if it has buffs, the panel action will be to open the ally panel
-                        panelAction = move.Debuffs.Length > 0 ? buttonCon.OnEnemyPanel : move.Buffs.Length > 0 ? buttonCon.OnAllyPanel : null;
-                        break;
-                    case Moves.MoveType.Cure:
-                        panelAction = buttonCon.OnAllyPanel;
+                    //grab the debuffs from the supplementary move
+                    SupplementaryMoves supplementaryMove = (SupplementaryMoves)move;
+                        //if the move has debuffs, the panel action will be to open the enemy panel, if it has buffs, the panel action will be to open the ally panel
+                        panelAction = supplementaryMove.Debuffs.Length > 0 ? buttonCon.OnEnemyPanel : supplementaryMove.Buffs.Length > 0 ? buttonCon.OnAllyPanel : null;
                         break;
                     default:
                         continue;

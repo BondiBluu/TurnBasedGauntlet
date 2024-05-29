@@ -23,14 +23,15 @@ public class DamageCalculations : MonoBehaviour
     }
 
     public int CalcMove(CharacterTemplate user, Moves move, CharacterTemplate target){
+        DamagingMoves damagingMove = (DamagingMoves)move;
         int damage = 0;
 
-        switch(move.AttackingType){
-            case Moves.AttackType.Physical:
-                damage = (int)Math.Ceiling(user.currentAttack * move.MovePower / (2 * Mathf.Max(1, target.currentDefense)));
+        switch(damagingMove.AtkType){
+            case DamagingMoves.AttackType.Physical:
+                damage = (int)Math.Ceiling(user.currentAttack * damagingMove.MovePower / (2 * Mathf.Max(1, target.currentDefense)));
                 break;
-            case Moves.AttackType.Magical:
-                damage = (int)Math.Ceiling(user.currentMagic * move.MovePower / (2 * Mathf.Max(1, target.currentResistance)));
+            case DamagingMoves.AttackType.Magical:
+                damage = (int)Math.Ceiling(user.currentMagic * damagingMove.MovePower / (2 * Mathf.Max(1, target.currentResistance)));
                 break;
         }
 
@@ -90,16 +91,38 @@ public class DamageCalculations : MonoBehaviour
 
         message += $" {target.characterData.name}'s";
 
-        if(move.Buffs.Length > 0){
-            for(int i = 0; i < move.Buffs.Length; i++){
-                message += $" {move.Buffs[i]} increased!";
-            }
-        }
+        switch(move.MovesType){
+            case Moves.MoveType.Supplementary:
+                SupplementaryMoves supplementaryMove = (SupplementaryMoves)move;
 
-        if(move.Debuffs.Length > 0){
-            for(int i = 0; i < move.Debuffs.Length; i++){
-                message += $" {move.Debuffs[i]} decreased!";
-            }
+                if(supplementaryMove.Buffs.Length > 0){
+                    for(int i = 0; i < supplementaryMove.Buffs.Length; i++){
+                    message += $" {supplementaryMove.Buffs[i]} increased!";
+                    }
+                }
+            if(supplementaryMove.Debuffs.Length > 0){
+                for(int i = 0; i < supplementaryMove.Debuffs.Length; i++){
+                    message += $" {supplementaryMove.Debuffs[i]} decreased!";
+                    }
+                }
+                break;
+            case Moves.MoveType.Healing:
+                HealingMoves healingMove = (HealingMoves)move;
+
+                if(healingMove.Debuffs.Length > 0){
+                    for(int i = 0; i < healingMove.Debuffs.Length; i++){
+                    message += $" {healingMove.Debuffs[i]} back to normal!";
+                    }
+                }
+                break;
+            case Moves.MoveType.Damaging:
+                DamagingMoves damagingMove = (DamagingMoves)move;
+                if(damagingMove.Debuffs.Length > 0){
+                    for(int i = 0; i < damagingMove.Debuffs.Length; i++){
+                    message += $" {damagingMove.Debuffs[i]} decreased!";
+                    }
+                }
+                break;
         }
                  
         return message; 
@@ -107,49 +130,18 @@ public class DamageCalculations : MonoBehaviour
 
         //putting everything together for the attack 
     public void OnAttack(CharacterTemplate user, Moves move, CharacterTemplate target){
+        DamagingMoves damagingMove = (DamagingMoves)move;
        //if the user is friendly, mp loss and mp bar update
-        if(user.characterType == CharacterTemplate.CharacterType.Friendly){
-            //mp loss
-            user.TakeMP(CalcMPLoss(move));
-            uiManager.UpdateMP(user); //going to be decremented
-            uiManager.UpdateMPPanel(user);
-        }
+       
         //user animation plays
         //target pain animation plays
         //target takes damage, but if the move is drain, the target heals as well
-        if(move.MovesType == Moves.MoveType.Drain){
-            (int damage, int healing) = CalculateDrainMove(user, move, target);
-            target.TakeDamage(damage);
-            user.HealDamage(healing, 0);
-        } else if (move.MovesType == Moves.MoveType.Damaging){
-            target.TakeDamage(CalculateDamagingMove(user, move, target));
-        }
+      
         //update the attacker health bar, if draining move, update the target and user health bars
-        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
-            //target is friendly and user is enemy
-            uiManager.UpdateHP(target); //going to be decremented
-            uiManager.UpdateHPPanel(target);
-
-            if(move.MovesType == Moves.MoveType.Drain){
-                //TODO: add and link enemy health bar to decrement
-                uiManager.UpdateEnemyHPPanel(user);
-            }
-        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
-            //target is enemy and user is friendly
-            uiManager.UpdateEnemyHPPanel(target);
-
-            if(move.MovesType == Moves.MoveType.Drain){
-                uiManager.UpdateHP(user);
-                uiManager.UpdateHPPanel(user);
-                
-            }
-        }
+       
         
         //debuff application if any
-        if(move.Debuffs.Length > 0)
-        {
-            target.ApplyBuffandDebuff(move.Debuffs, move.DebuffValue);
-        }
+       
 
         //TODO: add status to the target if any
 
@@ -172,10 +164,7 @@ public class DamageCalculations : MonoBehaviour
         }
 
         //debuff application if any
-        if(tool.Debuffs.Length > 0)
-        {
-            target.ApplyBuffandDebuff(tool.Debuffs.Cast<Moves.Boost>().ToArray(), tool.DebuffAmount);
-        }
+
         //status effects, if any
     }
 
@@ -216,9 +205,7 @@ public class DamageCalculations : MonoBehaviour
         uiManager.UpdateMPPanel(target);
 
         //cure status, if status is matches the cure status
-        if(potion.StatusCures.Length > 0){
-            target.RemoveDebuffs(potion.StatusCures.Cast<Moves.Boost>().ToArray());
-        }
+
 
         //can revive downed characters
     }
@@ -231,7 +218,6 @@ public class DamageCalculations : MonoBehaviour
 
         //user anim plays
         //if move type is supplementary target is buffed or debuffed
-        target.ApplyBuffandDebuff(move.Buffs, move.BuffValue);
 
 
         //status applied to target
@@ -242,14 +228,12 @@ public class DamageCalculations : MonoBehaviour
 
     public void OnStatusCure(CharacterTemplate user, Moves move, CharacterTemplate target){
         //mp loss and mp bar update
-        user.TakeMP(CalcMPLoss(move));
-        uiManager.UpdateMP(user); //going to be decremented
-        uiManager.UpdateMPPanel(user);
+
 
         //user anim plays
         //target healed (?)anim plays
         //target is cured of debuffs
-        target.RemoveDebuffs(move.Debuffs);
+
 
 
         //cure status, if status is matches the cure status
