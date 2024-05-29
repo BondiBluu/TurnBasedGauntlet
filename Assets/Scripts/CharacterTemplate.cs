@@ -150,6 +150,28 @@ public class CharacterTemplate
         currentEfficiency = maxEfficiency;
     }
 
+    //set base stats
+    public void SetBaseStats(){
+        maxHP = characterData.CharaStatList.BaseHP;
+        currentHP = maxHP;
+        maxMP = characterData.CharaStatList.BaseMP;
+        currentMP = maxMP;
+        maxAttack = characterData.CharaStatList.BaseAttack;
+        currentAttack = maxAttack;
+        maxDefense = characterData.CharaStatList.BaseDefense;
+        currentDefense = maxDefense;
+        maxSpeed = characterData.CharaStatList.BaseSpeed;
+        currentSpeed = maxSpeed;
+        maxMagic = characterData.CharaStatList.BaseMagic;
+        currentMagic = maxMagic;
+        maxResistance = characterData.CharaStatList.BaseResistance;
+        currentResistance = maxResistance;
+        maxSkill = characterData.CharaStatList.BaseSkill;
+        currentSkill = maxSkill;
+        maxEfficiency = characterData.CharaStatList.BaseEfficiency;
+        currentEfficiency = maxEfficiency;
+    }
+
     public void GainEXP(int exp){
         //tentative method to gain exp
         currentEXP += exp;

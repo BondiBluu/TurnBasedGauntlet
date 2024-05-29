@@ -238,6 +238,8 @@ public class BattleSystem : MonoBehaviour
 
             //reverting the character's stats back to the base stats
             charaTemplate[i].RevertStats();
+            //setting the character's base stats
+            charaTemplate[i].SetBaseStats();
             //reverting the character's status back to normal
             charaTemplate[i].characterStatus = CharacterTemplate.CharacterStatus.Normal;
         }
