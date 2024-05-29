@@ -156,6 +156,9 @@ public class DamageCalculations : MonoBehaviour
         }
 
         //debuff application if any
+        if(tool.Debuffs.Length > 0){
+            target.ApplyDebuff(tool.Debuffs.Cast<DamagingMoves.Debuff>().ToArray(), tool.DebuffAmount);
+        }
 
         //status effects, if any
     }
@@ -167,12 +170,25 @@ public class DamageCalculations : MonoBehaviour
         uiManager.UpdateMP(user); //going to be decremented
         uiManager.UpdateMPPanel(user);
 
+        HealingMoves healingMove = (HealingMoves)move;
+
         //user anim plays
         //target healed (?)anim plays
+        //if healing type is revival, revive the target from downed status
+        if(healingMove.HealTypes == HealingMoves.HealType.Revive){
+            target.characterStatus = CharacterTemplate.CharacterStatus.Normal;
+        } 
         //target heals
+        int healing = CalcHealingMove(user, healingMove, target);
+        target.HealDamage(healing, 0);
         //update the target health bar
         uiManager.UpdateHP(target);
         uiManager.UpdateHPPanel(target);
+
+        //reverts debuffs if any
+        if(healingMove.Debuffs.Length > 0){
+            target.RemoveDebuffs(healingMove.Debuffs);
+        }
 
         //cure status, if status is matches the cure status
 
@@ -209,26 +225,17 @@ public class DamageCalculations : MonoBehaviour
 
         //user anim plays
         //if move type is supplementary target is buffed or debuffed
+        SupplementaryMoves supplementaryMove = (SupplementaryMoves)move;
+        if(supplementaryMove.Debuffs.Length > 0){
+            target.ApplyDebuff(supplementaryMove.Debuffs.Cast<DamagingMoves.Debuff>().ToArray(), supplementaryMove.DebuffValue);
+        } else if(supplementaryMove.Buffs.Length > 0){
+            
+        }
 
 
         //status applied to target
         //cures debuffs if the move is a cure move
         //cure status, if status is matches the cure status
-        //seconds pass
-    }
-
-    public void OnStatusCure(CharacterTemplate user, Moves move, CharacterTemplate target){
-        //mp loss and mp bar update
-
-
-        //user anim plays
-        //target healed (?)anim plays
-        //target is cured of debuffs
-
-
-
-        //cure status, if status is matches the cure status
-    
         //seconds pass
     }
 }
