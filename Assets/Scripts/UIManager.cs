@@ -214,13 +214,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    ////iterating to update a certain character's hp and mp
+
     //updating character hp panels
     public void UpdateHPPanel(CharacterTemplate character){
         foreach(Transform child in allyContainer){
             if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+                //getting the sub and main hp sliders
+                
                 Image whiteHPBar = child.GetChild(1).GetComponent<Image>();
                 Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
+                Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
                 mainHPSlider.value = character.currentHP;
+                subHPSlider.value = character.currentHP;
             }
         }
     }
@@ -245,8 +251,8 @@ public class UIManager : MonoBehaviour
 
                 Image whiteMPBar = child.GetChild(5).GetComponent<Image>();
                 Slider subMPSlider = whiteMPBar.transform.GetChild(3).GetComponent<Slider>();
-                subMPSlider.value = character.currentMP;
                 Slider mainMPSlider = whiteMPBar.transform.GetChild(4).GetComponent<Slider>();
+                subMPSlider.value = character.currentMP;
                 mainMPSlider.value = character.currentMP;
             }
         }
