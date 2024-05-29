@@ -190,7 +190,15 @@ public class BattleSystem : MonoBehaviour
             if(action.move != null)
             {
                 switch(action.move.MovesType){
-   
+                    case Moves.MoveType.Damaging:
+                    damageCalc.OnAttack(action.user, action.move, action.target);
+                    break;
+                    case Moves.MoveType.Healing:
+                    damageCalc.OnHeal(action.user, action.move, action.target);
+                    break;
+                    case Moves.MoveType.Supplementary:
+                    damageCalc.OnStatus(action.user, action.move, action.target);
+                    break;
                 }
             }
             else if(action.item != null)

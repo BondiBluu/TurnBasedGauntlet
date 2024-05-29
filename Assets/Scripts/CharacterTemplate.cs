@@ -71,9 +71,35 @@ public class CharacterTemplate
         }
     }
 
-    //ApplyBuffandDebuff using the Boost enum from Moves.cs
-    public void ApplyBuffandDebuff(){
-
+    //ApplyDebuffs 
+    public void ApplyDebuff(DamagingMoves.Debuff[] debuffs, float debuffValues){
+        foreach(DamagingMoves.Debuff debuff in debuffs){
+            switch(debuff){
+                case DamagingMoves.Debuff.Attack:
+                    currentAttack -= debuffValues;
+                    break;
+                case DamagingMoves.Debuff.Defense:
+                    currentDefense -= debuffValues;
+                    break;
+                case DamagingMoves.Debuff.Speed:
+                    currentSpeed -= debuffValues;
+                    break;
+                case DamagingMoves.Debuff.Magic:
+                    currentMagic -= debuffValues;
+                    break;
+                case DamagingMoves.Debuff.Resistance:
+                    currentResistance -= debuffValues;
+                    break;
+                case DamagingMoves.Debuff.Skill:
+                    currentSkill -= debuffValues;
+                    break;
+                case DamagingMoves.Debuff.Efficiency:
+                    currentEfficiency -= debuffValues;
+                    break;
+                case DamagingMoves.Debuff.None:
+                    break;
+            }
+        }
     }
 
     //remove debuffs

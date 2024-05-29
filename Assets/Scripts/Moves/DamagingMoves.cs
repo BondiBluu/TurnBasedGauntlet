@@ -42,12 +42,14 @@ public class DamagingMoves : Moves
 
     [SerializeField] float movePower;
     [SerializeField] Debuff[] debuffs;
+    [SerializeField] float debuffValue;
     [SerializeField] StatusType[] statusEffects;
     [SerializeField] AttackType atkType;
     [SerializeField] DamagingType dmgType; 
 
     public float MovePower { get { return movePower; } }
     public Debuff[] Debuffs { get { return debuffs; } }
+    public float DebuffValue { get { return debuffValue; } }
     public StatusType[] StatusEffects { get { return statusEffects; } }
     public AttackType AtkType { get { return atkType; } }
     public DamagingType DmgType { get { return dmgType; } }
