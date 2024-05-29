@@ -13,26 +13,27 @@ public class DamageCalculations : MonoBehaviour
     }
 
     //calculating damaging moves
-    public (int damage, int healing) CalcDamagingMove(CharacterTemplate user, DamagingMoves move, CharacterTemplate target){
-        int damage = CalcMove(user, move, target);
+    public (int damage, int healing) CalcDamagingMove(CharacterTemplate user, DamagingMoves dMove, CharacterTemplate target){
+        int damage = CalcMove(user, dMove, target);
         int healing = 0;
 
-        if(move.DmgType == DamagingMoves.DamagingType.Drain){
+        //if the move is a drain type, the user heals as well
+        if(dMove.DmgType == DamagingMoves.DamagingType.Drain){
             healing = damage / 2;
         }
 
         return (damage, healing);
     }
 
-    public int CalcMove(CharacterTemplate user, DamagingMoves move, CharacterTemplate target){
+    public int CalcMove(CharacterTemplate user, DamagingMoves dMove, CharacterTemplate target){
         int damage = 0;
 
-        switch(move.AtkType){
+        switch(dMove.AtkType){
             case DamagingMoves.AttackType.Physical:
-                damage = (int)Math.Ceiling(user.currentAttack * move.MovePower / (2 * Mathf.Max(1, target.currentDefense)));
+                damage = (int)Math.Ceiling(user.currentAttack * dMove.MovePower / (2 * Mathf.Max(1, target.currentDefense)));
                 break;
             case DamagingMoves.AttackType.Magical:
-                damage = (int)Math.Ceiling(user.currentMagic * move.MovePower / (2 * Mathf.Max(1, target.currentResistance)));
+                damage = (int)Math.Ceiling(user.currentMagic * dMove.MovePower / (2 * Mathf.Max(1, target.currentResistance)));
                 break;
         }
 
@@ -87,62 +88,52 @@ public class DamageCalculations : MonoBehaviour
         return mpLoss;
     }
 
-    public string DescribeBuffsAndDebuffs(CharacterTemplate user, Moves move, CharacterTemplate target){
-        string message = "";
 
-        message += $" {target.characterData.name}'s";
-
-        switch(move.MovesType){
-            case Moves.MoveType.Supplementary:
-                SupplementaryMoves supplementaryMove = (SupplementaryMoves)move;
-
-                if(supplementaryMove.Buffs.Length > 0){
-                    for(int i = 0; i < supplementaryMove.Buffs.Length; i++){
-                        message += $" {supplementaryMove.Buffs[i]} increased!";
-                    }
-                }
-                if(supplementaryMove.Debuffs.Length > 0){
-                    for(int i = 0; i < supplementaryMove.Debuffs.Length; i++){
-                        message += $" {supplementaryMove.Debuffs[i]} decreased!";
-                    }
-                }
-                break;
-            case Moves.MoveType.Healing:
-                HealingMoves healingMove = (HealingMoves)move;
-
-                if(healingMove.Debuffs.Length > 0){
-                    for(int i = 0; i < healingMove.Debuffs.Length; i++){
-                    message += $" {healingMove.Debuffs[i]} back to normal!";
-                    }
-                }
-                break;
-            case Moves.MoveType.Damaging:
-                DamagingMoves damagingMove = (DamagingMoves)move;
-                if(damagingMove.Debuffs.Length > 0){
-                    for(int i = 0; i < damagingMove.Debuffs.Length; i++){
-                    message += $" {damagingMove.Debuffs[i]} decreased!";
-                    }
-                }
-                break;
-        }
-                 
-        return message; 
-    }
-
-        //putting everything together for the attack 
+    //putting everything together for the attack 
     public void OnAttack(CharacterTemplate user, Moves move, CharacterTemplate target){
+       //calc the mp loss first
+        user.TakeMP(CalcMPLoss(move));
+
+        //update the user mp bar
+        if(user.characterType == CharacterTemplate.CharacterType.Friendly){
+            uiManager.UpdateMP(user);
+            uiManager.UpdateMPPanel(user);
+        }
+        
         DamagingMoves damagingMove = (DamagingMoves)move;
-       //if the user is friendly, mp loss and mp bar update
        
         //user animation plays
         //target pain animation plays
         //target takes damage, but if the move is drain, the target heals as well
+        (int damage, int healing) = CalcDamagingMove(user, damagingMove, target);
       
         //update the attacker health bar, if draining move, update the target and user health bars
+        user.TakeDamage(damage);
+        //if healing is greater than 0, heal the user
+        if(healing > 0){
+            user.HealDamage(healing, 0);
+        }
+        //update the user health bar
+        if(user.characterType == CharacterTemplate.CharacterType.Friendly){
+            uiManager.UpdateHP(user);
+            uiManager.UpdateHPPanel(user);
+        } else if(user.characterType == CharacterTemplate.CharacterType.Enemy){
+            uiManager.UpdateEnemyHPPanel(user);
+        }
+
+        //update the target health bar
+        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
+            uiManager.UpdateHP(target);
+            uiManager.UpdateHPPanel(target);
+        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
+            uiManager.UpdateEnemyHPPanel(target);
+        }
        
         
         //debuff application if any
-       
+        if(damagingMove.Debuffs.Length > 0){
+            target.ApplyDebuff(damagingMove.Debuffs, damagingMove.DebuffValue);
+        }       
 
         //TODO: add status to the target if any
 
