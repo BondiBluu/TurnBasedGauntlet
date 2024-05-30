@@ -2140,6 +2140,78 @@ MonoBehaviour:
     currentSkill: 0
     maxEfficiency: 0
     currentEfficiency: 0
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 1de5d110d6992e14496f393878b5b2ac, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: aeee7cc7465aca149a9a73286c43d51d, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 6f637296aec459c47b0c1f0f38a16fce, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
   partyInventory: []
   characterRoster: []
   seed:

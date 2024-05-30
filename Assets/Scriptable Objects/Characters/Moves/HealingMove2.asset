@@ -17,7 +17,7 @@ MonoBehaviour:
   moveCostString: 
   moveExplanation: 
   moveTypeString: 
-  mpCost: 0
+  mpCost: 45
   lvlGotten: 0
   movesType: 1
   targetNumbers: 0

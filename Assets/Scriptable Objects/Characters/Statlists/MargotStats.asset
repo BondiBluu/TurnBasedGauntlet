@@ -21,7 +21,7 @@ MonoBehaviour:
   baseMP: 150
   baseAttack: 8
   baseDefense: 5
-  baseSpeed: 9
+  baseSpeed: 2
   baseMagic: 5
   baseResistance: 47
   baseSkill: 9

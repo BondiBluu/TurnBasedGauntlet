@@ -17,9 +17,9 @@ MonoBehaviour:
   moveCostString: 
   moveExplanation: 
   moveTypeString: 
-  mpCost: 0
+  mpCost: 10
   lvlGotten: 0
-  movesType: 0
+  movesType: 2
   targetNumbers: 0
   buffs: 0000000003000000
   debuffs: 
