@@ -71,11 +71,14 @@ public class Generator : MonoBehaviour
                         panelAction = buttonCon.OnAllyPanel;
                         break;
                     case Moves.MoveType.Supplementary:
-                    //grab the debuffs from the supplementary move
-                    SupplementaryMoves supplementaryMove = (SupplementaryMoves)move;
-                        //if the move has debuffs, the panel action will be to open the enemy panel, if it has buffs, the panel action will be to open the ally panel
-                        panelAction = supplementaryMove.Debuffs.Length > 0 ? buttonCon.OnEnemyPanel : supplementaryMove.Buffs.Length > 0 ? buttonCon.OnAllyPanel : null;
-                        break;
+                    if(move is SupplementaryMoves supplementaryMoves){
+                        panelAction = supplementaryMoves.Debuffs.Length > 0 ? buttonCon.OnEnemyPanel : supplementaryMoves.Buffs.Length > 0 ? buttonCon.OnAllyPanel : null;
+                    }
+                    else{
+                        panelAction = null;
+                        Debug.LogWarning("Panel action is null");
+                    }
+                    break;
                     default:
                         continue;
                 }
