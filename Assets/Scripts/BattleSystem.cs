@@ -191,13 +191,13 @@ public class BattleSystem : MonoBehaviour
             {
                 switch(action.move.MovesType){
                     case Moves.MoveType.Damaging:
-                    damageCalc.OnAttack(action.user, action.move, action.target);
+                    yield return StartCoroutine(damageCalc.OnAttack(action.user, action.move, action.target));
                     break;
                     case Moves.MoveType.Healing:
-                    damageCalc.OnHeal(action.user, action.move, action.target);
+                    yield return StartCoroutine(damageCalc.OnHeal(action.user, action.move, action.target));
                     break;
                     case Moves.MoveType.Supplementary:
-                    damageCalc.OnStatus(action.user, action.move, action.target);
+                    yield return StartCoroutine(damageCalc.OnStatus(action.user, action.move, action.target));
                     break;
                 }
             }
@@ -205,10 +205,10 @@ public class BattleSystem : MonoBehaviour
             {
                 switch(action.item.Type){
                     case ItemObject.ItemType.Restorative:
-                    damageCalc.OnPotion(action.user, action.item, action.target);
+                    yield return StartCoroutine(damageCalc.OnPotion(action.user, action.item, action.target));
                     break;
                     case ItemObject.ItemType.Tool:
-                    damageCalc.OnAttack(action.user, action.item, action.target);
+                    yield return StartCoroutine(damageCalc.OnAttack(action.user, action.item, action.target));
                     break;
                 }
             }
