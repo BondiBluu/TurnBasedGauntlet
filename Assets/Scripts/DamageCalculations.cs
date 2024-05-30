@@ -22,6 +22,8 @@ public class DamageCalculations : MonoBehaviour
             healing = damage / 2;
         }
 
+        Debug.Log("Damage: " + damage);
+
         return (damage, healing);
     }
 
@@ -85,20 +87,21 @@ public class DamageCalculations : MonoBehaviour
 
     public int CalcMPLoss(Moves move){
         int mpLoss = (int)move.MPCost;
+        Debug.Log("MP Loss: " + mpLoss);
         return mpLoss;
     }
 
 
     //putting everything together for the attack 
-    public void OnAttack(CharacterTemplate user, Moves move, CharacterTemplate target){
-       //calc the mp loss first
-        user.TakeMP(CalcMPLoss(move));
+    public IEnumerator OnAttack(CharacterTemplate user, Moves move, CharacterTemplate target){
 
-        //update the user mp bar
+        //calc the mp loss first and update the user mp bar
         if(user.characterType == CharacterTemplate.CharacterType.Friendly){
-            uiManager.UpdateMP(user);
+            user.TakeMP(CalcMPLoss(move));
+            yield return StartCoroutine(uiManager.UpdateMP(user));
             uiManager.UpdateMPPanel(user);
         }
+        yield return new WaitForSeconds(1f);
         
         DamagingMoves damagingMove = (DamagingMoves)move;
        
@@ -106,16 +109,18 @@ public class DamageCalculations : MonoBehaviour
         //target pain animation plays
         //target takes damage, but if the move is drain, the target heals as well
         (int damage, int healing) = CalcDamagingMove(user, damagingMove, target);
+        
       
         //update the attacker health bar, if draining move, update the target and user health bars
-        user.TakeDamage(damage);
+        target.TakeDamage(damage);
+
         //if healing is greater than 0, heal the user
         if(healing > 0){
             user.HealDamage(healing, 0);
         }
         //update the user health bar
         if(user.characterType == CharacterTemplate.CharacterType.Friendly){
-            uiManager.UpdateHP(user);
+            yield return StartCoroutine(uiManager.UpdateHP(user));
             uiManager.UpdateHPPanel(user);
         } else if(user.characterType == CharacterTemplate.CharacterType.Enemy){
             uiManager.UpdateEnemyHPPanel(user);
@@ -123,11 +128,13 @@ public class DamageCalculations : MonoBehaviour
 
         //update the target health bar
         if(target.characterType == CharacterTemplate.CharacterType.Friendly){
-            uiManager.UpdateHP(target);
+            yield return StartCoroutine(uiManager.UpdateHP(target));
             uiManager.UpdateHPPanel(target);
         } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
             uiManager.UpdateEnemyHPPanel(target);
         }
+
+        yield return new WaitForSeconds(1f);
        
         
         //debuff application if any
@@ -140,7 +147,7 @@ public class DamageCalculations : MonoBehaviour
         //seconds pass
     }
 
-    public void OnAttack(CharacterTemplate user, ItemObject item, CharacterTemplate target){
+    public IEnumerator OnAttack(CharacterTemplate user, ItemObject item, CharacterTemplate target){
         ToolObject tool = (ToolObject)item;
         //user used this
         //user anim plays
@@ -149,7 +156,7 @@ public class DamageCalculations : MonoBehaviour
         target.TakeDamage(CalcTool(user, tool, target));
         //update the target health bar
         if(target.characterType == CharacterTemplate.CharacterType.Friendly){
-            uiManager.UpdateHP(target);
+            yield return StartCoroutine(uiManager.UpdateHP(target));
             uiManager.UpdateHPPanel(target);
         } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
             uiManager.UpdateEnemyHPPanel(target);
@@ -164,10 +171,10 @@ public class DamageCalculations : MonoBehaviour
     }
 
     //only player heals
-    public void OnHeal(CharacterTemplate user, Moves move, CharacterTemplate target){
+    public IEnumerator OnHeal(CharacterTemplate user, Moves move, CharacterTemplate target){
         //mp loss and mp bar update
         user.TakeMP(CalcMPLoss(move));
-        uiManager.UpdateMP(user); //going to be decremented
+        yield return StartCoroutine(uiManager.UpdateMP(user));
         uiManager.UpdateMPPanel(user);
 
         HealingMoves healingMove = (HealingMoves)move;
@@ -182,7 +189,7 @@ public class DamageCalculations : MonoBehaviour
         int healing = CalcHealingMove(user, healingMove, target);
         target.HealDamage(healing, 0);
         //update the target health bar
-        uiManager.UpdateHP(target);
+        yield return StartCoroutine(uiManager.UpdateHP(target));
         uiManager.UpdateHPPanel(target);
 
         //reverts debuffs if any
@@ -196,19 +203,21 @@ public class DamageCalculations : MonoBehaviour
         //seconds pass
     }
 
-    public void OnPotion(CharacterTemplate user, ItemObject item, CharacterTemplate target){
+    public IEnumerator OnPotion(CharacterTemplate user, ItemObject item, CharacterTemplate target){
         //item object will now be restorative object
         RestorativeObject potion = (RestorativeObject)item;
+        yield return new WaitForSeconds(1f);
         //user used this
         //user anim plays
         //target healed (?)anim plays
         //target heals
         (int hp, int mp) = CalcPotions(user, potion, target);
         target.HealDamage(hp, mp);
+        
         //update the target health bar
-        uiManager.UpdateHP(target);
+        yield return StartCoroutine(uiManager.UpdateHP(target));
         uiManager.UpdateHPPanel(target);
-        uiManager.UpdateMP(target);
+        yield return StartCoroutine(uiManager.UpdateMP(target));
         uiManager.UpdateMPPanel(target);
 
         //cure status, if status is matches the cure status
@@ -217,10 +226,11 @@ public class DamageCalculations : MonoBehaviour
         //can revive downed characters
     }
 
-    public void OnStatus(CharacterTemplate user, Moves move, CharacterTemplate target){
+    public IEnumerator OnStatus(CharacterTemplate user, Moves move, CharacterTemplate target){
         //mp loss and mp bar update
         user.TakeMP(CalcMPLoss(move));
-        uiManager.UpdateMP(user); //going to be decremented
+
+        yield return StartCoroutine(uiManager.UpdateMP(user));
         uiManager.UpdateMPPanel(user);
 
         //user anim plays
