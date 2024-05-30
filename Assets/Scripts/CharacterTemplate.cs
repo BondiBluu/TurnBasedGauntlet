@@ -61,7 +61,7 @@ public class CharacterTemplate
         currentHP -= damage;
         if(currentHP < 0){
             currentHP = 0;
-            //characterStatus = CharacterStatus.Downed;
+            characterStatus = CharacterStatus.Downed;
         }
     }
 
