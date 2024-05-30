@@ -224,9 +224,7 @@ public class UIManager : MonoBehaviour
                 
                 Image whiteHPBar = child.GetChild(1).GetComponent<Image>();
                 Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
-                Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
                 mainHPSlider.value = character.currentHP;
-                subHPSlider.value = character.currentHP;
             }
         }
     }
