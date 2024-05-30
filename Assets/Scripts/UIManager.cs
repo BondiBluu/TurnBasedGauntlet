@@ -106,10 +106,7 @@ public class UIManager : MonoBehaviour
 
             //set the max value of the slider to the character's max MP
             Image whiteMPBar = panel.transform.GetChild(5).GetComponent<Image>();
-            Slider subMPSlider = whiteMPBar.transform.GetChild(3).GetComponent<Slider>();
-            subMPSlider.maxValue = charas[i].maxMP;
-            subMPSlider.value = charas[i].currentMP;
-            Slider mainMPSlider = whiteMPBar.transform.GetChild(4).GetComponent<Slider>();
+            Slider mainMPSlider = whiteMPBar.transform.GetChild(2).GetComponent<Slider>();
             mainMPSlider.maxValue = charas[i].maxMP;
             mainMPSlider.value = charas[i].currentMP;
 
@@ -199,24 +196,60 @@ public class UIManager : MonoBehaviour
         }
 
     //updating character hp
-    public void UpdateHP(CharacterTemplate character){
+    public IEnumerator UpdateHP(CharacterTemplate character){
         foreach(Transform child in characterHUDContainer){
             if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
                 TMP_Text characterHP = child.GetChild(2).GetComponent<TMP_Text>();
-                characterHP.text = character.currentHP + "/" + character.maxHP;
 
                 Image whiteHPBar = child.GetChild(4).GetComponent<Image>();
                 Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
-                subHPSlider.value = character.currentHP;
                 Slider mainHPSlider = whiteHPBar.transform.GetChild(4).GetComponent<Slider>();
-                mainHPSlider.value = character.currentHP;
+                yield return new WaitForSeconds(1f);
+
+                if(mainHPSlider.value > character.currentHP){
+                    //decrease the main hp slider
+                    mainHPSlider.value = character.currentHP;
+                    characterHP.text = character.currentHP + "/" + character.maxHP;
+                    yield return new WaitForSeconds(1f);
+                    while(subHPSlider.value > character.currentHP){
+                        subHPSlider.value --;
+                        yield return new WaitForSeconds(0.01f);
+                    }
+                    subHPSlider.value = character.currentHP;
+                } else if (mainHPSlider.value < character.currentHP){
+                    while(mainHPSlider.value < character.currentHP){
+                        mainHPSlider.value ++;
+                        characterHP.text = mainHPSlider.value + "/" + character.maxHP;
+                        yield return new WaitForSeconds(0.01f);
+                    }
+                }
+                
             }
         }
     }
 
-    ////iterating to update a certain character's hp and mp
+    //updating character mp
+    public IEnumerator UpdateMP(CharacterTemplate character){
+        foreach(Transform child in characterHUDContainer){
+            if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+                TMP_Text characterMP = child.GetChild(3).GetComponent<TMP_Text>();
 
-    //updating character hp panels
+                Image whiteMPBar = child.GetChild(5).GetComponent<Image>();
+                Slider mainMPSlider = whiteMPBar.transform.GetChild(2).GetComponent<Slider>();
+
+                if(mainMPSlider.value > character.currentMP){
+                    while(mainMPSlider.value > character.currentMP){
+                        mainMPSlider.value --;
+                        characterMP.text = mainMPSlider.value + "/" + character.maxMP;
+                        yield return new WaitForSeconds(0.01f);
+                    }
+                    mainMPSlider.value = character.currentMP;
+                }
+            }
+        }
+    }
+
+       //updating character hp panels
     public void UpdateHPPanel(CharacterTemplate character){
         foreach(Transform child in allyContainer){
             if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
@@ -236,22 +269,6 @@ public class UIManager : MonoBehaviour
                 Image whiteHPBar = child.GetChild(1).GetComponent<Image>();
                 Slider mainHPSlider = whiteHPBar.transform.GetChild(2).GetComponent<Slider>();
                 mainHPSlider.value = character.currentHP;
-            }
-        }
-    }
-
-    //updating character mp
-    public void UpdateMP(CharacterTemplate character){
-        foreach(Transform child in characterHUDContainer){
-            if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
-                TMP_Text characterMP = child.GetChild(3).GetComponent<TMP_Text>();
-                characterMP.text = character.currentMP + "/" + character.maxMP;
-
-                Image whiteMPBar = child.GetChild(5).GetComponent<Image>();
-                Slider subMPSlider = whiteMPBar.transform.GetChild(3).GetComponent<Slider>();
-                Slider mainMPSlider = whiteMPBar.transform.GetChild(4).GetComponent<Slider>();
-                subMPSlider.value = character.currentMP;
-                mainMPSlider.value = character.currentMP;
             }
         }
     }
