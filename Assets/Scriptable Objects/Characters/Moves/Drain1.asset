@@ -9,21 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c55ca6b08bc7ff24a8b725f0c649c188, type: 3}
-  m_Name: Move 4
+  m_Script: {fileID: 11500000, guid: f1751d982e37ec546a95be5fea8141b1, type: 3}
+  m_Name: Drain1
   m_EditorClassIdentifier: 
-  moveName: Drain Move
+  moveName: Phys Drain
   movePowerString: 
   moveCostString: 
   moveExplanation: 
   moveTypeString: 
-  movePower: 0
-  healPower: 0
   mpCost: 0
   lvlGotten: 0
-  movesType: 3
-  attackingType: 0
-  statusTypes: 
-  buffs: 
-  debuffs: 
+  movesType: 0
   targetNumbers: 0
+  movePower: 20
+  debuffs: 
+  debuffValue: 0
+  statusEffects: 
+  atkType: 0
+  dmgType: 1

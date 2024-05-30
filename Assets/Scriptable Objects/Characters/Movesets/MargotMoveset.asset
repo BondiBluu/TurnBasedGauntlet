@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MargotMoveset
   m_EditorClassIdentifier: 
   moves:
-  - {fileID: 11400000, guid: ea70788d9cf7f444db08096d47081f22, type: 2}
-  - {fileID: 11400000, guid: bbc60a0116eff104e9327f5fe9954679, type: 2}
+  - {fileID: 11400000, guid: a73dc77d2105a8c4ca51b59cc8ab9b09, type: 2}
+  - {fileID: 11400000, guid: 5987bb7735ece9d41945a073e526f1f4, type: 2}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LolaMoveset
   m_EditorClassIdentifier: 
   moves:
-  - {fileID: 11400000, guid: bbc60a0116eff104e9327f5fe9954679, type: 2}
-  - {fileID: 11400000, guid: cb0fc23cacedbbe4ab7e63a5e0de82e2, type: 2}
-  - {fileID: 11400000, guid: 14c9f7c7c865dcc44ac7a40647ce3b57, type: 2}
-  - {fileID: 11400000, guid: 6eed431c039aa6e4c979be78fc31a027, type: 2}
-  - {fileID: 11400000, guid: ea70788d9cf7f444db08096d47081f22, type: 2}
+  - {fileID: 11400000, guid: 892b4cb689ee92d498f82e24b459382d, type: 2}
+  - {fileID: 11400000, guid: 4626954d107f48a468197b0901a9ddb4, type: 2}
+  - {fileID: 11400000, guid: 947e732648047a94b9286d4a7a9c2b7b, type: 2}
+  - {fileID: 11400000, guid: ddd2757036fd4b945b1b2078c4a2be3a, type: 2}
+  - {fileID: 11400000, guid: 5987bb7735ece9d41945a073e526f1f4, type: 2}

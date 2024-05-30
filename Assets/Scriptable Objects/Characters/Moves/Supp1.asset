@@ -9,21 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c55ca6b08bc7ff24a8b725f0c649c188, type: 3}
-  m_Name: Move
+  m_Script: {fileID: 11500000, guid: 82fec74737a431e45acc447874acfaba, type: 3}
+  m_Name: Supp1
   m_EditorClassIdentifier: 
-  moveName: Move 0
+  moveName: Buffer 1
   movePowerString: 
   moveCostString: 
   moveExplanation: 
   moveTypeString: 
-  movePower: 0
-  healPower: 0
   mpCost: 0
   lvlGotten: 0
-  moveTypes: 
-  attackingType: 0
-  statusTypes: 
-  buffs: 
-  debuffs: 
+  movesType: 0
   targetNumbers: 0
+  buffs: 0000000003000000
+  debuffs: 
+  buffValue: 3
+  debuffValue: 0
+  statusEffects: 
