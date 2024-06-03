@@ -22,7 +22,6 @@ public class HealingMoves : Moves
 
     public enum HealDebuff
     {
-        None,
         Attack,
         Defense,
         Speed,
