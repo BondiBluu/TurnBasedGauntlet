@@ -387,6 +387,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 564971311}
+        m_TargetAssemblyTypeName: Generator, Assembly-CSharp
+        m_MethodName: GenerateBattleLog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &38617964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,12 +1517,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 1232474451}
+    m_SelectOnRight: {fileID: 1232474451}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1763,6 +1775,11 @@ MonoBehaviour:
   logButton: {fileID: 38617963}
   quitButton: {fileID: 1691033326}
   undoButton: {fileID: 1826941453}
+  nextStatsButton: {fileID: 483988064}
+  yesFleeButton: {fileID: 0}
+  noFleeButton: {fileID: 0}
+  backBattleLogButton: {fileID: 1396221820}
+  backStatsButton: {fileID: 1232474451}
 --- !u!4 &488274988
 Transform:
   m_ObjectHideFlags: 0
@@ -2306,13 +2323,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 3585171070752355505, guid: e956c5ad3d7d7ae4d9ca566af6924153, type: 3}
+  textPrefab: {fileID: 3913492952388281968, guid: bace50d2feefbe64a9594b2790a34d1d, type: 3}
   moveContainer: {fileID: 1173678411}
   itemContainer: {fileID: 1656228823}
+  logContainer: {fileID: 534486661}
   buttonSpacing: 75
   selectedMove: {fileID: 0}
   selectedItem: {fileID: 0}
   movesAlreadyAdded: []
   navButtons: []
+  logList: []
   playerInven: {fileID: 11400000, guid: 6ef7b36f02996314d8b19b4f94c0c123, type: 2}
   savedTarget:
     characterType: 0
@@ -4480,12 +4500,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 483988064}
+    m_SelectOnRight: {fileID: 1232474451}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5038,7 +5058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
