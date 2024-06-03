@@ -9,13 +9,16 @@ using UnityEngine.UI;
 public class Generator : MonoBehaviour
 {
     public GameObject buttonPrefab;
+    public GameObject textPrefab;
     public Transform moveContainer;
     public Transform itemContainer;
+    public Transform logContainer;
     public float buttonSpacing;
     public Moves selectedMove;
     public ItemObject selectedItem;
     public List<Moves> movesAlreadyAdded = new List<Moves>();
     public List<Button> navButtons = new List<Button>();
+    public List<string> logList = new List<string>();
     ButtonController buttonCon;
 
     public InvenObject playerInven;
@@ -127,6 +130,32 @@ public class Generator : MonoBehaviour
             }
         }
            NavButtons(navButtons);
+    }
+
+    public void GenerateBattleLog(){
+        //making text for the battle log and spacing them out
+        float currentPosY = 0f;
+
+        foreach(string log in logList){
+            GameObject text = Instantiate(textPrefab, logContainer);
+            RectTransform textRect = text.GetComponent<RectTransform>();
+
+            textRect.anchoredPosition = new Vector2(0, -currentPosY);
+            currentPosY += buttonSpacing + textRect.sizeDelta.y;
+
+            text.GetComponent<TMP_Text>().text = log;
+        }
+    }
+
+    public void AddToBattleLog(string message){
+        logList.Add(message);
+    }
+
+    public void ClearBattleLog(){
+        foreach(Transform log in logContainer){
+            Destroy(log.gameObject);
+        }
+        logList.Clear();
     }
 
     //navigation for the buttons
