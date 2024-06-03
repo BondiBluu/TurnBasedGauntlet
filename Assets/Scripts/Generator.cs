@@ -133,6 +133,12 @@ public class Generator : MonoBehaviour
     }
 
     public void GenerateBattleLog(){
+
+        //destroy all the text in the log container before generating new ones
+        foreach(Transform text in logContainer){
+            Destroy(text.gameObject);
+        }
+        
         //making text for the battle log and spacing them out
         float currentPosY = 0f;
 

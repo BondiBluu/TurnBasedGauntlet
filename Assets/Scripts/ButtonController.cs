@@ -14,6 +14,7 @@ public class ButtonController : MonoBehaviour
     public GameObject allyPanel;
     public GameObject enemyPanel;
     public GameObject blockerPanel;
+
     [Header("Buttons")]
     public Button atkButton;
     public Button itemButton;
@@ -21,6 +22,12 @@ public class ButtonController : MonoBehaviour
     public Button logButton;
     public Button quitButton;
     public Button undoButton;
+    public Button nextStatsButton;
+    public Button yesFleeButton;
+    public Button noFleeButton;
+    public Button backBattleLogButton;
+    public Button backStatsButton;
+
     
     UIManager uiManager;
     private void Start() {
@@ -55,6 +62,7 @@ public class ButtonController : MonoBehaviour
         itemPanel.SetActive(false);
         logPanel.SetActive(false);
         quitPanel.SetActive(false);
+        nextStatsButton.Select();
     }
 
     public void OnLogPanel(){
@@ -65,6 +73,7 @@ public class ButtonController : MonoBehaviour
         itemPanel.SetActive(false);
         statsPanel.SetActive(false);
         quitPanel.SetActive(false);
+        backBattleLogButton.Select();
     }
 
     public void OnQuitPanel(){
@@ -102,6 +111,7 @@ public class ButtonController : MonoBehaviour
         allyPanel.SetActive(false);
         enemyPanel.SetActive(false);
         blockerPanel.SetActive(false);
+        atkButton.Select();
     }
 
     //disable all buttons
