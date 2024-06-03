@@ -6,15 +6,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Restoration", menuName = "Items/Restorative")]
 public class RestorativeObject : ItemObject
 {
-    public enum DebuffCure{
+    public enum HealDebuff
+    {
         Attack,
         Defense,
         Speed,
         Magic,
         Resistance,
         Skill,
-        Efficiency,
-        None
+        Efficiency
     }
 
     public enum StatusCure{
@@ -27,7 +27,7 @@ public class RestorativeObject : ItemObject
 
     [SerializeField] float hpRestore;
     [SerializeField] float mpRestore;
-    [SerializeField] DebuffCure[] debuffCures;
+    [SerializeField] HealDebuff[] healDebuffs;
     [SerializeField] StatusCure[] statusCures;
 
     public void Awake()
@@ -37,6 +37,7 @@ public class RestorativeObject : ItemObject
 
     public float HpRestore { get { return hpRestore; } }
     public float MpRestore { get { return mpRestore; } }
-    public DebuffCure[] DebuffCures { get { return debuffCures; } }
+    
+    public HealDebuff[] HealDebuffs { get { return healDebuffs; } }
     public StatusCure[] StatusCures { get { return statusCures; } }
     }
