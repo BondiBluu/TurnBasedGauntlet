@@ -166,23 +166,23 @@ public class BattleSystem : MonoBehaviour
         //sort actions by speed
         List<AttackSaver.SaveActions> sortedActions = attackSaver.characterActionsContainer.OrderByDescending(x => x.user.currentSpeed).ToList();
 
-        //grabbing users who used healing items
+        //grabbing users who used healing items and grabbing users who do everything else
         List<AttackSaver.SaveActions> healingActions = new List<AttackSaver.SaveActions>();
+        List<AttackSaver.SaveActions> everyOtherAction = new List<AttackSaver.SaveActions>();
 
         foreach(AttackSaver.SaveActions action in sortedActions)
         {
             if(action.item != null && action.item.Type == ItemObject.ItemType.Restorative)
             {
                 healingActions.Add(action);
-                sortedActions.Remove(action);
+            } else{
+                everyOtherAction.Add(action);
             }
         }
 
-        //putting healing actions back into the top of the sorted actions list
-        foreach(AttackSaver.SaveActions action in healingActions)
-        {
-            sortedActions.Insert(0, action);
-        }
+        sortedActions.Clear();
+        sortedActions.AddRange(healingActions);
+        sortedActions.AddRange(everyOtherAction);
 
         //performing the actions
         foreach(AttackSaver.SaveActions action in sortedActions)
