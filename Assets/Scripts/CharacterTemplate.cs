@@ -108,6 +108,37 @@ public class CharacterTemplate
         }
     }
 
+    //apply buffs
+    public void ApplyBuff(SupplementaryMoves.Boost[] buffs, float buffValues){
+        foreach(SupplementaryMoves.Boost buff in buffs){
+            switch(buff){
+                case SupplementaryMoves.Boost.Attack:
+                    currentAttack += buffValues;
+                    break;
+                case SupplementaryMoves.Boost.Defense:
+                    currentDefense += buffValues;
+                    break;
+                case SupplementaryMoves.Boost.Speed:
+                    currentSpeed += buffValues;
+                    break;
+                case SupplementaryMoves.Boost.Magic:
+                    currentMagic += buffValues;
+                    break;
+                case SupplementaryMoves.Boost.Resistance:
+                    currentResistance += buffValues;
+                    break;
+                case SupplementaryMoves.Boost.Skill:
+                    currentSkill += buffValues;
+                    break;
+                case SupplementaryMoves.Boost.Efficiency:
+                    currentEfficiency += buffValues;
+                    break;
+                case SupplementaryMoves.Boost.None:
+                    break;
+            }
+        }
+    }
+
     //remove debuffs
     public void RemoveDebuffs(HealingMoves.HealDebuff[] healDebuffs){
         foreach(HealingMoves.HealDebuff healDebuff in healDebuffs){
@@ -132,8 +163,6 @@ public class CharacterTemplate
                     break;
                 case HealingMoves.HealDebuff.Efficiency:
                     currentEfficiency = maxEfficiency;
-                    break;
-                case HealingMoves.HealDebuff.None:
                     break;
             }
         }
