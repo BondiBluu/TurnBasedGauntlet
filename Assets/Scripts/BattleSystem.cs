@@ -220,6 +220,9 @@ public class BattleSystem : MonoBehaviour
         sortedActions.Clear();
         
         yield return new WaitForSeconds(1f);
+
+        currentState = BattleState.PlayerTurn;
+        PlayerTurn(0);
     }
 
     
