@@ -24,6 +24,16 @@ public class Generator : MonoBehaviour
     public InvenObject playerInven;
     public CharacterTemplate savedTarget;
 
+    [Header("Move Hover")]
+    MoveHover moveHover;
+    public TMP_Text moveName;
+    public TMP_Text moveCost;
+    public TMP_Text movePower;
+    public TMP_Text moveType;
+    public TMP_Text moveExplanation;
+
+
+
     public void Start(){
         buttonCon = FindObjectOfType<ButtonController>();
     }
@@ -50,6 +60,11 @@ public class Generator : MonoBehaviour
                 //we use these a lot so we store them in variables
                 RectTransform buttonRect = button.GetComponent<RectTransform>();
                 Button buttonComp = button.GetComponent<Button>();
+                moveHover = button.GetComponent<MoveHover>();
+
+                //setting up to gather data for the move hover
+                moveHover.Move = move;
+                moveHover.typeOfButton = MoveHover.TypeOfButton.Move;
                 
                 //adding the button to the list of buttons for navigation
                 navButtons.Add(buttonComp);
