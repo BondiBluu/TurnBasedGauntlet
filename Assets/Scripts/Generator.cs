@@ -32,6 +32,13 @@ public class Generator : MonoBehaviour
     public TMP_Text moveType;
     public TMP_Text moveExplanation;
 
+    [Header("Item Hover")]
+    MoveHover itemHover;
+    public TMP_Text itemName;
+    public TMP_Text itemCost;
+    public TMP_Text itemPower;
+    public TMP_Text itemType;
+    public TMP_Text itemExplanation;
 
 
     public void Start(){
@@ -128,6 +135,11 @@ public class Generator : MonoBehaviour
                 RectTransform buttonRect = button.GetComponent<RectTransform>();
                 Button buttonComp = button.GetComponent<Button>();
                 TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
+                moveHover = button.GetComponent<MoveHover>();
+
+                //setting up to gather data for the move hover
+                moveHover.Item = item;
+                moveHover.typeOfButton = MoveHover.TypeOfButton.Item;
 
                 navButtons.Add(buttonComp);
 

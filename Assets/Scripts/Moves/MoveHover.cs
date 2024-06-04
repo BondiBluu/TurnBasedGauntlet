@@ -28,8 +28,8 @@ public class MoveHover : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         if(typeOfButton == TypeOfButton.Move){
             MoveData(Move);
         }
-        else{
-            
+        else if (typeOfButton == TypeOfButton.Item){
+            ItemData(Item);
         }
         
     }
@@ -39,8 +39,8 @@ public class MoveHover : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         if(typeOfButton == TypeOfButton.Move){
             MoveData(Move);
         }
-        else{
-            
+        else if (typeOfButton == TypeOfButton.Item){
+            ItemData(Item);
         }
     }
 
@@ -49,6 +49,25 @@ public class MoveHover : MonoBehaviour, IPointerEnterHandler, ISelectHandler
          generator.moveCost.text = "Cost: " + move.MPCost.ToString();
          generator.movePower.text = "Power: " + move.MovePowerString;
          generator.moveType.text = move.MovesType.ToString();
-         generator.moveExplanation.text = move.MoveExplanation;}
+         generator.moveExplanation.text = move.MoveExplanation;
+         }
+
+         void ItemData(ItemObject item){
+            if(item.Type == ItemObject.ItemType.Restorative){
+                RestorativeObject restorative = (RestorativeObject)item;
+                generator.itemName.text = item.ItemName;
+                generator.itemCost.text = "Cost: 0";
+                generator.itemPower.text = $"HP: {restorative.HpRestore} MP: {restorative.MpRestore}"; 
+                generator.itemType.text = item.Type.ToString();
+                generator.itemExplanation.text = item.ItemDescription;
+            } else if (item.Type == ItemObject.ItemType.Tool){
+                ToolObject tool = (ToolObject)item;
+                generator.itemName.text = item.ItemName;
+                generator.itemCost.text = "Cost: 0";
+                generator.itemPower.text = "Power: " + item;
+                generator.itemType.text = item.Type.ToString();
+                generator.itemExplanation.text = item.ItemDescription;
+            }
+         }
 }
 
