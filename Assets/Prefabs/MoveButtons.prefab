@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2996941715846801891}
   - component: {fileID: 3592826945977889099}
   - component: {fileID: 5568348819401753029}
+  - component: {fileID: -6696297466179875690}
   m_Layer: 5
   m_Name: MoveButtons
   m_TagString: Untagged
@@ -121,6 +122,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-6696297466179875690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585171070752355505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d46ab58c86e069429d82d4302fcbe84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7399162071272129476
 GameObject:
   m_ObjectHideFlags: 0
