@@ -187,6 +187,13 @@ public class BattleSystem : MonoBehaviour
         //performing the actions
         foreach(AttackSaver.SaveActions action in sortedActions)
         {
+            //checks if the user is downed in the middle of the battle
+            if(action.user.characterStatus == CharacterTemplate.CharacterStatus.Downed)
+            {
+                Debug.Log($"{action.user.characterData.CharaStatList.CharacterName} is downed! They can't perform an action!");
+                continue;
+            }
+
             if(action.move != null)
             {
                 switch(action.move.MovesType){
@@ -218,6 +225,12 @@ public class BattleSystem : MonoBehaviour
         attackSaver.characterActionsContainer.Clear();
         healingActions.Clear();
         sortedActions.Clear();
+
+        List<CharacterTemplate> enemyMembers = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers;
+
+        CheckDefeat(partyManager.currentParty, BattleState.Lost);
+        CheckDefeat(enemyMembers, BattleState.Won);
+        
         
         yield return new WaitForSeconds(1f);
 
@@ -303,6 +316,33 @@ public class BattleSystem : MonoBehaviour
             savedCharacterIndex = 0;
         }
         uiManager.ShowStats(partyManager.currentParty[savedCharacterIndex]);
-        
     }
+
+    //check if the list of characters have been defeated
+    public void CheckDefeat(List<CharacterTemplate> characters, BattleState state){
+        int defeatedCount = 0;
+
+        foreach(CharacterTemplate character in characters)
+        {
+            if(character.characterStatus == CharacterTemplate.CharacterStatus.Downed)
+            {
+                defeatedCount++;
+            }
+        }
+
+        if(defeatedCount == characters.Count)
+        {
+            currentState = state;
+        }
+
+        if(state == BattleState.Won)
+        {
+            //invoke win unity event
+        }
+        else if(state == BattleState.Lost)
+        {
+            //invoke lose unity event
+        }
+    }
+
 }
