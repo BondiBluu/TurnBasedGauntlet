@@ -239,12 +239,33 @@ public class BattleSystem : MonoBehaviour
     }
 
     public void Win(){
+        int exp = partyManager.seed[currentSeed].GroupSet[currentGroupSet].Exp;
+        Debug.Log($"Party gained {exp} exp each!");
         //have the player gain experience
-        //have the player gain currency
-        //increase the seed and/or group set
-        //if battle is at index 9, battle is complete. Go to the next seed. Battle goes 0
-        //if seed is at index 9, seed is complete. Go to the checkpoint. Seed increases by 1
+        foreach(CharacterTemplate character in partyManager.currentParty)
+        {
+            character.GainEXP(exp);
+        }
+        //have the player gain currency        
+        //if battle is won, go to the next battle. Battle increases by 1
+        if(currentGroupSet > 9)
+        {
+            currentState = BattleState.Checkpoint;
+            //go to checkpoint
+            currentGroupSet = 0; //to be moved
+        } else
+        {
+            currentGroupSet++;
+            EnemySetup();
+        }
 
+    }
+
+    public void Lose(){
+        //game over
+        //character stats and levels have to be tranfered back to what they were at the previous checkpoint
+        //whatever battle you were in goes to 0- start at the beginning of the checkpoint- so go the current seed
+        //if the player loses, go back to the previous checkpoint to prepare
     }
 
     
@@ -347,6 +368,7 @@ public class BattleSystem : MonoBehaviour
         if(state == BattleState.Won)
         {
             //invoke win unity event
+            EventController.instance.OnWin.Invoke();
             
         }
         else if(state == BattleState.Lost)

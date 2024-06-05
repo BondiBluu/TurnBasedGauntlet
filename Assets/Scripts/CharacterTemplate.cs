@@ -46,6 +46,7 @@ public class CharacterTemplate
     //stats saved for checkpoint
     int checkpointLevel;
     int checkpointEXP;
+    int checkpointMaxEXP;
     float checkpointHP;
     float checkpointMP;
     float checkpointAttack;
@@ -185,6 +186,7 @@ public class CharacterTemplate
     public void SaveStats(){
         checkpointLevel = currentLevel;
         checkpointEXP = currentEXP;
+        checkpointMaxEXP = maxEXP;
         checkpointHP = currentHP;
         checkpointMP = currentMP;
         checkpointAttack = currentAttack;
@@ -200,6 +202,7 @@ public class CharacterTemplate
     public void RevertToCheckpoint(){
         currentLevel = checkpointLevel;
         currentEXP = checkpointEXP;
+        maxEXP = checkpointMaxEXP;
         currentHP = checkpointHP;
         currentMP = checkpointMP;
         currentAttack = checkpointAttack;
@@ -209,8 +212,7 @@ public class CharacterTemplate
         currentResistance = checkpointResistance;
         currentSkill = checkpointSkill;
         currentEfficiency = checkpointEfficiency;
-    }
-    
+    }  
 
     //revert stats back at the start of battle
     public void RevertStats(){

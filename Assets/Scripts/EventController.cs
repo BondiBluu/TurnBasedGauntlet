@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class EventController : MonoBehaviour
 {
     public UnityEvent OnWin;
+    //have anims play, sound effects, etc with OnWin
+    
     public UnityEvent OnLose;
 
     public static EventController instance;
