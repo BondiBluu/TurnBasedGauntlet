@@ -238,6 +238,15 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn(0);
     }
 
+    public void Win(){
+        //have the player gain experience
+        //have the player gain currency
+        //increase the seed and/or group set
+        //if battle is at index 9, battle is complete. Go to the next seed. Battle goes 0
+        //if seed is at index 9, seed is complete. Go to the checkpoint. Seed increases by 1
+
+    }
+
     
 
     public void Setup(int groupCount, Transform[] battleStations, List <CharacterTemplate> charaTemplate){
@@ -338,6 +347,7 @@ public class BattleSystem : MonoBehaviour
         if(state == BattleState.Won)
         {
             //invoke win unity event
+            
         }
         else if(state == BattleState.Lost)
         {
