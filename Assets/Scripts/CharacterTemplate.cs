@@ -43,6 +43,19 @@ public class CharacterTemplate
     public float currentSkill;
     public float maxEfficiency;
     public float currentEfficiency;
+    //stats saved for checkpoint
+    int checkpointLevel;
+    int checkpointEXP;
+    float checkpointHP;
+    float checkpointMP;
+    float checkpointAttack;
+    float checkpointDefense;
+    float checkpointSpeed;
+    float checkpointMagic;
+    float checkpointResistance;
+    float checkpointSkill;
+    float checkpointEfficiency;
+    
 
     void Awake(){
         if(characterStatus != CharacterStatus.Downed){
@@ -167,6 +180,37 @@ public class CharacterTemplate
             }
         }
     }
+
+    //grabbing stats from this checkpoint, in case the player loses
+    public void SaveStats(){
+        checkpointLevel = currentLevel;
+        checkpointEXP = currentEXP;
+        checkpointHP = currentHP;
+        checkpointMP = currentMP;
+        checkpointAttack = currentAttack;
+        checkpointDefense = currentDefense;
+        checkpointSpeed = currentSpeed;
+        checkpointMagic = currentMagic;
+        checkpointResistance = currentResistance;
+        checkpointSkill = currentSkill;
+        checkpointEfficiency = currentEfficiency;
+    }
+
+    //if the player loses, revert to the checkpoint stats
+    public void RevertToCheckpoint(){
+        currentLevel = checkpointLevel;
+        currentEXP = checkpointEXP;
+        currentHP = checkpointHP;
+        currentMP = checkpointMP;
+        currentAttack = checkpointAttack;
+        currentDefense = checkpointDefense;
+        currentSpeed = checkpointSpeed;
+        currentMagic = checkpointMagic;
+        currentResistance = checkpointResistance;
+        currentSkill = checkpointSkill;
+        currentEfficiency = checkpointEfficiency;
+    }
+    
 
     //revert stats back at the start of battle
     public void RevertStats(){
