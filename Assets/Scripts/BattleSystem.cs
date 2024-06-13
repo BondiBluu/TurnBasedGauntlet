@@ -73,6 +73,28 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerTurn(0));
     }
 
+    public void Setup(int groupCount, Transform[] battleStations, List <CharacterTemplate> charaTemplate){
+        
+        for(int i = 0; i < groupCount; i++)
+        {
+            GameObject charaObject = Instantiate(characterPrefab, battleStations[i]);
+
+            CharacterHolder charaHolder = charaObject.GetComponent<CharacterHolder>();
+            charaHolder.characterTemplate = charaTemplate[i];
+            
+            SpriteRenderer spriteRenderer = charaObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = charaTemplate[i].characterData.CharaSprite;
+
+            //reverting the character's stats back to the base stats
+            charaTemplate[i].RevertStats();
+            //setting the character's base stats
+            charaTemplate[i].SetBaseStats();
+            //reverting the character's status back to normal
+            charaTemplate[i].characterStatus = CharacterTemplate.CharacterStatus.Normal;
+        }
+    }
+
+
     public IEnumerator PlayerTurn(int startingCycle)
     {
         buttonController.EnableButtons();
@@ -235,7 +257,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         currentState = BattleState.PlayerTurn;
-        PlayerTurn(0);
+        StartCoroutine(PlayerTurn(0));
     }
 
     public void Win(){
@@ -270,27 +292,7 @@ public class BattleSystem : MonoBehaviour
 
     
 
-    public void Setup(int groupCount, Transform[] battleStations, List <CharacterTemplate> charaTemplate){
-        
-        for(int i = 0; i < groupCount; i++)
-        {
-            GameObject charaObject = Instantiate(characterPrefab, battleStations[i]);
-
-            CharacterHolder charaHolder = charaObject.GetComponent<CharacterHolder>();
-            charaHolder.characterTemplate = charaTemplate[i];
-            
-            SpriteRenderer spriteRenderer = charaObject.GetComponent<SpriteRenderer>();
-            spriteRenderer.sprite = charaTemplate[i].characterData.CharaSprite;
-
-            //reverting the character's stats back to the base stats
-            charaTemplate[i].RevertStats();
-            //setting the character's base stats
-            charaTemplate[i].SetBaseStats();
-            //reverting the character's status back to normal
-            charaTemplate[i].characterStatus = CharacterTemplate.CharacterStatus.Normal;
-        }
-    }
-
+    
     public void OnUndoButton(){
         int lastAction = attackSaver.characterActionsContainer.Count - 1;
         attackSaver.characterActionsContainer.RemoveAt(attackSaver.characterActionsContainer.Count - 1);
@@ -352,29 +354,35 @@ public class BattleSystem : MonoBehaviour
     public void CheckDefeat(List<CharacterTemplate> characters, BattleState state){
         int defeatedCount = 0;
 
+
+
         foreach(CharacterTemplate character in characters)
         {
             if(character.characterStatus == CharacterTemplate.CharacterStatus.Downed)
             {
                 defeatedCount++;
+                Debug.Log(character.characterData.CharaStatList.CharacterName + " has been defeated!");
             }
         }
+
 
         if(defeatedCount == characters.Count)
         {
             currentState = state;
         }
 
-        if(state == BattleState.Won)
+        if(currentState == BattleState.Won)
         {
             //invoke win unity event
+            Debug.Log(currentState);
             EventController.instance.OnWin.Invoke();
             
         }
-        else if(state == BattleState.Lost)
+        else if(currentState == BattleState.Lost)
         {
+            Debug.Log(currentState);
             //invoke lose unity event
-        }
+        } 
     }
 
 }
