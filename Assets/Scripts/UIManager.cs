@@ -18,6 +18,13 @@ public class UIManager : MonoBehaviour
     public GameObject allyHUDPanelPrefab;
     public GameObject enemyHUDPanelPrefab;
 
+    public Vector2[] enemyUIPositions = new Vector2[4]{
+        new Vector2(0, 0),
+        new Vector2(-50, 150),
+        new Vector2(0, -100),
+        new Vector2(0, -150)
+    };
+
     [Header("For UI")]
     public Image characterActionImage;
 
@@ -120,7 +127,6 @@ public class UIManager : MonoBehaviour
     }
 
     public void InstantiateEnemyHealthBars(List <CharacterTemplate> charas){
-        float currentPosY = 0f;
 
         for(int i = 0; i < charas.Count; i++){
             GameObject panel = Instantiate(enemyMainHUDPanelPrefab, enemyHUDContainer);
@@ -137,15 +143,23 @@ public class UIManager : MonoBehaviour
 
             Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
             subHPSlider.maxValue = charas[i].maxHP;
-            subHPSlider.value = charas[i].currentHP;            
+            subHPSlider.value = charas[i].currentHP;    
 
-            //to be changed
-            panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
-            currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
-
-            if(characterName.text == charas[i].characterData.CharaStatList.CharacterName){
-                StartCoroutine(UpdateEnemyHPBar(charas[i]));
-            }
+            //getting the enemy's UI container positions
+            switch(i){
+                case 0:
+                    panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+                    break;
+                case 1:
+                    panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(-320, 160);
+                    break;
+                case 2:
+                    panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(-320, -150);
+                    break;
+                case 3:
+                    panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(-120, 315);
+                    break;
+            }        
         }
     }
 
