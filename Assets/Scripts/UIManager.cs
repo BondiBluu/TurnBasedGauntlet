@@ -11,10 +11,15 @@ public class UIManager : MonoBehaviour
     public Transform allyContainer;
     public Transform enemyContainer;
     public Transform characterHUDContainer;
+    public Transform enemyHUDContainer;
+    public Transform[] enemyUIContainers;
     public GameObject characterHUDPanelPrefab;
+    public GameObject enemyMainHUDPanelPrefab;
     public GameObject allyHUDPanelPrefab;
     public GameObject enemyHUDPanelPrefab;
 
+    public List <GameObject> ePanels = new List<GameObject>();
+    public List <CharacterTemplate> enemies = new List<CharacterTemplate>();
     [Header("For UI")]
     public Image characterActionImage;
 
@@ -116,6 +121,35 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void InstantiateEnemyHealthBars(List <CharacterTemplate> charas){
+        float currentPosY = 0f;
+
+        for(int i = 0; i < charas.Count; i++){
+            GameObject panel = Instantiate(enemyMainHUDPanelPrefab, enemyHUDContainer);
+
+            TMP_Text characterName = panel.transform.GetChild(0).GetComponent<TMP_Text>();
+            characterName.text = charas[i].characterData.CharaStatList.CharacterName;
+
+            Image whiteHPBar = panel.transform.GetChild(1).GetComponent<Image>();
+
+            
+            Slider mainHPSlider = whiteHPBar.transform.GetChild(4).GetComponent<Slider>();
+            mainHPSlider.maxValue = charas[i].maxHP;
+            mainHPSlider.value = charas[i].currentHP;
+
+            Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
+            subHPSlider.maxValue = charas[i].maxHP;
+            subHPSlider.value = charas[i].currentHP;            
+
+            panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
+            currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
+
+            //add the panel to the list of enemy panels and the list of enemies
+            ePanels.Add(panel);
+            enemies.Add(charas[i]);
+        }
+    }
+
     public void InstantiateAllyPanels(List <CharacterTemplate> charas){
 
         float currentPosY = 0f;
@@ -176,8 +210,6 @@ public class UIManager : MonoBehaviour
             mainHPSlider.maxValue = charas[i].maxHP;
             mainHPSlider.value = charas[i].currentHP;
 
-            
-
             //have the next panel be directly below the previous panel
             panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
             currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
@@ -222,6 +254,8 @@ public class UIManager : MonoBehaviour
                         characterHP.text = mainHPSlider.value + "/" + character.maxHP;
                         yield return new WaitForSeconds(0.01f);
                     }
+                    mainHPSlider.value = character.currentHP;
+                    subHPSlider.value = character.currentHP;
                 }
                 
             }
@@ -248,6 +282,38 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+     public IEnumerator UpdateEnemyHPBar(CharacterTemplate character){
+         yield return new WaitForSeconds(1f);}
+
+    //     foreach(Transform child in enemyHUDContainer){
+    //         if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+                
+    //             Slider subHPSlider = child.transform.GetChild(3).GetComponent<Slider>();
+    //             Slider mainHPSlider = child.transform.GetChild(4).GetComponent<Slider>();
+
+    //             if(mainHPSlider.value > character.currentHP){
+    //                 //decrease the main hp slider
+    //                 mainHPSlider.value = character.currentHP;
+    //                 yield return new WaitForSeconds(1f);
+    //                 while(subHPSlider.value > character.currentHP){
+    //                     subHPSlider.value --;
+    //                     yield return new WaitForSeconds(0.01f);
+    //                 }
+    //                 subHPSlider.value = character.currentHP;
+    //             } else if (mainHPSlider.value < character.currentHP){
+    //                 while(mainHPSlider.value < character.currentHP){
+    //                     mainHPSlider.value ++;
+    //                     yield return new WaitForSeconds(0.01f);
+    //                 }
+    //                 mainHPSlider.value = character.currentHP;
+    //                 subHPSlider.value = character.currentHP;
+    //             }
+    //         }
+    //     }
+    // }
+
+
 
        //updating character hp panels
     public void UpdateHPPanel(CharacterTemplate character){

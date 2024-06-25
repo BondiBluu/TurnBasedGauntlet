@@ -2310,9 +2310,18 @@ MonoBehaviour:
   allyContainer: {fileID: 784352681}
   enemyContainer: {fileID: 1575767703}
   characterHUDContainer: {fileID: 1795294157}
+  enemyHUDContainer: {fileID: 1872595345}
+  enemyUIContainers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   characterHUDPanelPrefab: {fileID: 5787071367713111083, guid: 111750eeee075c74b8ac10e469e95c8f, type: 3}
+  enemyMainHUDPanelPrefab: {fileID: 6989569962314353181, guid: 02d8e77095a7c3547a63c58cfffdbff4, type: 3}
   allyHUDPanelPrefab: {fileID: 2450307146178161321, guid: 46c7fa6cf5da794499c2377b07c01a50, type: 3}
   enemyHUDPanelPrefab: {fileID: 1871695250015255346, guid: 3ce6fed7efd269043ab659d1aca886b2, type: 3}
+  ePanels: []
+  enemies: []
   characterActionImage: {fileID: 0}
   characterImage: {fileID: 1119484189}
   statsCharaName: {fileID: 294873152}
@@ -3807,41 +3816,6 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.0012207031, y: 4.517}
   m_SizeDelta: {x: -0.8, y: 8.382}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &787761127
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 787761128}
-  m_Layer: 5
-  m_Name: EnemyHealthBarContainer3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &787761128
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787761127}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1872595345}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.326, y: 0.21400002}
-  m_AnchorMax: {x: 0.48854166, y: 0.25529778}
-  m_AnchoredPosition: {x: -2.5, y: 1}
-  m_SizeDelta: {x: 7.166977, y: -3.5897827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &789592687
 GameObject:
@@ -6695,41 +6669,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436348978}
   m_CullTransparentMesh: 1
---- !u!1 &1462258794
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1462258795}
-  m_Layer: 5
-  m_Name: EnemyHealthBarContainer1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1462258795
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462258794}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1872595345}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.64275, y: 0.43882668}
-  m_AnchorMax: {x: 0.8, y: 0.47859555}
-  m_AnchoredPosition: {x: -1, y: 0}
-  m_SizeDelta: {x: 12.166992, y: -1.5897827}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1511799344
 GameObject:
   m_ObjectHideFlags: 0
@@ -8158,41 +8097,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779101175}
   m_CullTransparentMesh: 1
---- !u!1 &1779760455
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1779760456}
-  m_Layer: 5
-  m_Name: EnemyHealthBarContainer2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1779760456
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779760455}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1872595345}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.30200002, y: 0.6798267}
-  m_AnchorMax: {x: 0.47500002, y: 0.71800005}
-  m_AnchoredPosition: {x: -1.5, y: 0}
-  m_SizeDelta: {x: -2.833023, y: -1.5897827}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1795294156
 GameObject:
   m_ObjectHideFlags: 0
@@ -8505,12 +8409,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1872595345}
   m_Layer: 5
-  m_Name: EnemyUI
+  m_Name: EnemyUIContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1872595345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8522,11 +8426,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1462258795}
-  - {fileID: 1779760456}
-  - {fileID: 787761128}
-  - {fileID: 2052484985}
+  m_Children: []
   m_Father: {fileID: 564971307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9010,41 +8910,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993259801}
   m_CullTransparentMesh: 1
---- !u!1 &2052484984
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2052484985}
-  m_Layer: 5
-  m_Name: EnemyHealthBarContainer4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &2052484985
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052484984}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1872595345}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2544792, y: 0.95800006}
-  m_AnchorMax: {x: 0.3384792, y: 0.984}
-  m_AnchoredPosition: {x: 283.66483, y: -12.016079}
-  m_SizeDelta: {x: 82.16698, y: 6.4102173}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2137200976
 GameObject:
   m_ObjectHideFlags: 0

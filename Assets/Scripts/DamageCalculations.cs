@@ -180,6 +180,7 @@ public class DamageCalculations : MonoBehaviour
             yield return StartCoroutine(uiManager.UpdateHP(target));
             uiManager.UpdateHPPanel(target);
         } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
+            yield return StartCoroutine(uiManager.UpdateEnemyHPBar(target));
             uiManager.UpdateEnemyHPPanel(target);
         }
 
@@ -222,8 +223,14 @@ public class DamageCalculations : MonoBehaviour
 
         target.HealDamage(healing, 0);
         //update the target health bar
-        yield return StartCoroutine(uiManager.UpdateHP(target));
-        uiManager.UpdateHPPanel(target);
+        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
+            yield return StartCoroutine(uiManager.UpdateHP(target));
+            uiManager.UpdateHPPanel(target);
+        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
+            yield return StartCoroutine(uiManager.UpdateEnemyHPBar(target));
+            uiManager.UpdateEnemyHPPanel(target);
+        }
+        
 
         //reverts debuffs if any
         if(healingMove.Debuffs.Length > 0){
@@ -257,10 +264,15 @@ public class DamageCalculations : MonoBehaviour
         target.HealDamage(hp, mp);
         
         //update the target health bar
-        yield return StartCoroutine(uiManager.UpdateHP(target));
-        uiManager.UpdateHPPanel(target);
-        yield return StartCoroutine(uiManager.UpdateMP(target));
-        uiManager.UpdateMPPanel(target);
+        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
+            yield return StartCoroutine(uiManager.UpdateHP(target));
+            uiManager.UpdateHPPanel(target);
+            yield return StartCoroutine(uiManager.UpdateMP(target));
+            uiManager.UpdateMPPanel(target);
+        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
+            yield return StartCoroutine(uiManager.UpdateEnemyHPBar(target));
+            uiManager.UpdateEnemyHPPanel(target);
+        }
 
         //cure debuffs if any
         if(potion.HealDebuffs.Length > 0){

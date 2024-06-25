@@ -67,6 +67,7 @@ public class BattleSystem : MonoBehaviour
         List <CharacterTemplate> enemyMembers = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers;
         Setup(enemyMembers.Count, enemyBattleStations, enemyMembers);
         uiManager.InstantiateEnemyPanels(enemyMembers);
+        uiManager.InstantiateEnemyHealthBars(enemyMembers);
 
         yield return new WaitForSeconds(1f);
         currentState = BattleState.PlayerTurn;
