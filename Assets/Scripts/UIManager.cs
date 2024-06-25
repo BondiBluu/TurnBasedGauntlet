@@ -18,8 +18,6 @@ public class UIManager : MonoBehaviour
     public GameObject allyHUDPanelPrefab;
     public GameObject enemyHUDPanelPrefab;
 
-    public List <GameObject> ePanels = new List<GameObject>();
-    public List <CharacterTemplate> enemies = new List<CharacterTemplate>();
     [Header("For UI")]
     public Image characterActionImage;
 
@@ -144,9 +142,9 @@ public class UIManager : MonoBehaviour
             panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
             currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
 
-            //add the panel to the list of enemy panels and the list of enemies
-            ePanels.Add(panel);
-            enemies.Add(charas[i]);
+            if(characterName.text == charas[i].characterData.CharaStatList.CharacterName){
+                StartCoroutine(UpdateEnemyHPBar(charas[i]));
+            }
         }
     }
 
@@ -283,35 +281,38 @@ public class UIManager : MonoBehaviour
         }
     }
 
-     public IEnumerator UpdateEnemyHPBar(CharacterTemplate character){
-         yield return new WaitForSeconds(1f);}
+    public IEnumerator UpdateEnemyHPBar(CharacterTemplate character){
+        yield return new WaitForSeconds(1f);
 
-    //     foreach(Transform child in enemyHUDContainer){
-    //         if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+        foreach(Transform child in enemyHUDContainer){
+            Debug.Log("Hihi");
+            if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
+                Debug.Log("Updating enemy HP bar");
                 
-    //             Slider subHPSlider = child.transform.GetChild(3).GetComponent<Slider>();
-    //             Slider mainHPSlider = child.transform.GetChild(4).GetComponent<Slider>();
+                Image whiteHPBar = child.transform.GetChild(1).GetComponent<Image>();
+                Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
+                Slider mainHPSlider = whiteHPBar.transform.GetChild(4).GetComponent<Slider>();
 
-    //             if(mainHPSlider.value > character.currentHP){
-    //                 //decrease the main hp slider
-    //                 mainHPSlider.value = character.currentHP;
-    //                 yield return new WaitForSeconds(1f);
-    //                 while(subHPSlider.value > character.currentHP){
-    //                     subHPSlider.value --;
-    //                     yield return new WaitForSeconds(0.01f);
-    //                 }
-    //                 subHPSlider.value = character.currentHP;
-    //             } else if (mainHPSlider.value < character.currentHP){
-    //                 while(mainHPSlider.value < character.currentHP){
-    //                     mainHPSlider.value ++;
-    //                     yield return new WaitForSeconds(0.01f);
-    //                 }
-    //                 mainHPSlider.value = character.currentHP;
-    //                 subHPSlider.value = character.currentHP;
-    //             }
-    //         }
-    //     }
-    // }
+                if(mainHPSlider.value > character.currentHP){
+                    //decrease the main hp slider
+                    mainHPSlider.value = character.currentHP;
+                    yield return new WaitForSeconds(1f);
+                    while(subHPSlider.value > character.currentHP){
+                        subHPSlider.value --;
+                        yield return new WaitForSeconds(0.01f);
+                    }
+                    subHPSlider.value = character.currentHP;
+                } else if (mainHPSlider.value < character.currentHP){
+                    while(mainHPSlider.value < character.currentHP){
+                        mainHPSlider.value ++;
+                        yield return new WaitForSeconds(0.01f);
+                    }
+                    mainHPSlider.value = character.currentHP;
+                    subHPSlider.value = character.currentHP;
+                }
+            }
+        }
+    }
 
 
 

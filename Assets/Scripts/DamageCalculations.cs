@@ -131,6 +131,7 @@ public class DamageCalculations : MonoBehaviour
             yield return StartCoroutine(uiManager.UpdateHP(user));
             uiManager.UpdateHPPanel(user);
         } else if(user.characterType == CharacterTemplate.CharacterType.Enemy){
+            uiManager.StartCoroutine(uiManager.UpdateEnemyHPBar(user));
             uiManager.UpdateEnemyHPPanel(user);
         }
 
@@ -139,6 +140,7 @@ public class DamageCalculations : MonoBehaviour
             yield return StartCoroutine(uiManager.UpdateHP(target));
             uiManager.UpdateHPPanel(target);
         } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
+            yield return StartCoroutine(uiManager.UpdateEnemyHPBar(target));
             uiManager.UpdateEnemyHPPanel(target);
         }
 
