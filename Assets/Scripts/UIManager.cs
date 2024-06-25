@@ -139,6 +139,7 @@ public class UIManager : MonoBehaviour
             subHPSlider.maxValue = charas[i].maxHP;
             subHPSlider.value = charas[i].currentHP;            
 
+            //to be changed
             panel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -currentPosY);
             currentPosY += buttonSpacing + panel.GetComponent<RectTransform>().sizeDelta.y;
 
@@ -282,13 +283,9 @@ public class UIManager : MonoBehaviour
     }
 
     public IEnumerator UpdateEnemyHPBar(CharacterTemplate character){
-        yield return new WaitForSeconds(1f);
-
         foreach(Transform child in enemyHUDContainer){
-            Debug.Log("Hihi");
             if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
-                Debug.Log("Updating enemy HP bar");
-                
+             
                 Image whiteHPBar = child.transform.GetChild(1).GetComponent<Image>();
                 Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
                 Slider mainHPSlider = whiteHPBar.transform.GetChild(4).GetComponent<Slider>();
