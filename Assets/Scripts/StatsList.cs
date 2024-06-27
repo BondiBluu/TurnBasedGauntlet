@@ -16,17 +16,13 @@ public class StatsList : ScriptableObject
         All
     }
 
-    public enum LevelUpType{
-        PhysicalTank,
-        MagicalTank,
-        Jammer,
-        PhysicalDPS,
-        MagicalDPS,
-        Support,
-        Balanced,
-        Speedster,
-        LateBloomer,
-        All
+    public enum LevelGrowth{
+        Excellent,
+        Great,
+        Good,
+        Bad,
+        Worst,
+        Abnormal
     }
 
     [SerializeField] string characterName;
@@ -48,8 +44,14 @@ public class StatsList : ScriptableObject
     [SerializeField] float baseSkill;
     [SerializeField] float baseEfficiency;
     [SerializeField] int baseExp;
+    [SerializeField] LevelGrowth[] growths;
     [SerializeField] Immunity[] immunities;
-    [SerializeField] LevelUpType[] levelType;
+
+    void OnEnable(){
+        if(growths == null || growths.Length != 9){
+            growths = new LevelGrowth[9];
+        }
+    }
 
     public string CharacterName { get { return characterName; } }
     public string CharacterDesc { get { return characterDesc; } }
@@ -66,6 +68,9 @@ public class StatsList : ScriptableObject
     public float BaseSkill { get { return baseSkill; } }
     public float BaseEfficiency { get { return baseEfficiency; } }
     public int BaseExp { get { return baseExp; } }
+    public LevelGrowth[] Growths { get { return growths; } }
     public Immunity[] Immunities { get { return immunities; } }
-    public LevelUpType[] LevelType { get { return levelType; } }
     }
+
+
+
