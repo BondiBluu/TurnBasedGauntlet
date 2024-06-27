@@ -43,6 +43,7 @@ public class CharacterTemplate
     public float currentSkill;
     public float maxEfficiency;
     public float currentEfficiency;
+    
     //stats saved for checkpoint
     int checkpointLevel;
     int checkpointEXP;

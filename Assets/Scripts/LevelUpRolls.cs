@@ -5,32 +5,7 @@ using UnityEngine;
 public class LevelUpRolls : MonoBehaviour
 {
     //leveling up based on type
-    public int LevelRoll(CharacterTemplate character){
-        int levelRoll = 0;
-        //if there is only one leveluptype, character level rolls twice
-        if(character.characterData.CharaStatList.LevelType.Length == 1){
-            for(int i = 0; i < 2; i++){
-                switch(character.characterData.CharaStatList.LevelType[0]){
-                    case StatsList.LevelUpType.PhysicalTank:
-                        LevelTank(character);
-                        break;
-                }
-            }
-        }
-        //if there are multiple leveluptypes, character level rolls once
-        else{
-            foreach(StatsList.LevelUpType type in character.characterData.CharaStatList.LevelType){
-                switch(type){
-                    case StatsList.LevelUpType.PhysicalTank:
-                        LevelTank(character);
-                        break;
-                }
-            }
-        }
-
-        return levelRoll;
-
-    }
+    
 
     //To Note: will gather all stat rolls and roll them all at once
 
