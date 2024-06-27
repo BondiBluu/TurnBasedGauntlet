@@ -136,6 +136,8 @@ public class BattleSystem : MonoBehaviour
             selectedTarget = null;       
             targetSelected = false;
         }
+        buttonController.DisableButtons();
+        buttonController.HideUndoButton();
         yield return new WaitForSeconds(1f);
         Debug.Log("Player Turn End");
         currentState = BattleState.EnemyTurn;
@@ -145,8 +147,6 @@ public class BattleSystem : MonoBehaviour
     public IEnumerator EnemyTurn()
     {
         Debug.Log("Enemy Turn");
-        buttonController.DisableButtons();
-        buttonController.HideUndoButton();
 
         int enemyCount = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers.Count;
 
