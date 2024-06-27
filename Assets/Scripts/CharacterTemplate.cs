@@ -43,7 +43,7 @@ public class CharacterTemplate
     public float currentSkill;
     public float maxEfficiency;
     public float currentEfficiency;
-    
+
     //stats saved for checkpoint
     int checkpointLevel;
     int checkpointEXP;
@@ -184,7 +184,7 @@ public class CharacterTemplate
     }
 
     //grabbing stats from this checkpoint, in case the player loses
-    public void SaveStats(){
+    public void SaveCheckpointStats(){
         checkpointLevel = currentLevel;
         checkpointEXP = currentEXP;
         checkpointMaxEXP = maxEXP;
@@ -255,6 +255,7 @@ public class CharacterTemplate
             //level up
             currentLevel++;
             //level roll system
+            LevelUp(characterData.CharaStatList.Growths);
             //have maxEXP increase by a certain amount and retain the remaining exp
             currentEXP -= maxEXP;
             //increase max exp
@@ -262,7 +263,6 @@ public class CharacterTemplate
         }
     }
     
-    //TODO: method to take away accumulated stat rolls and levels when failing a checkpoint
 
     public void TurnToBaseLevel(){
         currentLevel = characterData.CharaStatList.BaseLvl;
@@ -290,24 +290,41 @@ public class CharacterTemplate
     public void LevelUpFromBase(){
         if(currentLevel > 0){
             for(int i = 0; i < currentLevel; i++){
-                LevelUpRoll();
+                LevelUp(characterData.CharaStatList.Growths);
             }
         }
     }
 
-    public void LevelUpRoll(){
+    public void LevelUp(StatsList.LevelGrowth[] growth){
         //will change based on level up type
         currentLevel++;
-        maxHP += Random.Range(1, 5);
-        currentHP = maxHP;
-        maxMP += Random.Range(1, 5);
-        currentMP = maxMP;
-        maxAttack += Random.Range(1, 5);
-        maxDefense += Random.Range(1, 5);
-        maxSpeed += Random.Range(1, 5);
-        maxMagic += Random.Range(1, 5);
-        maxResistance += Random.Range(1, 5);
-        maxSkill += Random.Range(1, 5);
-        maxEfficiency += Random.Range(1, 5);
+
+        LevelRoll(growth[0], ref maxHP);
+        LevelRoll(growth[1], ref maxMP);
+        LevelRoll(growth[2], ref maxAttack);
+        LevelRoll(growth[3], ref maxDefense);
+        LevelRoll(growth[4], ref maxSpeed);
+        LevelRoll(growth[5], ref maxMagic);
+        LevelRoll(growth[6], ref maxResistance);
+        LevelRoll(growth[7], ref maxSkill);
+        LevelRoll(growth[8], ref maxEfficiency);
+    }
+
+    public void LevelRoll(StatsList.LevelGrowth growth, ref float statToBeGrown){
+        //TODO: find the right values for the growths
+        switch(growth){
+            case StatsList.LevelGrowth.Excellent:
+                break;
+            case StatsList.LevelGrowth.Great:
+                break;
+            case StatsList.LevelGrowth.Good:
+                break;
+            case StatsList.LevelGrowth.Bad:
+                break;
+            case StatsList.LevelGrowth.Worst:
+                break;
+            case StatsList.LevelGrowth.Abnormal:
+                break;
+        }
     }
 }
