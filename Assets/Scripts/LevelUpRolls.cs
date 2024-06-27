@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class LevelUpRolls : MonoBehaviour
 {
-    //leveling up based on type
+    //leveling up 
+    public void LevelUpRoll(CharacterTemplate character){
+        
+    }
     
 
     //To Note: will gather all stat rolls and roll them all at once
