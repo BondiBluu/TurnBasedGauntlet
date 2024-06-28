@@ -249,12 +249,12 @@ public class CharacterTemplate
     }
 
     public void GainEXP(int exp){
-        Debug.Log($"Team gained {exp} exp!");
         //tentative method to gain exp
         currentEXP += exp;
         if(currentEXP >= maxEXP){
             //level up
             Debug.Log($"{characterData.CharaStatList.CharacterName} leveled up!");
+            
             //level roll system
             LevelUp(characterData.CharaStatList.Growths);
             //have maxEXP increase by a certain amount and retain the remaining exp
@@ -309,6 +309,10 @@ public class CharacterTemplate
         LevelRoll(growth[6], ref maxResistance);
         LevelRoll(growth[7], ref maxSkill);
         LevelRoll(growth[8], ref maxEfficiency);
+
+        RevertStats();
+        currentHP = maxHP;
+        currentMP = maxMP;
     }
 
     public void LevelRoll(StatsList.LevelGrowth growth, ref float statToBeGrown){
