@@ -110,4 +110,4 @@ MonoBehaviour:
     maxEfficiency: 9
     currentEfficiency: 9
   currency: 0
-  exp: 0
+  exp: 100

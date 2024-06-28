@@ -15,7 +15,7 @@ MonoBehaviour:
   groupMembers:
   - characterType: 0
     characterStatus: 0
-    characterData: {fileID: 0}
+    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
     currentLevel: 0
     currentEXP: 0
     maxEXP: 0
@@ -63,31 +63,7 @@ MonoBehaviour:
     currentEfficiency: 0
   - characterType: 0
     characterStatus: 0
-    characterData: {fileID: 0}
-    currentLevel: 0
-    currentEXP: 0
-    maxEXP: 0
-    maxHP: 0
-    currentHP: 0
-    maxMP: 0
-    currentMP: 0
-    maxAttack: 0
-    currentAttack: 0
-    maxDefense: 0
-    currentDefense: 0
-    maxSpeed: 0
-    currentSpeed: 0
-    maxMagic: 0
-    currentMagic: 0
-    maxResistance: 0
-    currentResistance: 0
-    maxSkill: 0
-    currentSkill: 0
-    maxEfficiency: 0
-    currentEfficiency: 0
-  - characterType: 0
-    characterStatus: 0
-    characterData: {fileID: 0}
+    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
     currentLevel: 0
     currentEXP: 0
     maxEXP: 0
@@ -110,4 +86,4 @@ MonoBehaviour:
     maxEfficiency: 0
     currentEfficiency: 0
   currency: 0
-  exp: 0
+  exp: 10

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454086e51b7b9fd44b5d9adb51eaf515, type: 3}
+  m_Name: Battles 11-20
+  m_EditorClassIdentifier: 
+  groupSet:
+  - {fileID: 11400000, guid: 081cd1e0492af75468ea61f82b8c5c42, type: 2}
+  - {fileID: 11400000, guid: 770bf21724265cf42b312e5666490bda, type: 2}
+  - {fileID: 11400000, guid: 6d8ed88b07e383749ba5ff1d83726eba, type: 2}
+  - {fileID: 11400000, guid: bb2ab19722e7ca14b936ff8be7504cbc, type: 2}
+  - {fileID: 11400000, guid: 883015ae410c82e42912f917c5207c54, type: 2}
+  - {fileID: 11400000, guid: a83e537aacb8f8745ba5ad6566a3ad26, type: 2}
+  - {fileID: 11400000, guid: e56090ec8f5c3914ab3f9d009c23259b, type: 2}
+  - {fileID: 11400000, guid: 0f3379fe1ee829b4783c74950a09d44e, type: 2}
+  - {fileID: 11400000, guid: 898c79a9cf43a9d488e31c2971c0481b, type: 2}
+  - {fileID: 11400000, guid: 65b12dff5dcaf8b40abab60b79500709, type: 2}
