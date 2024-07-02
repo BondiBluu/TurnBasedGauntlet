@@ -297,40 +297,41 @@ public class CharacterTemplate
         }
     }
 
+
     public void LevelUp(StatsList.LevelGrowth[] growth){
         //will change based on level up type
         currentLevel++;
 
-        LevelRoll(growth[0], ref maxHP);
-        LevelRoll(growth[1], ref maxMP);
-        LevelRoll(growth[2], ref maxAttack);
-        LevelRoll(growth[3], ref maxDefense);
-        LevelRoll(growth[4], ref maxSpeed);
-        LevelRoll(growth[5], ref maxMagic);
-        LevelRoll(growth[6], ref maxResistance);
-        LevelRoll(growth[7], ref maxSkill);
-        LevelRoll(growth[8], ref maxEfficiency);
+        LevelRoll(growth[0], ref maxHP, "HP");
+        LevelRoll(growth[1], ref maxMP , "MP");
+        LevelRoll(growth[2], ref maxAttack , "Attack");
+        LevelRoll(growth[3], ref maxDefense , "Defense");
+        LevelRoll(growth[4], ref maxSpeed , "Speed");
+        LevelRoll(growth[5], ref maxMagic   , "Magic");
+        LevelRoll(growth[6], ref maxResistance , "Resistance");
+        LevelRoll(growth[7], ref maxSkill , "Skill");
+        LevelRoll(growth[8], ref maxEfficiency , "Efficiency");
 
         RevertStats();
         currentHP = maxHP;
         currentMP = maxMP;
     }
 
-    public void LevelRoll(StatsList.LevelGrowth growth, ref float statToBeGrown){
+    public void LevelRoll(StatsList.LevelGrowth growth, ref float statToBeGrown, string statName){
         int growthValue = 0;
         //TODO: find the right values for the growths
         switch(growth){
             case StatsList.LevelGrowth.Excellent:
-            growthValue = Random.Range(6, 7);     
+            growthValue = Random.Range(5, 7);
                 break;
             case StatsList.LevelGrowth.Great:
-            growthValue = Random.Range(5, 6);
+            growthValue = Random.Range(4, 6);
                 break;
             case StatsList.LevelGrowth.Good:
-            growthValue = Random.Range(5, 4);
+            growthValue = Random.Range(2, 4);
                 break;
             case StatsList.LevelGrowth.Bad:
-            growthValue = Random.Range(2, 3);
+            growthValue = Random.Range(1, 3);
                 break;
             case StatsList.LevelGrowth.Worst:
             growthValue = Random.Range(0, 2);
@@ -343,6 +344,7 @@ public class CharacterTemplate
             }
                 break;
                 }
+        Debug.Log($" {statName} growth value: {growth}, {growthValue}");
         statToBeGrown += growthValue;
 
         //probably do a wait until a button is pressed to show the player the growths
