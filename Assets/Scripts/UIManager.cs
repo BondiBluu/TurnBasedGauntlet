@@ -51,11 +51,13 @@ public class UIManager : MonoBehaviour
     BattleSystem battleSystem;
     ButtonController buttonController;
     Generator generator;
+    PartyManager partyManager;
 
     private void Start() {
         battleSystem = FindObjectOfType<BattleSystem>();
         buttonController = FindObjectOfType<ButtonController>();
         generator = FindObjectOfType<Generator>();
+        partyManager = FindObjectOfType<PartyManager>();
     }
 
     public void ShowStats(CharacterTemplate character)
@@ -362,33 +364,34 @@ public class UIManager : MonoBehaviour
     }
 
     //having the UI reflect character changes when leveling up
-    public void LevelStats(CharacterTemplate character){
-        foreach(Transform panel in characterHUDContainer){
-            if(panel.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName)
-            {
-                TMP_Text characterLevel = panel.transform.GetChild(1).GetComponent<TMP_Text>();
-                characterLevel.text = "Level: " + character.currentLevel;
+    public void LevelStats(){
+        Debug.Log("Leveling up");
+        // foreach(Transform panel in characterHUDContainer){
+        //     if(panel.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName)
+        //     {
+        //         TMP_Text characterLevel = panel.transform.GetChild(1).GetComponent<TMP_Text>();
+        //         characterLevel.text = "Level: " + character.currentLevel;
 
-                TMP_Text characterHP = panel.transform.GetChild(2).GetComponent<TMP_Text>();
-                characterHP.text = character.currentHP + "/" + character.maxHP;
+        //         TMP_Text characterHP = panel.transform.GetChild(2).GetComponent<TMP_Text>();
+        //         characterHP.text = character.currentHP + "/" + character.maxHP;
 
-                TMP_Text characterMP = panel.transform.GetChild(3).GetComponent<TMP_Text>();
-                characterMP.text =  character.currentMP + "/" + character.maxMP;
+        //         TMP_Text characterMP = panel.transform.GetChild(3).GetComponent<TMP_Text>();
+        //         characterMP.text =  character.currentMP + "/" + character.maxMP;
             
-                Image whiteHPBar = panel.transform.GetChild(4).GetComponent<Image>();
-                Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
-                subHPSlider.maxValue = character.maxHP;
-                subHPSlider.value = character.currentHP;
-                Slider mainHPSlider = whiteHPBar.transform.GetChild(4).GetComponent<Slider>();
-                mainHPSlider.maxValue = character.maxHP;
-                mainHPSlider.value = character.currentHP;
+        //         Image whiteHPBar = panel.transform.GetChild(4).GetComponent<Image>();
+        //         Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
+        //         subHPSlider.maxValue = character.maxHP;
+        //         subHPSlider.value = character.currentHP;
+        //         Slider mainHPSlider = whiteHPBar.transform.GetChild(4).GetComponent<Slider>();
+        //         mainHPSlider.maxValue = character.maxHP;
+        //         mainHPSlider.value = character.currentHP;
 
-                Image whiteMPBar = panel.transform.GetChild(5).GetComponent<Image>();
-                Slider mainMPSlider = whiteMPBar.transform.GetChild(2).GetComponent<Slider>();
-                mainMPSlider.maxValue = character.maxMP;
-                mainMPSlider.value = character.currentMP;
-            }
-        }
+        //         Image whiteMPBar = panel.transform.GetChild(5).GetComponent<Image>();
+        //         Slider mainMPSlider = whiteMPBar.transform.GetChild(2).GetComponent<Slider>();
+        //         mainMPSlider.maxValue = character.maxMP;
+        //         mainMPSlider.value = character.currentMP;
+        //     }
+        // }
     }
     
 }

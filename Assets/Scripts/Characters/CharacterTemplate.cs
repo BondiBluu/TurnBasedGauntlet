@@ -57,12 +57,20 @@ public class CharacterTemplate
     float checkpointResistance;
     float checkpointSkill;
     float checkpointEfficiency;
+
+    EventController eventController;
+
+
     
 
     void Awake(){
         if(characterStatus != CharacterStatus.Downed){
             characterStatus = CharacterStatus.Normal;
         }
+    }
+
+    void Start(){
+        
     }
 
     public void TakeMP(float mp){
@@ -258,6 +266,9 @@ public class CharacterTemplate
             
             //level roll system
             LevelUp(characterData.CharaStatList.Growths);
+
+            //invoke level up event
+            
             //have maxEXP increase by a certain amount and retain the remaining exp
             currentEXP -= maxEXP;
             //increase max exp

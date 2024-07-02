@@ -26,6 +26,6 @@ MonoBehaviour:
   baseResistance: 4
   baseSkill: 3
   baseEfficiency: 8
-  baseExp: 0
+  baseExp: 150
+  growths: 000000000000000000000000000000000000000000000000000000000000000000000000
   immunities: 
-  levelType: 0000000001000000

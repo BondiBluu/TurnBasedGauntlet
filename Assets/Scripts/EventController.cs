@@ -7,6 +7,7 @@ public class EventController : MonoBehaviour
 {
     public UnityEvent OnWin;
     //have anims play, sound effects, etc with OnWin
+    public UnityEvent OnLevelUp;
     
     public UnityEvent OnLose;
 
