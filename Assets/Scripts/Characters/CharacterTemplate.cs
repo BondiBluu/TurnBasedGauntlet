@@ -246,6 +246,7 @@ public class CharacterTemplate
         currentSkill = maxSkill;
         maxEfficiency = characterData.CharaStatList.BaseEfficiency;
         currentEfficiency = maxEfficiency;
+        maxEXP = characterData.CharaStatList.BaseExp;
     }
 
     public void GainEXP(int exp){

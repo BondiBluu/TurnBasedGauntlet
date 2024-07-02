@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
         statsCharaHP.text = $"HP: {character.currentHP}/{character.maxHP}";
         statsCharaMP.text = $"MP: {character.currentMP}/{character.maxMP}";
         charaAbility.text = $"{character.characterData.CharaStatList.CharacterAbility} {character.characterData.CharaStatList.AbilityDesc}";
+        charaPointToNextLvl.text = $"Exp to next level: {character.currentEXP}/{character.maxEXP}";
         SetStats(charaAtk, character.currentAttack, character.maxAttack, "Attack");
         SetStats(charaDef, character.currentDefense, character.maxDefense, "Defense");
         SetStats(charaMag, character.currentMagic, character.maxMagic, "Magic");
@@ -325,8 +326,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
-
        //updating character hp panels
     public void UpdateHPPanel(CharacterTemplate character){
         foreach(Transform child in allyContainer){
@@ -357,6 +356,36 @@ public class UIManager : MonoBehaviour
             if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
                 Image whiteMPBar = child.GetChild(2).GetComponent<Image>();
                 Slider mainMPSlider = whiteMPBar.transform.GetChild(2).GetComponent<Slider>();
+                mainMPSlider.value = character.currentMP;
+            }
+        }
+    }
+
+    //having the UI reflect character changes when leveling up
+    public void LevelStats(CharacterTemplate character){
+        foreach(Transform panel in characterHUDContainer){
+            if(panel.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName)
+            {
+                TMP_Text characterLevel = panel.transform.GetChild(1).GetComponent<TMP_Text>();
+                characterLevel.text = "Level: " + character.currentLevel;
+
+                TMP_Text characterHP = panel.transform.GetChild(2).GetComponent<TMP_Text>();
+                characterHP.text = character.currentHP + "/" + character.maxHP;
+
+                TMP_Text characterMP = panel.transform.GetChild(3).GetComponent<TMP_Text>();
+                characterMP.text =  character.currentMP + "/" + character.maxMP;
+            
+                Image whiteHPBar = panel.transform.GetChild(4).GetComponent<Image>();
+                Slider subHPSlider = whiteHPBar.transform.GetChild(3).GetComponent<Slider>();
+                subHPSlider.maxValue = character.maxHP;
+                subHPSlider.value = character.currentHP;
+                Slider mainHPSlider = whiteHPBar.transform.GetChild(4).GetComponent<Slider>();
+                mainHPSlider.maxValue = character.maxHP;
+                mainHPSlider.value = character.currentHP;
+
+                Image whiteMPBar = panel.transform.GetChild(5).GetComponent<Image>();
+                Slider mainMPSlider = whiteMPBar.transform.GetChild(2).GetComponent<Slider>();
+                mainMPSlider.maxValue = character.maxMP;
                 mainMPSlider.value = character.currentMP;
             }
         }
