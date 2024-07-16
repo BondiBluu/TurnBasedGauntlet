@@ -304,6 +304,7 @@ public class CharacterTemplate
         if(currentLevel > 0){
             for(int i = 0; i < currentLevel; i++){
                 LevelUp(characterData.CharaStatList.Growths);
+                //make max exp increase by a certain amount 
             }
         }
     }
@@ -326,6 +327,9 @@ public class CharacterTemplate
         RevertStats();
         currentHP = maxHP;
         currentMP = maxMP;
+
+        //invoke level up event here to update UI
+        EventController.instance.OnLevelUp.Invoke(this);
     }
 
     public void LevelRoll(StatsList.LevelGrowth growth, ref float statToBeGrown, string statName){

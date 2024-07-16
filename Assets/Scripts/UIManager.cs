@@ -364,8 +364,8 @@ public class UIManager : MonoBehaviour
     }
 
     //having the UI reflect character changes when leveling up
-    public void LevelStats(){
-        Debug.Log("Leveling up");
+    public void UpdateLevelStats(CharacterTemplate character){
+        Debug.Log($"Leveling up {character.characterData.CharaStatList.CharacterName}");
         // foreach(Transform panel in characterHUDContainer){
         //     if(panel.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName)
         //     {

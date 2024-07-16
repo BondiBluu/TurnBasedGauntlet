@@ -7,7 +7,12 @@ public class EventController : MonoBehaviour
 {
     public UnityEvent OnWin;
     //have anims play, sound effects, etc with OnWin
-    public UnityEvent OnLevelUp;
+
+    //this is a custom event that passes a CharacterTemplate object
+    [System.Serializable]
+    public class OnLevelUpEvent : UnityEvent<CharacterTemplate>{};
+    
+    public OnLevelUpEvent OnLevelUp;
     
     public UnityEvent OnLose;
 
