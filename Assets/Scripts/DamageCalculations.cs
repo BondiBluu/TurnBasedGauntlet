@@ -53,9 +53,9 @@ public class DamageCalculations : MonoBehaviour
         int damage = 0;
 
         if(tool.AtkPwr > 0){
-            damage = (int)Math.Ceiling(tool.AtkPwr + (.15f * user.currentEfficiency));
+            damage = (int)Math.Ceiling(tool.AtkPwr + (.2f * user.currentEfficiency));
         } else if(tool.MagPwr > 0){
-            damage = (int)Math.Ceiling(tool.MagPwr + (.15f * user.currentEfficiency));
+            damage = (int)Math.Ceiling(tool.MagPwr + (.2f * user.currentEfficiency));
         }
 
         //if damage is less than 1, set it to 1
@@ -71,11 +71,11 @@ public class DamageCalculations : MonoBehaviour
         int mp = 0;
 
         if(potion.HpRestore > 0){
-            hp = (int)Math.Ceiling(potion.HpRestore + (.15f * user.currentEfficiency));
+            hp = (int)Math.Ceiling(potion.HpRestore + (.2f * user.currentEfficiency));
         }
 
         if(potion.MpRestore > 0){
-            mp = (int)Math.Ceiling(potion.MpRestore + (.15f * user.currentEfficiency));
+            mp = (int)Math.Ceiling(potion.MpRestore + (.2f * user.currentEfficiency));
         }
         
         return (hp, mp);

@@ -56,21 +56,15 @@ public class CharacterTemplate
     float checkpointMagic;
     float checkpointResistance;
     float checkpointSkill;
-    float checkpointEfficiency;
+    float checkpointEfficiency;  
 
-    EventController eventController;
-
-
-    
+    public List<float> characterGrowths = new List<float>();
+    public List<float> previousCharaMaxStats = new List<float>();
 
     void Awake(){
         if(characterStatus != CharacterStatus.Downed){
             characterStatus = CharacterStatus.Normal;
         }
-    }
-
-    void Start(){
-        
     }
 
     public void TakeMP(float mp){
@@ -236,6 +230,7 @@ public class CharacterTemplate
 
     //set base stats
     public void SetBaseStats(){
+        currentLevel = characterData.CharaStatList.BaseLvl;
         maxHP = characterData.CharaStatList.BaseHP;
         currentHP = maxHP;
         maxMP = characterData.CharaStatList.BaseMP;
@@ -261,6 +256,9 @@ public class CharacterTemplate
         //tentative method to gain exp
         currentEXP += exp;
         if(currentEXP >= maxEXP){
+            //add the previous stats to a list
+            AddPreviousMaxStats();
+
             //level up
             Debug.Log($"{characterData.CharaStatList.CharacterName} leveled up!");
             
@@ -274,6 +272,18 @@ public class CharacterTemplate
             //increase max exp
             maxEXP += 100;
         }
+    }
+
+    public void AddPreviousMaxStats(){
+        previousCharaMaxStats.Add(maxHP);
+        previousCharaMaxStats.Add(maxMP);
+        previousCharaMaxStats.Add(maxAttack);
+        previousCharaMaxStats.Add(maxDefense);
+        previousCharaMaxStats.Add(maxSpeed);
+        previousCharaMaxStats.Add(maxMagic);
+        previousCharaMaxStats.Add(maxResistance);
+        previousCharaMaxStats.Add(maxSkill);
+        previousCharaMaxStats.Add(maxEfficiency);
     }
     
 
@@ -337,13 +347,13 @@ public class CharacterTemplate
         //TODO: find the right values for the growths
         switch(growth){
             case StatsList.LevelGrowth.Excellent:
-            growthValue = Random.Range(5, 7);
+            growthValue = Random.Range(8, 10);
                 break;
             case StatsList.LevelGrowth.Great:
-            growthValue = Random.Range(4, 6);
+            growthValue = Random.Range(6, 7);
                 break;
-            case StatsList.LevelGrowth.Good:
-            growthValue = Random.Range(2, 4);
+            case StatsList.LevelGrowth.Average:
+            growthValue = Random.Range(3, 5);
                 break;
             case StatsList.LevelGrowth.Bad:
             growthValue = Random.Range(1, 3);
@@ -353,14 +363,17 @@ public class CharacterTemplate
                 break;
             case StatsList.LevelGrowth.Abnormal:
             if(currentLevel < 20){
-                growthValue = Random.Range(1, 2);
+                growthValue = Random.Range(1, 3);
             } else {
-                growthValue = Random.Range(6,7);
+                growthValue = Random.Range(9,10);
             }
                 break;
                 }
         Debug.Log($" {statName} growth value: {growth}, {growthValue}");
         statToBeGrown += growthValue;
+
+        //add the growth value to the character growths list to use in the level up panel
+        characterGrowths.Add(growthValue);
 
         //probably do a wait until a button is pressed to show the player the growths
     }

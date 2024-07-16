@@ -19,7 +19,7 @@ public class StatsList : ScriptableObject
     public enum LevelGrowth{
         Excellent,
         Great,
-        Good,
+        Average,
         Bad,
         Worst,
         Abnormal
@@ -50,6 +50,10 @@ public class StatsList : ScriptableObject
     void OnEnable(){
         if(growths == null || growths.Length != 9){
             growths = new LevelGrowth[9];
+        }
+        //if the base level is less than 1, set it to 1
+        if(baseLvl == 0){
+            baseLvl = 1;
         }
     }
 
