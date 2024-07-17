@@ -270,24 +270,27 @@ public class BattleSystem : MonoBehaviour
          {
              character.GainEXP(exp);
          }
-        // //have the player gain currency        
-        // //if battle is won, go to the next battle. Battle increases by 1
-        // if(currentGroupSet > 9)
-        // {
-        //     currentState = BattleState.Checkpoint;
-        //     //go to checkpoint
-        //     currentGroupSet = 0; //to be moved
-        // } else
-        // {
-        //     currentGroupSet++;
-        //     Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
-        //     EnemySetup();
-        // }
+        //have the player gain currency        
+        //if battle is won, go to the next battle. Battle increases by 1
+        if(currentGroupSet >= partyManager.seed[currentSeed].GroupSet.Count - 1)
+        {
+            currentState = BattleState.Checkpoint;
+            Debug.Log("Checkpoint reached, Battle State: " + currentState);
+            //go to checkpoint
+            currentGroupSet = 0; //to be moved
+        } else
+        {
+            currentGroupSet++;
+            Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
+            //EnemySetup();
+        }
 
     }
 
     public void Lose(){
         Debug.Log("Battle Lost!");
+        currentGroupSet = 0;
+        Debug.Log(currentGroupSet);
         //game over
         //character stats and levels have to be tranfered back to what they were at the previous checkpoint
         //whatever battle you were in goes to 0- start at the beginning of the checkpoint- so go the current seed
@@ -385,6 +388,7 @@ public class BattleSystem : MonoBehaviour
         else if(currentState == BattleState.Lost)
         {
             Debug.Log(currentState);
+            EventController.instance.OnLose.Invoke();
             //invoke lose unity event
         } 
     }

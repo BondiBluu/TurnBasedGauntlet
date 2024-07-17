@@ -5359,7 +5359,19 @@ MonoBehaviour:
         m_CallState: 2
   OnLose:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 564971310}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: Lose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &888819968
 GameObject:
   m_ObjectHideFlags: 0
@@ -6304,7 +6316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07617996, y: 0.21181154}
   m_AnchorMax: {x: 0.47615033, y: 0.3091885}
-  m_AnchoredPosition: {x: -2.9700928, y: 2.3599548}
+  m_AnchoredPosition: {x: -2.9700928, y: 2.3599854}
   m_SizeDelta: {x: 5.9329987, y: 1.6679993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046060832
