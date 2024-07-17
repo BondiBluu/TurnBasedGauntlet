@@ -3454,7 +3454,7 @@ MonoBehaviour:
   levelUpSpd: {fileID: 1806527792}
   levelUpMove: {fileID: 644047135}
   nextButton: {fileID: 917810571}
-  closeButton: {fileID: 0}
+  closeButton: {fileID: 361814089}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

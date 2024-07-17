@@ -23,6 +23,16 @@ public class LevelUpRolls : MonoBehaviour
     public TMP_Text levelUpMove;
     public Button nextButton;
     public Button closeButton;
+    string[] statNames = {"HP", "MP", "ATK", "DEF", "SPD", "MAG", "RES", "SKI", "EFF", "LVL"};
+    TMP_Text[] texts;
+    
+    void Start()
+    {
+        levelUpPanel.SetActive(false);
+        //array of texts
+        texts = new TMP_Text[]{levelUpHP, levelUpMP, levelUpAtk, levelUpDef, levelUpSpd, levelUpMag, levelUpRes, levelUpSki, levelUpEff, levelUp};
+    }
+
 
     //showing the leveling up panel
     public void LevelUpPanel(CharacterTemplate character){
@@ -30,15 +40,8 @@ public class LevelUpRolls : MonoBehaviour
 
         levelUpText.text = $"{character.characterData.CharaStatList.CharacterName} has leveled up!";
         levelUp.text = "Level: + 1";
-        levelUpHP.text = $"HP: {character.previousCharaMaxStats[0]} + ({character.characterGrowths[0]})";
-        levelUpMP.text = $"MP: {character.previousCharaMaxStats[1]} + ({character.characterGrowths[1]})";
-        levelUpAtk.text = $"ATK: {character.previousCharaMaxStats[2]} + ({character.characterGrowths[2]})";
-        levelUpDef.text = $"DEF: {character.previousCharaMaxStats[3]} + ({character.characterGrowths[3]})";
-        levelUpSpd.text = $"SPD: {character.previousCharaMaxStats[4]} + ({character.characterGrowths[4]})";
-        levelUpMag.text = $"MAG: {character.previousCharaMaxStats[5]} + ({character.characterGrowths[5]})";
-        levelUpRes.text = $"RES: {character.previousCharaMaxStats[6]} + ({character.characterGrowths[6]})";
-        levelUpSki.text = $"SKI: {character.previousCharaMaxStats[7]} + ({character.characterGrowths[7]})";
-        levelUpEff.text = $"EFF: {character.previousCharaMaxStats[8]} + ({character.characterGrowths[8]})";
+
+        StatsText(texts, statNames, character.previousCharaMaxStats, character.characterGrowths);
 
         //if character has a new move, show it
 
@@ -49,19 +52,24 @@ public class LevelUpRolls : MonoBehaviour
         //add on click event to show NextPanel
         nextButton.onClick.AddListener(() => NextPanel(character));
     }
+    
+    public void StatsText(TMP_Text[] text, string[] statNames, List<float> previousStats, List<float> growths){
+        for(int i = 0; i < growths.Count; i++){
+            text[i].text = $"{statNames[i]}: {previousStats[i]} + ({growths[i]})";
+        }
+    }
+
+    public void NextPanelText(TMP_Text[] text, string[] statName, float[] maxStats){
+        for(int i = 0; i < maxStats.Length; i++){
+            text[i].text = $"{statName[i]}: {maxStats[i]}";
+        }
+    }
 
     public void NextPanel(CharacterTemplate character){
-        levelUp.text = $"Level: {character.currentLevel}";
-        levelUpHP.text = $"HP: {character.maxHP}";
-        levelUpMP.text = $"MP: {character.maxMP}";
-        levelUpAtk.text = $"ATK: {character.maxAttack}";
-        levelUpDef.text = $"DEF: {character.maxDefense}";
-        levelUpSpd.text = $"SPD: {character.maxSpeed}";
-        levelUpMag.text = $"MAG: {character.maxMagic}";
-        levelUpRes.text = $"RES: {character.maxResistance}";
-        levelUpSki.text = $"SKI: {character.maxSkill}";
-        levelUpEff.text = $"EFF: {character.maxEfficiency}";
+        float[] maxStats = {character.maxHP, character.maxMP, character.maxAttack, character.maxDefense, character.maxSpeed, character.maxMagic, character.maxResistance, character.maxSkill, character.maxEfficiency, character.currentLevel};
 
+        NextPanelText(texts, statNames, maxStats);
+       
         //if character has a new move, show it
 
         //making close button active and next button inactive
@@ -70,9 +78,13 @@ public class LevelUpRolls : MonoBehaviour
 
         //add on click event to close the panel
         closeButton.onClick.AddListener(() => CloseLevelUpPanel());
+
+        //clear the lists
+        character.previousCharaMaxStats.Clear();
+        character.characterGrowths.Clear();
     }
 
     public void CloseLevelUpPanel(){
-        levelUpPanel.SetActive(false);
+        levelUpPanel.SetActive(false);       
     }
 }
