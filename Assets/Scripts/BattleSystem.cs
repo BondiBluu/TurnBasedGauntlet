@@ -276,7 +276,7 @@ public class BattleSystem : MonoBehaviour
         {
             currentState = BattleState.Checkpoint;
             Debug.Log("Checkpoint reached, Battle State: " + currentState);
-            //go to checkpoint
+            //go to checkpoint, most likely will be invoked
             currentGroupSet = 0; //to be moved
         } else
         {
