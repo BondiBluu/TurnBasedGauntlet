@@ -284,6 +284,7 @@ public class CharacterTemplate
         previousCharaMaxStats.Add(maxResistance);
         previousCharaMaxStats.Add(maxSkill);
         previousCharaMaxStats.Add(maxEfficiency);
+        Debug.Log($"Previous stats count: {previousCharaMaxStats.Count}. Character: {characterData.CharaStatList.CharacterName}");
     }
     
 
@@ -339,7 +340,7 @@ public class CharacterTemplate
         currentMP = maxMP;
 
         //invoke level up event here to update UI
-        EventController.instance.OnLevelUp.Invoke(this);
+        EventController.instance.AddToLevelUpQueue(this);
     }
 
     public void LevelRoll(StatsList.LevelGrowth growth, ref float statToBeGrown, string statName){

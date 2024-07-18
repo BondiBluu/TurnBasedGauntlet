@@ -78,8 +78,8 @@ public class LevelUpRolls : MonoBehaviour
         //making close button active and next button inactive
         OpenAndCloseButtons(false);
 
-        //add on click event to close the panel
-        closeButton.onClick.AddListener(() => CloseLevelUpPanel());
+        //add on click event to go to the next character
+        closeButton.onClick.AddListener(() => EventController.instance.QueueNextCharaLevelUp());
         closeButton.Select();
 
         //clear the lists
