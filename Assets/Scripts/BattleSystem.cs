@@ -264,26 +264,29 @@ public class BattleSystem : MonoBehaviour
     public void Win(){
         Debug.Log("Battle Won!");
          int exp = partyManager.seed[currentSeed].GroupSet[currentGroupSet].Exp;
-         Debug.Log($"Party gained {exp} exp each!");
+         //Debug.Log($"Party gained {exp} exp each!");
          //have the player gain experience
          foreach(CharacterTemplate character in partyManager.currentParty)
          {
              character.GainEXP(exp);
          }
+         
+         EventController.instance.QueueNextCharaLevelUp();
+         
         //have the player gain currency        
         //if battle is won, go to the next battle. Battle increases by 1
-        if(currentGroupSet >= partyManager.seed[currentSeed].GroupSet.Count - 1)
-        {
-            currentState = BattleState.Checkpoint;
-            Debug.Log("Checkpoint reached, Battle State: " + currentState);
-            //go to checkpoint, most likely will be invoked
-            currentGroupSet = 0; //to be moved
-        } else
-        {
-            currentGroupSet++;
-            Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
-            //EnemySetup();
-        }
+        // if(currentGroupSet >= partyManager.seed[currentSeed].GroupSet.Count - 1)
+        // {
+        //     currentState = BattleState.Checkpoint;
+        //     Debug.Log("Checkpoint reached, Battle State: " + currentState);
+        //     //go to checkpoint, most likely will be invoked
+        //     currentGroupSet = 0; //to be moved
+        // } else
+        // {
+        //     currentGroupSet++;
+        //     Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
+        //     //EnemySetup();
+        // }
 
     }
 

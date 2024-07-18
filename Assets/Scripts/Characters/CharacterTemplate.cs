@@ -284,7 +284,6 @@ public class CharacterTemplate
         previousCharaMaxStats.Add(maxResistance);
         previousCharaMaxStats.Add(maxSkill);
         previousCharaMaxStats.Add(maxEfficiency);
-        Debug.Log($"Previous stats count: {previousCharaMaxStats.Count}. Character: {characterData.CharaStatList.CharacterName}");
     }
     
 
@@ -370,7 +369,7 @@ public class CharacterTemplate
             }
                 break;
                 }
-        Debug.Log($" {statName} growth value: {growth}, {growthValue}");
+        //Debug.Log($" {statName} growth value: {growth}, {growthValue}");
         statToBeGrown += growthValue;
 
         //add the growth value to the character growths list to use in the level up panel

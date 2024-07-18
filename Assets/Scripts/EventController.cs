@@ -7,7 +7,7 @@ public class EventController : MonoBehaviour
 {
     LevelUpRolls levelUpRolls;
 
-    Queue<CharacterTemplate> levelUpQueue = new Queue<CharacterTemplate>();
+    public Queue<CharacterTemplate> levelUpQueue = new Queue<CharacterTemplate>();
     public UnityEvent OnWin;
     //have anims play, sound effects, etc with OnWin
 
@@ -15,31 +15,38 @@ public class EventController : MonoBehaviour
     [System.Serializable]
     public class OnLevelUpEvent : UnityEvent<CharacterTemplate>{};
 
+    int levelUpQueueCount;
+
     void Start(){
         levelUpRolls = FindObjectOfType<LevelUpRolls>();
     }
 
     public void AddToLevelUpQueue(CharacterTemplate character){
         levelUpQueue.Enqueue(character);
-        Debug.Log("Added to level up queue");
         Debug.Log($"Queue count: {levelUpQueue.Count}. Character: {character.characterData.CharaStatList.CharacterName}");
         if(levelUpQueue.Count == 1){
             
-            QueueNextCharaLevelUp();
+            //QueueNextCharaLevelUp();
             
         }
     }
+
 
     //dequeue the first character in the queue and invokes the OnLevelUp event
     public void QueueNextCharaLevelUp(){
         
 
         if(levelUpQueue.Count > 0){
+            levelUpQueueCount++;
             Debug.Log("QueueLevelUp called");
+            Debug.Log($"Queue count: {levelUpQueueCount}");
+
             CharacterTemplate chara = levelUpQueue.Dequeue();
             OnLevelUp.Invoke(chara);
-        } else{
+        } 
+        else{
             levelUpRolls.CloseLevelUpPanel();
+            levelUpQueueCount = 0;
         }
     }
     

@@ -38,6 +38,7 @@ public class LevelUpRolls : MonoBehaviour
 
     //showing the leveling up panel
     public void LevelUpPanel(CharacterTemplate character){
+        Debug.Log("LevelUpPanel called");
         buttonController.DisableButtons();
         levelUpPanel.SetActive(true);
 
