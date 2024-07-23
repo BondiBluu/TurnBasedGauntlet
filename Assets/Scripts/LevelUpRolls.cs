@@ -83,12 +83,6 @@ public class LevelUpRolls : MonoBehaviour
         //making close button active and next button inactive
         OpenAndCloseButtons(false);
 
-        //on click the character in the queue list
-
-        //delete the character from the list
-        EventController.instance.charactersToBeLeveledUp.Remove(character);
-        Debug.Log($"Characters to be leveled up: {EventController.instance.charactersToBeLeveledUp.Count}");
-
         //Remove previous listeners
         closeButton.onClick.RemoveAllListeners();
         // Add on click event to go to the next character

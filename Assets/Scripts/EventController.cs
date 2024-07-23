@@ -8,7 +8,6 @@ public class EventController : MonoBehaviour
     LevelUpRolls levelUpRolls;
 
     public Queue<CharacterTemplate> levelUpQueue = new Queue<CharacterTemplate>();
-    public List<CharacterTemplate> charactersToBeLeveledUp = new List<CharacterTemplate>();
 
     public UnityEvent OnWin;
     //have anims play, sound effects, etc with OnWin

@@ -287,7 +287,7 @@ public class BattleSystem : MonoBehaviour
         {
             currentGroupSet++;
             Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
-            //EnemySetup();
+            EnemySetup();
         }
 
     }
@@ -298,6 +298,11 @@ public class BattleSystem : MonoBehaviour
         Debug.Log($"Current battle: {currentGroupSet} of seed {currentSeed} has been loaded.");
         //game over
         //character stats and levels have to be tranfered back to what they were at the previous checkpoint
+        // foreach(CharacterTemplate character in partyManager.currentParty)
+        // {
+        //     character.RevertStats();
+        // }
+        // EnemySetup();
         //whatever battle you were in goes to 0- start at the beginning of the checkpoint- so go the current seed
         //if the player loses, go back to the previous checkpoint to prepare
     }
