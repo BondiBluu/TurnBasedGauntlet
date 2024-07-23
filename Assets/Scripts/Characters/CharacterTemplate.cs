@@ -261,7 +261,7 @@ public class CharacterTemplate
             AddPreviousMaxStats();
 
             //level up
-            Debug.Log($"{characterData.CharaStatList.CharacterName} leveled up!");
+            //Debug.Log($"{characterData.CharaStatList.CharacterName} leveled up!");
             
             //level roll system
             LevelUp(characterData.CharaStatList.Growths);

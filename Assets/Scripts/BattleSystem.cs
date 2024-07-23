@@ -266,7 +266,7 @@ public class BattleSystem : MonoBehaviour
     public void Win(){
         Debug.Log("Battle Won!");
          int exp = partyManager.seed[currentSeed].GroupSet[currentGroupSet].Exp;
-         //Debug.Log($"Party gained {exp} exp each!");
+         Debug.Log($"Party gained {exp} exp each!");
          //have the player gain experience
          foreach(CharacterTemplate character in partyManager.currentParty)
          {
@@ -274,6 +274,11 @@ public class BattleSystem : MonoBehaviour
          }
          
         EventController.instance.QueueNextCharaLevelUp();
+
+        //possibly put a wait until clause to stop the game from continuing until the level up panel is closed
+        //need to make a method that attaches the level up event since coroutines can't be invoked
+        //yield return new WaitForSeconds(1f);
+
          
         //have the player gain currency
         //if battle is won, go to the next battle. Battle increases by 1
@@ -287,7 +292,7 @@ public class BattleSystem : MonoBehaviour
         {
             currentGroupSet++;
             Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
-            EnemySetup();
+            //StartCoroutine(EnemySetup());
         }
 
     }
