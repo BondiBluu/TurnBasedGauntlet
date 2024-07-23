@@ -23,6 +23,7 @@ public class BattleSystem : MonoBehaviour
     ButtonController buttonController;
     DamageCalculations damageCalc;
     AttackSaver attackSaver;
+    LevelUpRolls levelUpRolls;
     public GameObject characterPrefab;
     public Transform[] playerBattleStations;
     public Transform[] enemyBattleStations;
@@ -42,6 +43,7 @@ public class BattleSystem : MonoBehaviour
         buttonController = FindObjectOfType<ButtonController>();
         damageCalc = FindObjectOfType<DamageCalculations>();
         attackSaver = FindObjectOfType<AttackSaver>();
+        levelUpRolls = FindObjectOfType<LevelUpRolls>();
         currentState = BattleState.PlayerSetup;
         //disabling all buttons
         buttonController.DisableButtons();
@@ -271,29 +273,29 @@ public class BattleSystem : MonoBehaviour
              character.GainEXP(exp);
          }
          
-         EventController.instance.QueueNextCharaLevelUp();
+        EventController.instance.QueueNextCharaLevelUp();
          
-        //have the player gain currency        
+        //have the player gain currency
         //if battle is won, go to the next battle. Battle increases by 1
-        // if(currentGroupSet >= partyManager.seed[currentSeed].GroupSet.Count - 1)
-        // {
-        //     currentState = BattleState.Checkpoint;
-        //     Debug.Log("Checkpoint reached, Battle State: " + currentState);
-        //     //go to checkpoint, most likely will be invoked
-        //     currentGroupSet = 0; //to be moved
-        // } else
-        // {
-        //     currentGroupSet++;
-        //     Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
-        //     //EnemySetup();
-        // }
+        if(currentGroupSet >= partyManager.seed[currentSeed].GroupSet.Count - 1)
+        {
+            currentState = BattleState.Checkpoint;
+            Debug.Log("Checkpoint reached, Battle State: " + currentState);
+            //go to checkpoint, most likely will be invoked
+            currentGroupSet = 0; //to be moved
+        } else
+        {
+            currentGroupSet++;
+            Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
+            //EnemySetup();
+        }
 
     }
 
     public void Lose(){
         Debug.Log("Battle Lost!");
         currentGroupSet = 0;
-        Debug.Log(currentGroupSet);
+        Debug.Log($"Current battle: {currentGroupSet} of seed {currentSeed} has been loaded.");
         //game over
         //character stats and levels have to be tranfered back to what they were at the previous checkpoint
         //whatever battle you were in goes to 0- start at the beginning of the checkpoint- so go the current seed

@@ -61,6 +61,7 @@ public class CharacterTemplate
     public List<float> characterGrowths = new List<float>();
     public List<float> previousCharaMaxStats = new List<float>();
 
+
     void Awake(){
         if(characterStatus != CharacterStatus.Downed){
             characterStatus = CharacterStatus.Normal;

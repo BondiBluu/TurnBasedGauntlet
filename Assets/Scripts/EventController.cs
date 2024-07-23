@@ -8,6 +8,8 @@ public class EventController : MonoBehaviour
     LevelUpRolls levelUpRolls;
 
     public Queue<CharacterTemplate> levelUpQueue = new Queue<CharacterTemplate>();
+    public List<CharacterTemplate> charactersToBeLeveledUp = new List<CharacterTemplate>();
+
     public UnityEvent OnWin;
     //have anims play, sound effects, etc with OnWin
 
@@ -23,12 +25,6 @@ public class EventController : MonoBehaviour
 
     public void AddToLevelUpQueue(CharacterTemplate character){
         levelUpQueue.Enqueue(character);
-        Debug.Log($"Queue count: {levelUpQueue.Count}. Character: {character.characterData.CharaStatList.CharacterName}");
-        if(levelUpQueue.Count == 1){
-            
-            //QueueNextCharaLevelUp();
-            
-        }
     }
 
 
@@ -38,11 +34,10 @@ public class EventController : MonoBehaviour
 
         if(levelUpQueue.Count > 0){
             levelUpQueueCount++;
-            Debug.Log("QueueLevelUp called");
-            Debug.Log($"Queue count: {levelUpQueueCount}");
 
             CharacterTemplate chara = levelUpQueue.Dequeue();
             OnLevelUp.Invoke(chara);
+            
         } 
         else{
             levelUpRolls.CloseLevelUpPanel();

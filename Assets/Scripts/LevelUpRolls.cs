@@ -52,8 +52,12 @@ public class LevelUpRolls : MonoBehaviour
         //making close button inactive and next button active
         OpenAndCloseButtons(true);
 
+        // Remove previous listeners
+        nextButton.onClick.RemoveAllListeners();
+
         //add on click event to show NextPanel
         nextButton.onClick.AddListener(() => NextPanel(character));
+        
         nextButton.Select();
     }
     
@@ -79,9 +83,18 @@ public class LevelUpRolls : MonoBehaviour
         //making close button active and next button inactive
         OpenAndCloseButtons(false);
 
-        //add on click event to go to the next character
+        //on click the character in the queue list
+
+        //delete the character from the list
+        EventController.instance.charactersToBeLeveledUp.Remove(character);
+        Debug.Log($"Characters to be leveled up: {EventController.instance.charactersToBeLeveledUp.Count}");
+
+        //Remove previous listeners
+        closeButton.onClick.RemoveAllListeners();
+        // Add on click event to go to the next character
         closeButton.onClick.AddListener(() => EventController.instance.QueueNextCharaLevelUp());
-        closeButton.Select();
+
+    closeButton.Select();
 
         //clear the lists
         character.previousCharaMaxStats.Clear();
