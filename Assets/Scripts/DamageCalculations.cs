@@ -101,14 +101,18 @@ public class DamageCalculations : MonoBehaviour
     }
 
     public IEnumerator UpdateHealthBars(CharacterTemplate user, CharacterTemplate target){
-        yield return UpdateHealtheBar(user);
-        yield return UpdateHealtheBar(target);
+        yield return UpdateHPAndMPBar(user);
+        yield return UpdateHPAndMPBar(target);
     }
 
-    IEnumerator UpdateHealtheBar(CharacterTemplate character){
+    IEnumerator UpdateHPAndMPBar(CharacterTemplate character, bool updateMP = false){
         if(character.characterType == CharacterTemplate.CharacterType.Friendly){
             yield return StartCoroutine(uiManager.UpdateHP(character));
             uiManager.UpdateHPPanel(character);
+            if(updateMP){
+                yield return StartCoroutine(uiManager.UpdateMP(character));
+                uiManager.UpdateMPPanel(character);
+            }
         } else if(character.characterType == CharacterTemplate.CharacterType.Enemy){
             yield return StartCoroutine(uiManager.UpdateEnemyHPBar(character));
             uiManager.UpdateEnemyHPPanel(character);
@@ -137,6 +141,7 @@ public class DamageCalculations : MonoBehaviour
         if(user.characterType == CharacterTemplate.CharacterType.Friendly){
             yield return HandleUserMPLoss(user, move);
         }
+        
         yield return new WaitForSeconds(1f);
         
         DamagingMoves damagingMove = (DamagingMoves)move;
@@ -191,7 +196,7 @@ public class DamageCalculations : MonoBehaviour
         string message = $"{userName} used {item.ItemName} on {targetName}. {targetName} lost {damage} hp.";
         
         //update the target health bar
-        yield return UpdateHealtheBar(target);
+        yield return UpdateHPAndMPBar(target);
 
         //debuff application if any
         if(tool.Debuffs.Length > 0){
@@ -221,13 +226,15 @@ public class DamageCalculations : MonoBehaviour
         if(healingMove.HealTypes == HealingMoves.HealType.Revive){
             target.characterStatus = CharacterTemplate.CharacterStatus.Normal;
         } 
+
         //target heals
         int healing = CalcHealingMove(user, healingMove, target);
         string message = $"{userName} used {move.MoveName} on {targetName}. {targetName} healed for {healing} hp.";
 
         target.HealDamage(healing, 0);
+
         //update the target health bar
-        yield return UpdateHealtheBar(target);
+        yield return UpdateHPAndMPBar(target);
         
 
         //reverts debuffs if any
@@ -261,15 +268,7 @@ public class DamageCalculations : MonoBehaviour
         target.HealDamage(hp, mp);
         
         //update the target health bar
-        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
-            yield return StartCoroutine(uiManager.UpdateHP(target));
-            uiManager.UpdateHPPanel(target);
-            yield return StartCoroutine(uiManager.UpdateMP(target));
-            uiManager.UpdateMPPanel(target);
-        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
-            yield return StartCoroutine(uiManager.UpdateEnemyHPBar(target));
-            uiManager.UpdateEnemyHPPanel(target);
-        }
+        yield return UpdateHPAndMPBar(target, true);
 
         //cure debuffs if any
         if(potion.HealDebuffs.Length > 0){
@@ -281,6 +280,7 @@ public class DamageCalculations : MonoBehaviour
 
 
         //can revive downed characters
+        LogMessage(message);
     }
 
     public IEnumerator OnStatus(CharacterTemplate user, Moves move, CharacterTemplate target){
@@ -306,7 +306,6 @@ public class DamageCalculations : MonoBehaviour
             target.ApplyBuff(supplementaryMove.Buffs, supplementaryMove.BuffValue);
             message += $" {targetName}'s  {string.Join(", ", supplementaryMove.Buffs)} raised.";
         }
-
 
         //status applied to target
 
