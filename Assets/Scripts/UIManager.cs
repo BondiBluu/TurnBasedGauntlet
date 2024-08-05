@@ -328,7 +328,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-       //updating character hp panels
+       //updating character hp panels (the sub panels when you click on a move)
     public void UpdateHPPanel(CharacterTemplate character){
         foreach(Transform child in allyContainer){
             if(child.GetComponentInChildren<TMP_Text>().text == character.characterData.CharaStatList.CharacterName){
