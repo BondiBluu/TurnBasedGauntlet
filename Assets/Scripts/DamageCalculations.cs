@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -93,6 +94,38 @@ public class DamageCalculations : MonoBehaviour
         return mpLoss;
     }
 
+    public IEnumerator HandleUserMPLoss(CharacterTemplate user, Moves move){
+        user.TakeMP(CalcMPLoss(move));
+        yield return StartCoroutine(uiManager.UpdateMP(user));
+        uiManager.UpdateMPPanel(user);
+    }
+
+    public IEnumerator UpdateHealthBars(CharacterTemplate user, CharacterTemplate target){
+        yield return UpdateHealtheBar(user);
+        yield return UpdateHealtheBar(target);
+    }
+
+    IEnumerator UpdateHealtheBar(CharacterTemplate character){
+        if(character.characterType == CharacterTemplate.CharacterType.Friendly){
+            yield return StartCoroutine(uiManager.UpdateHP(character));
+            uiManager.UpdateHPPanel(character);
+        } else if(character.characterType == CharacterTemplate.CharacterType.Enemy){
+            yield return StartCoroutine(uiManager.UpdateEnemyHPBar(character));
+            uiManager.UpdateEnemyHPPanel(character);
+        }
+    }
+
+    void LogMessage(string message){
+        Debug.Log(message);
+        generator.AddToBattleLog(message);
+    }
+
+    public int ApplyDamage(CharacterTemplate user, ToolObject tool, CharacterTemplate target){
+        int damage = CalcTool(user, tool, target);
+        target.TakeDamage(damage);
+        return damage;
+    }
+
 
     //putting everything together for the attack 
     public IEnumerator OnAttack(CharacterTemplate user, Moves move, CharacterTemplate target){
@@ -102,9 +135,7 @@ public class DamageCalculations : MonoBehaviour
 
         //calc the mp loss first and update the user mp bar
         if(user.characterType == CharacterTemplate.CharacterType.Friendly){
-            user.TakeMP(CalcMPLoss(move));
-            yield return StartCoroutine(uiManager.UpdateMP(user));
-            uiManager.UpdateMPPanel(user);
+            yield return HandleUserMPLoss(user, move);
         }
         yield return new WaitForSeconds(1f);
         
@@ -126,23 +157,8 @@ public class DamageCalculations : MonoBehaviour
             message += $" {userName} healed for {healing} hp.";
         }
 
-        //update the user health bar
-        if(user.characterType == CharacterTemplate.CharacterType.Friendly){
-            yield return StartCoroutine(uiManager.UpdateHP(user));
-            uiManager.UpdateHPPanel(user);
-        } else if(user.characterType == CharacterTemplate.CharacterType.Enemy){
-            uiManager.StartCoroutine(uiManager.UpdateEnemyHPBar(user));
-            uiManager.UpdateEnemyHPPanel(user);
-        }
-
-        //update the target health bar
-        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
-            yield return StartCoroutine(uiManager.UpdateHP(target));
-            uiManager.UpdateHPPanel(target);
-        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
-            yield return StartCoroutine(uiManager.UpdateEnemyHPBar(target));
-            uiManager.UpdateEnemyHPPanel(target);
-        }
+        //update the user and target health bars
+        yield return UpdateHealthBars(user, target);
 
         yield return new WaitForSeconds(1f);
        
@@ -156,8 +172,7 @@ public class DamageCalculations : MonoBehaviour
 
         //TODO: add status to the target if any
 
-        Debug.Log(message);
-        generator.AddToBattleLog(message);
+        LogMessage(message);
 
         //seconds pass
     }
@@ -172,31 +187,21 @@ public class DamageCalculations : MonoBehaviour
         //user anim plays
         //target pain anim plays
         //damage to target
-        int damage = CalcTool(user, tool, target); //used to get the message for the log easier
-        target.TakeDamage(damage);
-
+        int damage = ApplyDamage(user, tool, target);
         string message = $"{userName} used {item.ItemName} on {targetName}. {targetName} lost {damage} hp.";
         
         //update the target health bar
-        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
-            yield return StartCoroutine(uiManager.UpdateHP(target));
-            uiManager.UpdateHPPanel(target);
-        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
-            yield return StartCoroutine(uiManager.UpdateEnemyHPBar(target));
-            uiManager.UpdateEnemyHPPanel(target);
-        }
+        yield return UpdateHealtheBar(target);
 
         //debuff application if any
         if(tool.Debuffs.Length > 0){
             target.ApplyDebuff(tool.Debuffs.Cast<DamagingMoves.Debuff>().ToArray(), tool.DebuffAmount);
-            message += $" {targetName}'s {string.Join(", ", tool.Debuffs)} lowered.";            
-
+            message += $" {targetName}'s {string.Join(", ", tool.Debuffs)} lowered.";
         }
 
         //status effects, if any
 
-        Debug.Log(message);
-        generator.AddToBattleLog(message);
+        LogMessage(message);
     }
 
     //only player heals
@@ -206,9 +211,7 @@ public class DamageCalculations : MonoBehaviour
         string targetName = target.characterData.CharaStatList.CharacterName;
         
         //mp loss and mp bar update
-        user.TakeMP(CalcMPLoss(move));
-        yield return StartCoroutine(uiManager.UpdateMP(user));
-        uiManager.UpdateMPPanel(user);
+        yield return HandleUserMPLoss(user, move);
 
         HealingMoves healingMove = (HealingMoves)move;
 
@@ -220,18 +223,11 @@ public class DamageCalculations : MonoBehaviour
         } 
         //target heals
         int healing = CalcHealingMove(user, healingMove, target);
-
         string message = $"{userName} used {move.MoveName} on {targetName}. {targetName} healed for {healing} hp.";
 
         target.HealDamage(healing, 0);
         //update the target health bar
-        if(target.characterType == CharacterTemplate.CharacterType.Friendly){
-            yield return StartCoroutine(uiManager.UpdateHP(target));
-            uiManager.UpdateHPPanel(target);
-        } else if(target.characterType == CharacterTemplate.CharacterType.Enemy){
-            yield return StartCoroutine(uiManager.UpdateEnemyHPBar(target));
-            uiManager.UpdateEnemyHPPanel(target);
-        }
+        yield return UpdateHealtheBar(target);
         
 
         //reverts debuffs if any
@@ -244,8 +240,7 @@ public class DamageCalculations : MonoBehaviour
 
     
         //seconds pass
-        Debug.Log(message);
-        generator.AddToBattleLog(message);
+        LogMessage(message);
     }
 
     public IEnumerator OnPotion(CharacterTemplate user, ItemObject item, CharacterTemplate target){
@@ -320,6 +315,4 @@ public class DamageCalculations : MonoBehaviour
 
         //seconds pass
     }
-
-
 }
