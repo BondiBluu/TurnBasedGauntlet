@@ -23,7 +23,7 @@ MonoBehaviour:
   targetNumbers: 0
   movePower: 20
   debuffs: 0000000006000000
-  debuffValue: 0
+  debuffValue: 3
   statusEffects: 
   atkType: 1
   dmgType: 1
