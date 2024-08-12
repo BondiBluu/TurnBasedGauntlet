@@ -61,6 +61,12 @@ public class CharacterTemplate
     public List<float> characterGrowths = new List<float>();
     public List<float> previousCharaMaxStats = new List<float>();
 
+     //3 equip slots (1 weapon, 2 pieces of armor)
+    public WeaponObject weapon;
+    public EquipmentObject equip1;
+    public EquipmentObject equip2;
+
+
 
     void Awake(){
         if(characterStatus != CharacterStatus.Downed){
@@ -183,6 +189,19 @@ public class CharacterTemplate
                     currentEfficiency = maxEfficiency;
                     break;
             }
+        }
+    }
+
+    //adds the stats of the equipment to the character
+    public void EquipmentStats(){
+        if(weapon != null){
+            
+        }
+        if(equip1 != null){
+           
+        }
+        if(equip2 != null){
+            
         }
     }
 
