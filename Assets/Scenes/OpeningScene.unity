@@ -293,7 +293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.78200006, y: 0}
   m_AnchorMax: {x: 1, y: 0.10654301}
-  m_AnchoredPosition: {x: -1.8374481, y: -0.4192047}
+  m_AnchoredPosition: {x: -1.8374481, y: -0.41921997}
   m_SizeDelta: {x: 0.7625, y: -4.0284996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &219752421
@@ -339,7 +339,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 219752422}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1065691939}
+        m_TargetAssemblyTypeName: StartingSceneButtons, Assembly-CSharp
+        m_MethodName: OpenAchievements
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &219752422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.78200006, y: 0.17754303}
   m_AnchorMax: {x: 1, y: 0.25954303}
-  m_AnchoredPosition: {x: -1.8374481, y: -0.35919952}
+  m_AnchoredPosition: {x: -1.8374481, y: -0.35920715}
   m_SizeDelta: {x: 0.7625, y: -0.028499603}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &261787396
@@ -460,7 +472,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 261787397}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1065691939}
+        m_TargetAssemblyTypeName: StartingSceneButtons, Assembly-CSharp
+        m_MethodName: OpenOptions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &261787397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,7 +765,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 762197430}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1065691939}
+        m_TargetAssemblyTypeName: StartingSceneButtons, Assembly-CSharp
+        m_MethodName: ContinueGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &762197430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -819,7 +855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.079597175, y: 0}
   m_AnchorMax: {x: 0.91215193, y: 1}
-  m_AnchoredPosition: {x: 1.5650024, y: -0.6256027}
+  m_AnchoredPosition: {x: 1.5650024, y: -0.62561035}
   m_SizeDelta: {x: -2.1313019, y: -28.7488}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &826195348
@@ -942,7 +978,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 928991716}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1065691939}
+        m_TargetAssemblyTypeName: StartingSceneButtons, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &928991716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,7 +1618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.78200006, y: 0.36319894}
   m_AnchorMax: {x: 1, y: 0.42900002}
-  m_AnchoredPosition: {x: -2.6, y: -2.8}
+  m_AnchoredPosition: {x: -2.600006, y: -2.800003}
   m_SizeDelta: {x: 0.7625, y: 2.9715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1737942361
@@ -1616,7 +1664,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1737942362}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1065691939}
+        m_TargetAssemblyTypeName: StartingSceneButtons, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1737942362
 MonoBehaviour:
   m_ObjectHideFlags: 0
