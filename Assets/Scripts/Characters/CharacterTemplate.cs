@@ -227,31 +227,7 @@ public class CharacterTemplate
         currentResistance = maxResistance;
         currentSkill = maxSkill;
         currentEfficiency = maxEfficiency;
-    }
-
-    //set base stats
-    public void SetBaseStats(){
-        currentLevel = characterData.CharaStatList.BaseLvl;
-        maxHP = characterData.CharaStatList.BaseHP;
-        currentHP = maxHP;
-        maxMP = characterData.CharaStatList.BaseMP;
-        currentMP = maxMP;
-        maxAttack = characterData.CharaStatList.BaseAttack;
-        currentAttack = maxAttack;
-        maxDefense = characterData.CharaStatList.BaseDefense;
-        currentDefense = maxDefense;
-        maxSpeed = characterData.CharaStatList.BaseSpeed;
-        currentSpeed = maxSpeed;
-        maxMagic = characterData.CharaStatList.BaseMagic;
-        currentMagic = maxMagic;
-        maxResistance = characterData.CharaStatList.BaseResistance;
-        currentResistance = maxResistance;
-        maxSkill = characterData.CharaStatList.BaseSkill;
-        currentSkill = maxSkill;
-        maxEfficiency = characterData.CharaStatList.BaseEfficiency;
-        currentEfficiency = maxEfficiency;
-        maxEXP = characterData.CharaStatList.BaseExp;
-    }
+    } 
 
     public void GainEXP(int exp){
         //tentative method to gain exp
@@ -286,28 +262,22 @@ public class CharacterTemplate
         previousCharaMaxStats.Add(maxSkill);
         previousCharaMaxStats.Add(maxEfficiency);
     }
-    
 
-    public void TurnToBaseLevel(){
-        currentLevel = characterData.CharaStatList.BaseLvl;
-        maxHP = characterData.CharaStatList.BaseHP;
-        currentHP = maxHP;
-        maxMP = characterData.CharaStatList.BaseMP;
-        currentMP = maxMP;
-        maxAttack = characterData.CharaStatList.BaseAttack;
-        currentAttack = maxAttack;
-        maxDefense = characterData.CharaStatList.BaseDefense;
-        currentDefense = maxDefense;
-        maxSpeed = characterData.CharaStatList.BaseSpeed;
-        currentSpeed = maxSpeed;
-        maxMagic = characterData.CharaStatList.BaseMagic;
-        currentMagic = maxMagic;
-        maxResistance = characterData.CharaStatList.BaseResistance;
-        currentResistance = maxResistance;
-        maxSkill = characterData.CharaStatList.BaseSkill;
-        currentSkill = maxSkill;
-        maxEfficiency = characterData.CharaStatList.BaseEfficiency;
-        currentEfficiency = maxEfficiency;
+    //used to set the base stats of the character or turn them back to the base stats
+    public void SetBaseStats(){
+        StatsList statsList = characterData.CharaStatList;
+        currentLevel = statsList.BaseLvl;
+        //making the max hp and current hp equal the base hp and so on
+        maxHP = currentHP = statsList.BaseHP;
+        maxMP = currentMP = statsList.BaseMP;
+        maxAttack = currentAttack = statsList.BaseAttack;
+        maxDefense = currentDefense = statsList.BaseDefense;
+        maxSpeed = currentSpeed = statsList.BaseSpeed;
+        maxMagic = currentMagic = statsList.BaseMagic;
+        maxResistance = currentResistance = statsList.BaseResistance;
+        maxSkill = currentSkill = statsList.BaseSkill;
+        maxEfficiency = currentEfficiency = statsList.BaseEfficiency;
+
     }
 
     //if current level is more than 0, level up before the start of the game
