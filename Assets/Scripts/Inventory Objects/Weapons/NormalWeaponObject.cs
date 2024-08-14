@@ -7,7 +7,7 @@ public class NormalWeaponObject : WeaponObject
 {
     public void Awake()
     {
-        Type = ItemType.Equipment;
+        Type = ItemType.Weapon;
         Weapon = WeaponType.Normal;
     }
 }

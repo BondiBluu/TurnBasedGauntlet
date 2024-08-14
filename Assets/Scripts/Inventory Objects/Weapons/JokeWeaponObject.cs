@@ -10,7 +10,7 @@ public class JokeWeaponObject : WeaponObject
     
     public void Awake()
     {
-        Type = ItemType.Equipment;
+        Type = ItemType.Weapon;
         Weapon = WeaponType.Joke;
     }
 

@@ -24,11 +24,6 @@ public class WeaponObject : ItemObject
     [SerializeField] float magBoost;
     [SerializeField] StatusType[] statusEffects;
     [SerializeField] WeaponType weapon;
-
-    //automatically classified as a weapon whenever object is loaded
-    void Awake(){
-        Type = ItemType.Weapon;
-    }
     
     public float AtkBoost { get { return atkBoost; } }
     public float MagBoost { get { return magBoost; } }
