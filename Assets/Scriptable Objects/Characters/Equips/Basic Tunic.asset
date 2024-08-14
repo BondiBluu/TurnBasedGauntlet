@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3314a5c156dba75428fa6f14cd7d2dfa, type: 3}
+  m_Name: Basic Tunic
+  m_EditorClassIdentifier: 
+  itemName: 
+  itemPlural: 
+  type: 0
+  itemDescription: 
+  itemPrice: 0
+  ableToSell: 0
+  hpBoost: 0
+  mpBoost: 0
+  atkBoost: 0
+  defBoost: 0
+  magBoost: 0
+  resBoost: 0
+  skllBoost: 0
+  effBoost: 0
+  spdBoost: 0
+  equipmentType: 0
