@@ -13,4 +13,7 @@ public class CharacterData : ScriptableObject
     public StatsList CharaStatList { get { return charaStatList; } }
     public AnimationClip[] CharaAnimations { get { return charaAnimations; } }
     public Sprite CharaSprite { get { return charaSprite; } }
+
+    //character images willl be added here
+
 }

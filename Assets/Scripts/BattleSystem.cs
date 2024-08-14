@@ -92,6 +92,8 @@ public class BattleSystem : MonoBehaviour
             charaTemplate[i].RevertStats();
             //setting the character's base stats
             charaTemplate[i].SetBaseStats();
+            //adding the character's equipment stats
+            charaTemplate[i].EquipmentStats();
             //reverting the character's status back to normal
             charaTemplate[i].characterStatus = CharacterTemplate.CharacterStatus.Normal;
         }

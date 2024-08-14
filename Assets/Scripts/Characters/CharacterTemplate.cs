@@ -195,14 +195,29 @@ public class CharacterTemplate
     //adds the stats of the equipment to the character
     public void EquipmentStats(){
         if(weapon != null){
-            
+            AddWeaponStats(weapon);
         }
         if(equip1 != null){
-           
+           AddArmorStats(equip1);
         }
         if(equip2 != null){
-            
+            AddArmorStats(equip2);
         }
+    }
+
+    void AddWeaponStats(WeaponObject weapon){
+        currentAttack += weapon.AtkBoost;
+        currentMagic += weapon.MagBoost;
+    }
+
+    void AddArmorStats(EquipmentObject armor){
+        currentDefense += armor.HPBoost;
+        currentDefense += armor.DefBoost;
+        currentMagic += armor.MagBoost;
+        currentResistance += armor.ResBoost;
+        currentSkill += armor.SkllBoost;
+        currentEfficiency += armor.EffBoost;
+        currentSpeed += armor.SpdBoost;
     }
 
     //grabbing stats from this checkpoint, in case the player loses
