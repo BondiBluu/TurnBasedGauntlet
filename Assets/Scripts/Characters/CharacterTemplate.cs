@@ -205,6 +205,34 @@ public class CharacterTemplate
         }
     }
 
+    //subtracts the stats of the equipment from the character
+    public void RemoveEquipmentStats(){
+        if(weapon != null){
+            RemoveWeaponStats(weapon);
+        }
+        if(equip1 != null){
+            RemoveArmorStats(equip1);
+        }
+        if(equip2 != null){
+            RemoveArmorStats(equip2);
+        }
+    }
+
+    void RemoveArmorStats(EquipmentObject armor){
+        currentDefense -= armor.HPBoost;
+        currentDefense -= armor.DefBoost;
+        currentMagic -= armor.MagBoost;
+        currentResistance -= armor.ResBoost;
+        currentSkill -= armor.SkllBoost;
+        currentEfficiency -= armor.EffBoost;
+        currentSpeed -= armor.SpdBoost;
+    }
+
+    void RemoveWeaponStats(WeaponObject weapon){
+        currentAttack -= weapon.AtkBoost;
+        currentMagic -= weapon.MagBoost;
+    }
+
     void AddWeaponStats(WeaponObject weapon){
         currentAttack += weapon.AtkBoost;
         currentMagic += weapon.MagBoost;
@@ -254,6 +282,9 @@ public class CharacterTemplate
 
     //revert stats back at the start of battle
     public void RevertStats(){
+        //revert the stats of the equipment
+        RemoveEquipmentStats();
+
         currentAttack = maxAttack;
         currentDefense = maxDefense;
         currentSpeed = maxSpeed;
@@ -261,6 +292,9 @@ public class CharacterTemplate
         currentResistance = maxResistance;
         currentSkill = maxSkill;
         currentEfficiency = maxEfficiency;
+        
+        //reapply the stats of the equipment
+        EquipmentStats();
     } 
 
     public void GainEXP(int exp){
