@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Basic Shoes
   itemPlural: 
-  type: 0
-  itemDescription: 
+  type: 2
+  itemDescription: Placeholder
   itemPrice: 0
   ableToSell: 0
   hpBoost: 0

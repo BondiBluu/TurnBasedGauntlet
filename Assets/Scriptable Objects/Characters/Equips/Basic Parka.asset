@@ -21,7 +21,7 @@ MonoBehaviour:
   hpBoost: 0
   mpBoost: 0
   atkBoost: 0
-  defBoost: 0
+  defBoost: 10
   magBoost: 0
   resBoost: 0
   skllBoost: 0

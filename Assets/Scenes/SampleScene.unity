@@ -3179,6 +3179,9 @@ MonoBehaviour:
     currentEfficiency: 0
     characterGrowths: []
     previousCharaMaxStats: []
+    weapon: {fileID: 11400000, guid: 2a3aace04a0075b48b8667462ba63443, type: 2}
+    equip1: {fileID: 11400000, guid: d19d55f42ef2da742ad4f2f6aeafd31a, type: 2}
+    equip2: {fileID: 11400000, guid: d19d55f42ef2da742ad4f2f6aeafd31a, type: 2}
   - characterType: 0
     characterStatus: 0
     characterData: {fileID: 11400000, guid: 1de5d110d6992e14496f393878b5b2ac, type: 2}
@@ -3205,6 +3208,9 @@ MonoBehaviour:
     currentEfficiency: 0
     characterGrowths: []
     previousCharaMaxStats: []
+    weapon: {fileID: 11400000, guid: 653c831d860b17345b23fb11a5882066, type: 2}
+    equip1: {fileID: 11400000, guid: 1e73496e33f6d204a9f15f7c3a6c8729, type: 2}
+    equip2: {fileID: 11400000, guid: d19d55f42ef2da742ad4f2f6aeafd31a, type: 2}
   - characterType: 0
     characterStatus: 0
     characterData: {fileID: 11400000, guid: aeee7cc7465aca149a9a73286c43d51d, type: 2}
@@ -3231,6 +3237,9 @@ MonoBehaviour:
     currentEfficiency: 0
     characterGrowths: []
     previousCharaMaxStats: []
+    weapon: {fileID: 11400000, guid: 2a3aace04a0075b48b8667462ba63443, type: 2}
+    equip1: {fileID: 11400000, guid: 1e73496e33f6d204a9f15f7c3a6c8729, type: 2}
+    equip2: {fileID: 11400000, guid: 425e702b33d533a4382689b05670416c, type: 2}
   - characterType: 0
     characterStatus: 0
     characterData: {fileID: 11400000, guid: 6f637296aec459c47b0c1f0f38a16fce, type: 2}
@@ -3257,6 +3266,9 @@ MonoBehaviour:
     currentEfficiency: 0
     characterGrowths: []
     previousCharaMaxStats: []
+    weapon: {fileID: 11400000, guid: 2a3aace04a0075b48b8667462ba63443, type: 2}
+    equip1: {fileID: 11400000, guid: 1e73496e33f6d204a9f15f7c3a6c8729, type: 2}
+    equip2: {fileID: 11400000, guid: d19d55f42ef2da742ad4f2f6aeafd31a, type: 2}
   partyInventory: []
   characterRoster: []
   seed:
@@ -3314,6 +3326,9 @@ MonoBehaviour:
     currentEfficiency: 0
     characterGrowths: []
     previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   savedCharacterIndex: 0
   selectedTarget:
     characterType: 0
@@ -3342,6 +3357,9 @@ MonoBehaviour:
     currentEfficiency: 0
     characterGrowths: []
     previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   targetSelected: 0
 --- !u!114 &564971311
 MonoBehaviour:
@@ -3394,6 +3412,9 @@ MonoBehaviour:
     currentEfficiency: 0
     characterGrowths: []
     previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   moveName: {fileID: 508203649}
   moveCost: {fileID: 937454136}
   movePower: {fileID: 1436348980}

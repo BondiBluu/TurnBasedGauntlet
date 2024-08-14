@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3314a5c156dba75428fa6f14cd7d2dfa, type: 3}
   m_Name: Basic Tunic
   m_EditorClassIdentifier: 
-  itemName: 
-  itemPlural: 
-  type: 0
-  itemDescription: 
+  itemName: Basic Tunic
+  itemPlural: Basic Tunics
+  type: 2
+  itemDescription: Placeholder tunic
   itemPrice: 0
   ableToSell: 0
   hpBoost: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   atkBoost: 0
   defBoost: 0
   magBoost: 0
-  resBoost: 0
+  resBoost: 10
   skllBoost: 0
   effBoost: 0
   spdBoost: 0
