@@ -290,13 +290,25 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("Checkpoint reached, Battle State: " + currentState);
             //go to checkpoint, most likely will be invoked
             currentGroupSet = 0; //to be moved
+
         } else
         {
             currentGroupSet++;
             Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
-            //StartCoroutine(EnemySetup());
+            DeleteCurrentEnemies();
+            StartCoroutine(EnemySetup());
         }
 
+    }
+
+    void DeleteCurrentEnemies(){
+        foreach(Transform enemy in enemyBattleStations){
+            if(enemy.childCount > 0){
+                foreach(Transform child in enemy){
+                    Destroy(child.gameObject);
+                }
+            }
+        }
     }
 
     public void Lose(){
@@ -312,6 +324,7 @@ public class BattleSystem : MonoBehaviour
         // EnemySetup();
         //whatever battle you were in goes to 0- start at the beginning of the checkpoint- so go the current seed
         //if the player loses, go back to the previous checkpoint to prepare
+        //DeleteCurrentEnemies();
     }
 
     

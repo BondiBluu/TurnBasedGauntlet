@@ -16,98 +16,89 @@ MonoBehaviour:
   - characterType: 0
     characterStatus: 0
     characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
-    currentLevel: 0
+    currentLevel: 1
     currentEXP: 0
     maxEXP: 0
-    maxHP: 0
-    currentHP: 0
-    maxMP: 0
-    currentMP: 0
-    maxAttack: 0
-    currentAttack: 0
-    maxDefense: 0
-    currentDefense: 0
-    maxSpeed: 0
-    currentSpeed: 0
-    maxMagic: 0
-    currentMagic: 0
-    maxResistance: 0
-    currentResistance: 0
-    maxSkill: 0
-    currentSkill: 0
-    maxEfficiency: 0
-    currentEfficiency: 0
+    maxHP: 100
+    currentHP: 100
+    maxMP: 150
+    currentMP: 150
+    maxAttack: 2
+    currentAttack: 2
+    maxDefense: 4
+    currentDefense: 4
+    maxSpeed: 7
+    currentSpeed: 7
+    maxMagic: 6
+    currentMagic: 6
+    maxResistance: 8
+    currentResistance: 8
+    maxSkill: 5
+    currentSkill: 5
+    maxEfficiency: 9
+    currentEfficiency: 9
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   - characterType: 0
     characterStatus: 0
-    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
-    currentLevel: 0
+    characterData: {fileID: 11400000, guid: ffc5c15d829e90f4aa732556746701f0, type: 2}
+    currentLevel: 1
     currentEXP: 0
     maxEXP: 0
-    maxHP: 0
-    currentHP: 0
-    maxMP: 0
-    currentMP: 0
-    maxAttack: 0
-    currentAttack: 0
-    maxDefense: 0
-    currentDefense: 0
-    maxSpeed: 0
-    currentSpeed: 0
-    maxMagic: 0
-    currentMagic: 0
-    maxResistance: 0
-    currentResistance: 0
-    maxSkill: 0
-    currentSkill: 0
-    maxEfficiency: 0
-    currentEfficiency: 0
+    maxHP: 100
+    currentHP: 100
+    maxMP: 150
+    currentMP: 150
+    maxAttack: 2
+    currentAttack: 2
+    maxDefense: 4
+    currentDefense: 4
+    maxSpeed: 7
+    currentSpeed: 7
+    maxMagic: 6
+    currentMagic: 6
+    maxResistance: 8
+    currentResistance: 8
+    maxSkill: 5
+    currentSkill: 5
+    maxEfficiency: 9
+    currentEfficiency: 9
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   - characterType: 0
     characterStatus: 0
-    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
-    currentLevel: 0
+    characterData: {fileID: 11400000, guid: 9379471e8806da742b7585e26023222b, type: 2}
+    currentLevel: 1
     currentEXP: 0
     maxEXP: 0
-    maxHP: 0
-    currentHP: 0
-    maxMP: 0
-    currentMP: 0
-    maxAttack: 0
-    currentAttack: 0
-    maxDefense: 0
-    currentDefense: 0
-    maxSpeed: 0
-    currentSpeed: 0
-    maxMagic: 0
-    currentMagic: 0
-    maxResistance: 0
-    currentResistance: 0
-    maxSkill: 0
-    currentSkill: 0
-    maxEfficiency: 0
-    currentEfficiency: 0
-  - characterType: 0
-    characterStatus: 0
-    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
-    currentLevel: 0
-    currentEXP: 0
-    maxEXP: 0
-    maxHP: 0
-    currentHP: 0
-    maxMP: 0
-    currentMP: 0
-    maxAttack: 0
-    currentAttack: 0
-    maxDefense: 0
-    currentDefense: 0
-    maxSpeed: 0
-    currentSpeed: 0
-    maxMagic: 0
-    currentMagic: 0
-    maxResistance: 0
-    currentResistance: 0
-    maxSkill: 0
-    currentSkill: 0
-    maxEfficiency: 0
-    currentEfficiency: 0
+    maxHP: 100
+    currentHP: 100
+    maxMP: 150
+    currentMP: 150
+    maxAttack: 2
+    currentAttack: 2
+    maxDefense: 4
+    currentDefense: 4
+    maxSpeed: 7
+    currentSpeed: 7
+    maxMagic: 6
+    currentMagic: 6
+    maxResistance: 8
+    currentResistance: 8
+    maxSkill: 5
+    currentSkill: 5
+    maxEfficiency: 9
+    currentEfficiency: 9
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   currency: 0
   exp: 200

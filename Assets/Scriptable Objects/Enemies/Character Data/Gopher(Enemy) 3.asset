@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5b15772e648ee42b8f0f0d5905ad46, type: 3}
   m_Name: Gopher(Enemy) 3
   m_EditorClassIdentifier: 
-  moveset: {fileID: 11400000, guid: c5f9c1c25cc8af34a9348065e9ac37ee, type: 2}
-  charaStatList: {fileID: 11400000, guid: 7888ec6135661ed43b4f7dc052c74473, type: 2}
+  moveset: {fileID: 11400000, guid: 4c6d0e0a6f1629c41b6f848acef9a144, type: 2}
+  charaStatList: {fileID: 11400000, guid: 6ad5c803c0721a741b2e5f8fb51831e7, type: 2}
   charaAnimations: []
   charaSprite: {fileID: 21300000, guid: 0b180eab39276934d898f2dfe1689cd6, type: 3}
