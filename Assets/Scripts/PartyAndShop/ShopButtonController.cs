@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class ShopButtonController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject partyPanel;
+    public GameObject shopPanel;
+    public GameObject itemPanel;
+    public GameObject nextBattle;
+
     void Start()
     {
-        
+        CloseAll();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void OpenParty(){
+        partyPanel.SetActive(true);
+        shopPanel.SetActive(false);
+        itemPanel.SetActive(false);
+        nextBattle.SetActive(false);
+    }
+
+    public void CloseAll(){
+        partyPanel.SetActive(false);
+        shopPanel.SetActive(false);
+        itemPanel.SetActive(false);
+        nextBattle.SetActive(false);
     }
 }

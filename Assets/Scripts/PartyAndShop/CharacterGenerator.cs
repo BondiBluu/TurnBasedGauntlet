@@ -9,16 +9,14 @@ public class CharacterGenerator : MonoBehaviour
     public Transform partyContainer;
     public Transform invenContainer;
 
-    public void GenerateParty(List<CharacterTemplate> party)
-    {
-        foreach (Transform character in partyContainer)
-        {
-            Destroy(character.gameObject);
-        }
+    PartyManager partyManager;
 
-        foreach (CharacterTemplate character in party)
-        {
-            GameObject newCharacter = Instantiate(partyCharacterPrefab, partyContainer);
-        }
+    public void Start()
+    {
+        partyManager = FindObjectOfType<PartyManager>();
+    }
+    public void GenerateParty()
+    {
+        Debug.Log("Generating Party");
     }
 }
