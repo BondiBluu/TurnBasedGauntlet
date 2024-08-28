@@ -8,6 +8,8 @@ public class ShopButtonController : MonoBehaviour
     public GameObject shopPanel;
     public GameObject itemPanel;
     public GameObject nextBattle;
+    public GameObject statsPanel;
+
 
     void Start()
     {
@@ -19,6 +21,14 @@ public class ShopButtonController : MonoBehaviour
         shopPanel.SetActive(false);
         itemPanel.SetActive(false);
         nextBattle.SetActive(false);
+        statsPanel.SetActive(false);
+    }
+
+    public void OpenStats(CharacterTemplate character){
+        shopPanel.SetActive(false);
+        itemPanel.SetActive(false);
+        nextBattle.SetActive(false);
+        statsPanel.SetActive(true);
     }
 
     public void CloseAll(){
@@ -26,5 +36,6 @@ public class ShopButtonController : MonoBehaviour
         shopPanel.SetActive(false);
         itemPanel.SetActive(false);
         nextBattle.SetActive(false);
+        statsPanel.SetActive(false);
     }
 }
