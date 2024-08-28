@@ -34,7 +34,8 @@ public class CharacterGenerator : MonoBehaviour
         //generate all 4 party members from the party manager to the party container using the party character prefab
         foreach (CharacterTemplate character in partyManager.currentParty)
         {
-            GameObject partyCharacter = Instantiate(partyCharacterPrefab, partyContainer);
+            GameObject partyCharacter = Instantiate(partyCharacterPrefab, partyContainer);            
+            
             //make space for the character in the party container using the currentPosY
             RectTransform rect = partyCharacter.GetComponent<RectTransform>();
             Button button = partyCharacter.GetComponent<Button>();
@@ -44,7 +45,6 @@ public class CharacterGenerator : MonoBehaviour
 
             //on click method that brings up the stats panel
             button.onClick.AddListener(() => shopButtonController.OpenStats(character));
-
         }
          
     }

@@ -29,6 +29,7 @@ public class ShopButtonController : MonoBehaviour
         itemPanel.SetActive(false);
         nextBattle.SetActive(false);
         statsPanel.SetActive(true);
+        Debug.Log(character.characterData.CharaStatList.CharacterName);
     }
 
     public void CloseAll(){
