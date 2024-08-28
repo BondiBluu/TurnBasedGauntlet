@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4884342590207662626}
   - component: {fileID: 7397736654209785375}
   - component: {fileID: 5664421847948128467}
+  - component: {fileID: -2525710368994479437}
   m_Layer: 5
   m_Name: PartyCharacterContainer
   m_TagString: Untagged
@@ -120,3 +121,45 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-2525710368994479437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005646590205074363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436d0af8e623da9459a749d0b2a87b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterTemplate:
+    characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 0}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
