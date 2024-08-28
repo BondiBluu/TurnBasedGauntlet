@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopButtonController : MonoBehaviour
 {
@@ -9,10 +10,14 @@ public class ShopButtonController : MonoBehaviour
     public GameObject itemPanel;
     public GameObject nextBattle;
     public GameObject statsPanel;
+    public Button partyButton;
+    PartyStatsManager partyStatsManager;
 
 
     void Start()
     {
+        partyStatsManager = FindObjectOfType<PartyStatsManager>();
+        partyButton.Select();
         CloseAll();
     }
 
@@ -30,6 +35,7 @@ public class ShopButtonController : MonoBehaviour
         nextBattle.SetActive(false);
         statsPanel.SetActive(true);
         Debug.Log(character.characterData.CharaStatList.CharacterName);
+        partyStatsManager.SetCharacterStats(character);
     }
 
     public void CloseAll(){
