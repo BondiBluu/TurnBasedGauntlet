@@ -31,9 +31,17 @@ public class PartyStatsManager : MonoBehaviour
     [SerializeField] Button switchCharactersButton;
     [SerializeField] Button removeCharacterButton; //only available when choosing a character in the party
     [SerializeField] Button addCharacterButton; //only available when choosing a character in the inventory
-    [SerializeField] Button equipCharacterButton; 
+    [SerializeField] Button equipCharacterButton;
+    
+    [Header("Panels")]
+    CharacterTemplate chosenCharacter;
 
+    PartyManager partyManager;
 
+    private void Start()
+    {
+        partyManager = FindObjectOfType<PartyManager>();
+    }
 
     public void SetCharacterStats(CharacterTemplate character)
     {
@@ -58,9 +66,41 @@ public class PartyStatsManager : MonoBehaviour
                
     }
 
-    
     public string StatsDifference(float baseStatValue, float currentStatValue){
         float statDifference = Convert.ToInt32(currentStatValue - baseStatValue);
         return $"{baseStatValue} (+{statDifference})";
+    }
+
+    //setting all buttons but close to inactive. player will have to choose a character first to enable the buttons
+    public void SetButtonsInactive(){
+        viewCharacterButton.interactable = false;
+        switchCharactersButton.interactable = false;
+        removeCharacterButton.interactable = false;
+        addCharacterButton.interactable = false;
+        equipCharacterButton.interactable = false;
+    }
+
+    //setting view, switch, and equip buttons to interactable
+    public void SetButtonsActive(){
+        viewCharacterButton.interactable = true;
+        switchCharactersButton.interactable = true;
+        equipCharacterButton.interactable = true;
+
+        //if the character is one of the characters in the current party, the remove button will be interactable
+        if(partyManager.currentParty.Contains(chosenCharacter)){
+            removeCharacterButton.interactable = true;
+        }
+        else{
+            addCharacterButton.interactable = true;
+        }
+        
+    }
+
+
+    //saving the character's data
+    public void SaveCharacterData(CharacterTemplate character){
+        chosenCharacter = character;
+        Debug.Log("Character saved. Character name: " + chosenCharacter.characterData.CharaStatList.CharacterName);
+        SetButtonsActive();
     }
 }

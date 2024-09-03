@@ -27,6 +27,7 @@ public class ShopButtonController : MonoBehaviour
         itemPanel.SetActive(false);
         nextBattle.SetActive(false);
         statsPanel.SetActive(false);
+        partyStatsManager.SetButtonsInactive();
     }
 
     public void OpenStats(CharacterTemplate character){

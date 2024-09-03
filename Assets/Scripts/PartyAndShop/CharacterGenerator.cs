@@ -14,11 +14,13 @@ public class CharacterGenerator : MonoBehaviour
 
     PartyManager partyManager;
     ShopButtonController shopButtonController;
+    PartyStatsManager partyStatsManager;
 
     public void Start()
     {
         partyManager = FindObjectOfType<PartyManager>();
         shopButtonController = FindObjectOfType<ShopButtonController>();
+        partyStatsManager = FindObjectOfType<PartyStatsManager>();
     }
     public void GenerateParty()
     {
@@ -44,7 +46,8 @@ public class CharacterGenerator : MonoBehaviour
             currentPosY -= buttonSpacing + rect.sizeDelta.y; 
 
             //on click method that brings up the stats panel
-            button.onClick.AddListener(() => shopButtonController.OpenStats(character));
+            //button.onClick.AddListener(() => shopButtonController.OpenStats(character));
+            button.onClick.AddListener(() => partyStatsManager.SaveCharacterData(character));
         }
          
     }
