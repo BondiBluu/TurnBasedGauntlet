@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PartyStatsManager : MonoBehaviour
@@ -24,10 +24,21 @@ public class PartyStatsManager : MonoBehaviour
     [SerializeField] TMP_Text characterSpd;
     [SerializeField] TMP_Text characterAbility;
 
+    [Header("Buttons")]
+    [SerializeField] Button closeStatsButton;
+    [SerializeField] Button closePartyButton;
+    [SerializeField] Button viewCharacterButton;
+    [SerializeField] Button switchCharactersButton;
+    [SerializeField] Button removeCharacterButton; //only available when choosing a character in the party
+    [SerializeField] Button addCharacterButton; //only available when choosing a character in the inventory
+    [SerializeField] Button equipCharacterButton; 
+
 
 
     public void SetCharacterStats(CharacterTemplate character)
     {
+        character.SetBaseStats(); //TO BE REMOVED
+
         //set the character’s stats in the stats panel
         Debug.Log(character.characterData.CharaStatList.CharacterName);
         //characterImage.sprite = character.characterData.CharaSprite;
