@@ -22,7 +22,7 @@ public class CharacterGenerator : MonoBehaviour
         shopButtonController = FindObjectOfType<ShopButtonController>();
         partyStatsManager = FindObjectOfType<PartyStatsManager>();
     }
-    public void GenerateParty()
+    public void GenerateParty() //used in unity editor
     {
         //clear the party container before generating new party members
         foreach (Transform partyCharacter in partyContainer)
