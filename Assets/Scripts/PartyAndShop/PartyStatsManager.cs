@@ -31,7 +31,7 @@ public class PartyStatsManager : MonoBehaviour
     [SerializeField] Button switchCharactersButton;
     [SerializeField] Button removeCharacterButton; //only available when choosing a character in the party
     [SerializeField] Button addCharacterButton; //only available when choosing a character in the inventory
-    [SerializeField] Button equipCharacterButton;
+    //[SerializeField] Button equipCharacterButton;
     
     [Header("Panels")]
     CharacterTemplate chosenCharacter;
@@ -79,14 +79,14 @@ public class PartyStatsManager : MonoBehaviour
         switchCharactersButton.interactable = false;
         removeCharacterButton.interactable = false;
         addCharacterButton.interactable = false;
-        equipCharacterButton.interactable = false;
+        //equipCharacterButton.interactable = false;
     }
 
     //setting view, switch, and equip buttons to interactable
     public void SetButtonsActive(){
         viewCharacterButton.interactable = true;
         switchCharactersButton.interactable = true;
-        equipCharacterButton.interactable = true;
+        //equipCharacterButton.interactable = true;
 
         //if the character is one of the characters in the current party, the remove button will be interactable
         if(partyManager.currentParty.Contains(chosenCharacter)){
