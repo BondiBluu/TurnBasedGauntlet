@@ -37,10 +37,12 @@ public class PartyStatsManager : MonoBehaviour
     CharacterTemplate chosenCharacter;
 
     PartyManager partyManager;
+    ShopButtonController shopButtonController;
 
     private void Start()
     {
         partyManager = FindObjectOfType<PartyManager>();
+        shopButtonController = FindObjectOfType<ShopButtonController>();
     }
 
     public void SetCharacterStats(CharacterTemplate character)
@@ -93,6 +95,13 @@ public class PartyStatsManager : MonoBehaviour
         else{
             addCharacterButton.interactable = true;
         }
+
+        //removing previous listeners
+        viewCharacterButton.onClick.RemoveAllListeners();
+
+        //adding a listener to the view button
+        viewCharacterButton.onClick.AddListener(() => shopButtonController.OpenStats(chosenCharacter));
+
     }
 
 

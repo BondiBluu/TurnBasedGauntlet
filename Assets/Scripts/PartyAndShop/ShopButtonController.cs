@@ -39,6 +39,10 @@ public class ShopButtonController : MonoBehaviour
         partyStatsManager.SetCharacterStats(character);
     }
 
+    public void CloseStatsPanel(){
+        statsPanel.SetActive(false);
+    }
+
     public void CloseAll(){
         partyPanel.SetActive(false);
         shopPanel.SetActive(false);
