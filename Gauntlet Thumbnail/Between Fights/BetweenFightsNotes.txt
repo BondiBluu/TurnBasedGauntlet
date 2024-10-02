@@ -1,0 +1,10 @@
+Between Fights
+The nonfighting zone. When a session is beaten, player will be transported here. Used to prepare for the next battle (equip, shop for new materials, save, quit, etc)
+Menu buttons:
+Party
+Items
+Shop
+Next Battle
+Quit
+Options
+Exit
