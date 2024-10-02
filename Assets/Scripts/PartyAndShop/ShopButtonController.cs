@@ -11,6 +11,7 @@ public class ShopButtonController : MonoBehaviour
     public GameObject nextBattle;
     public GameObject statsPanel;
     public Button partyButton;
+    public Dropdown equipDropdown;
     PartyStatsManager partyStatsManager;
 
 
