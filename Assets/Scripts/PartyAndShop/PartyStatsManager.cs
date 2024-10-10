@@ -93,6 +93,7 @@ public class PartyStatsManager : MonoBehaviour
             removeCharacterButton.interactable = true;
         }
         else{
+            //if the character is not in the current party, the add button will be interactable
             addCharacterButton.interactable = true;
         }
 

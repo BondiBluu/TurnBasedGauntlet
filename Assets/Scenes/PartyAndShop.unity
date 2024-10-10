@@ -585,7 +585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.031000001, y: 0.06553357}
   m_AnchorMax: {x: 0.31100002, y: 0.938}
-  m_AnchoredPosition: {x: -0.9689026, y: 0.47784424}
+  m_AnchoredPosition: {x: -0.9689331, y: 0.47784424}
   m_SizeDelta: {x: 0.1631999, y: 0.95573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &54748410
@@ -880,7 +880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.85800004, y: 0}
   m_AnchorMax: {x: 1, y: 0.07}
-  m_AnchoredPosition: {x: 3.2066956, y: 4}
+  m_AnchoredPosition: {x: 3.206665, y: 4}
   m_SizeDelta: {x: -9.7235, y: 0.3636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128419840
@@ -974,6 +974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 179102735}
+  - component: {fileID: 179102736}
   m_Layer: 5
   m_Name: PartyContainer
   m_TagString: Untagged
@@ -1000,6 +1001,30 @@ RectTransform:
   m_AnchoredPosition: {x: -0.42279053, y: -0.40820312}
   m_SizeDelta: {x: 1.1544, y: 0.81641}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &179102736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179102734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 1
+  m_CellSize: {x: 150, y: 150}
+  m_Spacing: {x: 10, y: 10}
+  m_Constraint: 2
+  m_ConstraintCount: 4
 --- !u!1 &199030234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,7 +1061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.721, y: 0.7684665}
   m_AnchorMax: {x: 1, y: 0.8704665}
-  m_AnchoredPosition: {x: 0, y: -0.28959656}
+  m_AnchoredPosition: {x: 0, y: -0.28961182}
   m_SizeDelta: {x: 1.4290924, y: -1.2108002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199030236
@@ -1743,6 +1768,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558590333}
+  - component: {fileID: 558590334}
   m_Layer: 5
   m_Name: CharacterRosterContainer
   m_TagString: Untagged
@@ -1769,6 +1795,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0.68440247, y: 0.85769653}
   m_SizeDelta: {x: 1.3705139, y: 2.1700134}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &558590334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558590332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 200, y: 110}
+  m_Spacing: {x: 10, y: 20}
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!1 &618269094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,7 +2255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.721, y: 0.6694026}
   m_AnchorMax: {x: 1, y: 0.7684665}
-  m_AnchoredPosition: {x: 0, y: 0.42151642}
+  m_AnchoredPosition: {x: 0, y: 0.4215088}
   m_SizeDelta: {x: 1.4290924, y: -0.21080017}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787111477
@@ -2340,6 +2390,7 @@ MonoBehaviour:
   nextBattle: {fileID: 1952399225}
   statsPanel: {fileID: 879045537}
   partyButton: {fileID: 782304037}
+  equipDropdown: {fileID: 0}
 --- !u!1 &879045537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3398,7 +3449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.31882572, y: 0.023466432}
   m_AnchorMax: {x: 0.448, y: 0.08800001}
-  m_AnchoredPosition: {x: 30.3768, y: -2.0000305}
+  m_AnchoredPosition: {x: 30.3768, y: -2}
   m_SizeDelta: {x: -2.7752, y: 2.3636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1090505689
@@ -3594,7 +3645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.72400004, y: 0.012865725}
   m_AnchorMax: {x: 0.85200006, y: 0.081}
-  m_AnchoredPosition: {x: 12.2386, y: 0.103027344}
+  m_AnchoredPosition: {x: 12.238586, y: 0.103027344}
   m_SizeDelta: {x: -2.719, y: 1.3636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1197986069
@@ -3713,7 +3764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.63758934, y: 0.39773145}
   m_AnchorMax: {x: 0.88500005, y: 0.45400003}
-  m_AnchoredPosition: {x: -1.5999908, y: 0.8999939}
+  m_AnchoredPosition: {x: -1.5999756, y: 0.8999939}
   m_SizeDelta: {x: 1.9252014, y: 3.7535095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1199118344
@@ -3849,7 +3900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17500001, y: 0.023466432}
   m_AnchorMax: {x: 0.3108787, y: 0.08800001}
-  m_AnchoredPosition: {x: 38.67739, y: -2}
+  m_AnchoredPosition: {x: 38.67737, y: -1.9999695}
   m_SizeDelta: {x: -5.8107, y: 2.3636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1215817152
@@ -5150,7 +5201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partyCharacterPrefab: {fileID: 2005646590205074363, guid: 8690a3b7b59d219449c56fbd6048a03d, type: 3}
-  invenCharacterPrefab: {fileID: 7600149769195834573, guid: 02281b145a332be4b9ae68206f35f241, type: 3}
+  invenCharacterPrefab: {fileID: 2005646590205074363, guid: 8690a3b7b59d219449c56fbd6048a03d, type: 3}
   partyContainer: {fileID: 179102735}
   invenContainer: {fileID: 558590333}
   buttonSpacing: 1
@@ -5283,7 +5334,239 @@ MonoBehaviour:
     weapon: {fileID: 0}
     equip1: {fileID: 0}
     equip2: {fileID: 0}
-  partyInventory: []
+  partyInventory:
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 1de5d110d6992e14496f393878b5b2ac, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 185dd688a758125428e3326138a364fc, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: aeee7cc7465aca149a9a73286c43d51d, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 6f637296aec459c47b0c1f0f38a16fce, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 6f637296aec459c47b0c1f0f38a16fce, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 6f637296aec459c47b0c1f0f38a16fce, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 185dd688a758125428e3326138a364fc, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 0
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 185dd688a758125428e3326138a364fc, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   characterRoster: []
   seed: []
 --- !u!114 &1448126752
@@ -5330,8 +5613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0591c06ddefef4bb51532f21af375d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsPanel: {fileID: 1924287144}
-  itemDropdown: {fileID: 0}
 --- !u!1 &1460711302
 GameObject:
   m_ObjectHideFlags: 0
@@ -5368,7 +5649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.721, y: 0.38000003}
   m_AnchorMax: {x: 1, y: 0.47173145}
-  m_AnchoredPosition: {x: -0.5, y: 0.054592133}
+  m_AnchoredPosition: {x: -0.5, y: 0.054595947}
   m_SizeDelta: {x: 0.4290924, y: 1.7891998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1460711304
@@ -5770,7 +6051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.721, y: 0.574}
   m_AnchorMax: {x: 1, y: 0.6694026}
-  m_AnchoredPosition: {x: 0, y: 0.13269424}
+  m_AnchoredPosition: {x: 0, y: 0.13269043}
   m_SizeDelta: {x: 1.4290924, y: 0.7891998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1731018058
@@ -5889,7 +6170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.734, y: 0.85353357}
   m_AnchorMax: {x: 0.98, y: 0.938}
-  m_AnchoredPosition: {x: 0.80000305, y: 0.055725098}
+  m_AnchoredPosition: {x: 0.7999878, y: 0.055725098}
   m_SizeDelta: {x: -1.2510986, y: -0.66189575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880897406
@@ -7037,7 +7318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.63758934, y: 0.592}
   m_AnchorMax: {x: 0.88500005, y: 0.6664665}
-  m_AnchoredPosition: {x: -1.5999908, y: 0.20108795}
+  m_AnchoredPosition: {x: -1.5999756, y: 0.20108795}
   m_SizeDelta: {x: 1.9252014, y: -1.2464981}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139762976
