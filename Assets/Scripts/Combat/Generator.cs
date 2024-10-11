@@ -48,15 +48,9 @@ public class Generator : MonoBehaviour
     //takes the character unit’s characterData’s movelist 
     public void GenerateMoves(CharacterTemplate character){
 
-        navButtons.Clear();
+        ClearButtons(moveContainer);
+        
         movesAlreadyAdded.Clear();
-
-        //destroy all the buttons in the move container before generating new ones
-        foreach(Transform button in moveContainer){
-            Destroy(button.gameObject);
-        }
-
-        float currentPosY = 0f;
 
         foreach(Moves move in character.characterData.Moveset.Moves){
             if(character.currentLevel >= move.LvlGotten && !movesAlreadyAdded.Contains(move)){
@@ -77,10 +71,6 @@ public class Generator : MonoBehaviour
                 navButtons.Add(buttonComp);
 
                 TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
-
-                //give space between buttons
-                buttonRect.anchoredPosition = new Vector2(0, -currentPosY);
-                currentPosY += buttonSpacing + buttonRect.sizeDelta.y;
 
                 buttonText.text = move.MoveName;
                 buttonComp.onClick.AddListener(() => SaveMove(move));
@@ -115,13 +105,8 @@ public class Generator : MonoBehaviour
     }
 
     public void GenerateItems(){
-        //destroy all the buttons in the item container before generating new ones
-        foreach(Transform button in itemContainer){
-            Destroy(button.gameObject);
-        }
 
-        navButtons.Clear();
-        float currentPosY = 0f; 
+        ClearButtons(itemContainer);
 
         for(int i = 0; i < playerInven.container.Count; i++){
             InvenSlot slot = playerInven.container[i];
@@ -143,9 +128,6 @@ public class Generator : MonoBehaviour
 
                 navButtons.Add(buttonComp);
 
-                buttonRect.anchoredPosition = new Vector2(0, -currentPosY);
-                currentPosY += buttonSpacing + buttonRect.sizeDelta.y;
-
                 buttonText.text = $"{item.ItemName} x {slot.amount}";
 
                 buttonComp.onClick.AddListener(() => SaveItem(item));
@@ -159,6 +141,16 @@ public class Generator : MonoBehaviour
            NavButtons(navButtons);
     }
 
+    public void ClearButtons(Transform container){
+
+        //destroy all the buttons in the move container before generating new ones
+        foreach(Transform button in container){
+            Destroy(button.gameObject);
+        }
+
+        navButtons.Clear();
+    }
+
     public void GenerateBattleLog(){
 
         //destroy all the text in the log container before generating new ones
@@ -166,15 +158,10 @@ public class Generator : MonoBehaviour
             Destroy(text.gameObject);
         }
         
-        //making text for the battle log and spacing them out
-        float currentPosY = 0f;
 
         foreach(string log in logList){
             GameObject text = Instantiate(textPrefab, logContainer);
             RectTransform textRect = text.GetComponent<RectTransform>();
-
-            textRect.anchoredPosition = new Vector2(0, -currentPosY);
-            currentPosY += buttonSpacing + textRect.sizeDelta.y;
 
             text.GetComponent<TMP_Text>().text = log;
         }
