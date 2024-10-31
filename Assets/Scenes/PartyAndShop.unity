@@ -569,7 +569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &99143145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1289,13 +1289,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 857092142}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 857092144}
+        m_TargetAssemblyTypeName: ShopButtonController, Assembly-CSharp
+        m_MethodName: OpenItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3112,7 +3112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6674752, y: 0.7836009}
   m_AnchorMax: {x: 0.8898133, y: 0.8573574}
-  m_AnchoredPosition: {x: 3.0000305, y: -1.1407852}
+  m_AnchoredPosition: {x: 3.0000305, y: -1.1407776}
   m_SizeDelta: {x: 2.6430001, y: 1.3414993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718412117
@@ -3558,7 +3558,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 787111478}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 857092144}
+        m_TargetAssemblyTypeName: ShopButtonController, Assembly-CSharp
+        m_MethodName: OpenShop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &787111478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3855,12 +3867,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   partyPanel: {fileID: 99143144}
-  shopPanel: {fileID: 1952399225}
+  shopPanel: {fileID: 1037900855}
   itemPanel: {fileID: 1924287144}
   nextBattle: {fileID: 1952399225}
   statsPanel: {fileID: 879045537}
   partyButton: {fileID: 782304037}
-  equipDropdown: {fileID: 0}
 --- !u!1 &879045537
 GameObject:
   m_ObjectHideFlags: 0
@@ -4644,7 +4655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0251511, y: 0.5}
   m_AnchorMax: {x: 0.34060445, y: 0.82800007}
-  m_AnchoredPosition: {x: -1.4999847, y: 0.5629997}
+  m_AnchoredPosition: {x: -1.4999695, y: 0.5629997}
   m_SizeDelta: {x: -0.6187973, y: 1.1270008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &950155587
@@ -5362,7 +5373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1037900856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5581,7 +5592,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6803665, y: 0.26744983}
   m_AnchorMax: {x: 0.883, y: 0.35562453}
-  m_AnchoredPosition: {x: 1.5073242, y: 1.8052}
+  m_AnchoredPosition: {x: 1.5073242, y: 1.8051987}
   m_SizeDelta: {x: 13.6284, y: -3.6104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1074876131
@@ -5821,7 +5832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0251511, y: 0.5}
   m_AnchorMax: {x: 0.34060445, y: 0.82800007}
-  m_AnchoredPosition: {x: -1.4999847, y: 0.5629997}
+  m_AnchoredPosition: {x: -1.5, y: 0.5629997}
   m_SizeDelta: {x: -0.6187973, y: 1.1270008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184194614
@@ -9603,7 +9614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1924287145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9819,7 +9830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1952399226
 RectTransform:
   m_ObjectHideFlags: 0

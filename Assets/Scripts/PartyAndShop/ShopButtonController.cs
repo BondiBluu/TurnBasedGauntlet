@@ -11,7 +11,6 @@ public class ShopButtonController : MonoBehaviour
     public GameObject nextBattle;
     public GameObject statsPanel;
     public Button partyButton;
-    public Dropdown equipDropdown;
     PartyStatsManager partyStatsManager;
 
 
@@ -38,6 +37,22 @@ public class ShopButtonController : MonoBehaviour
         statsPanel.SetActive(true);
         Debug.Log(character.characterData.CharaStatList.CharacterName);
         partyStatsManager.SetCharacterStats(character);
+    }
+
+    public void OpenShop(){
+        partyPanel.SetActive(false);
+        shopPanel.SetActive(true);
+        itemPanel.SetActive(false);
+        nextBattle.SetActive(false);
+        statsPanel.SetActive(false);
+    }
+
+    public void OpenItem(){
+        partyPanel.SetActive(false);
+        shopPanel.SetActive(false);
+        itemPanel.SetActive(true);
+        nextBattle.SetActive(false);
+        statsPanel.SetActive(false);
     }
 
     public void CloseStatsPanel(){
