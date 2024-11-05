@@ -44,7 +44,7 @@ public class ItemGenerator : MonoBehaviour{
             //create a new item prefab
             GameObject item = Instantiate(itemPrefab, itemContainer);
             TMP_Text itemName = item.GetComponentInChildren<TMP_Text>();
-            itemName.text = slot.item.ItemName;
+            itemName.text = $"{slot.item.ItemName} x {slot.amount}";
             }
             
         }
