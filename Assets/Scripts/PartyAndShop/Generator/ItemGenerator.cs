@@ -4,9 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemGenerator : MonoBehaviour{
-    [SerializeField] GameObject itemContainer;
+    [SerializeField] Transform itemContainer;
+    [SerializeField] GameObject itemPrefab;
 
-    public void GeneratePotions(){}
+    public InvenObject inventory;    
+
+    public void GeneratePotions(){
+        //empty the item container
+        foreach (Transform child in itemContainer.transform){
+            Destroy(child.gameObject);
+        }
+
+        //grab all from inventory
+        foreach (InvenSlot slot in inventory.container){
+            //create a new item prefab
+            GameObject item = Instantiate(itemPrefab, itemContainer);
+            //name the item
+            
+        }
+        
+    }
 
     public void GenerateWeapons(){}
 
@@ -17,10 +34,4 @@ public class ItemGenerator : MonoBehaviour{
     public void GenerateTreasures(){}
 
     public void GenerateSpecial(){}
-
-    //tentative: grabbing the items needed from the inventory (currently on the canvas of unity)
-
-    public void GenerateItems(){
-        
-    }
 }

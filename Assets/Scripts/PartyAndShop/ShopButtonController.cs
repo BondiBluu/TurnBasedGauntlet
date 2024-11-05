@@ -12,11 +12,13 @@ public class ShopButtonController : MonoBehaviour
     public GameObject statsPanel;
     public Button partyButton;
     PartyStatsManager partyStatsManager;
+    ItemGenerator itemGenerator;
 
 
     void Start()
     {
         partyStatsManager = FindObjectOfType<PartyStatsManager>();
+        itemGenerator = FindObjectOfType<ItemGenerator>();
         partyButton.Select();
         CloseAll();
     }
@@ -53,6 +55,7 @@ public class ShopButtonController : MonoBehaviour
         itemPanel.SetActive(true);
         nextBattle.SetActive(false);
         statsPanel.SetActive(false);
+        itemGenerator.GeneratePotions();
     }
 
     public void CloseStatsPanel(){
