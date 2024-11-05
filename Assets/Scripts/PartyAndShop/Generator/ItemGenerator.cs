@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,28 @@ public class ItemGenerator : MonoBehaviour{
     public InvenObject inventory;    
 
     public void GeneratePotions(){
+        //if the items are potions
+        GenerateItems(ItemObject.ItemType.Restorative);  
+    }
+
+    public void GenerateWeapons(){
+        GenerateItems(ItemObject.ItemType.Weapon);
+    }
+
+    public void GenerateEquips(){
+        GenerateItems(ItemObject.ItemType.Equipment);
+    }
+
+    public void GenerateTools(){
+        GenerateItems(ItemObject.ItemType.Tool);
+    }
+
+    public void GenerateTreasures(){}
+
+    public void GenerateSpecial(){}
+
+
+    public void GenerateItems(ItemObject.ItemType type){
         //empty the item container
         foreach (Transform child in itemContainer.transform){
             Destroy(child.gameObject);
@@ -17,21 +40,13 @@ public class ItemGenerator : MonoBehaviour{
 
         //grab all from inventory
         foreach (InvenSlot slot in inventory.container){
+            if (slot.item.Type == type){
             //create a new item prefab
             GameObject item = Instantiate(itemPrefab, itemContainer);
-            //name the item
+            TMP_Text itemName = item.GetComponentInChildren<TMP_Text>();
+            itemName.text = slot.item.ItemName;
+            }
             
         }
-        
     }
-
-    public void GenerateWeapons(){}
-
-    public void GenerateEquips(){}
-
-    public void GenerateTools(){}
-
-    public void GenerateTreasures(){}
-
-    public void GenerateSpecial(){}
 }
