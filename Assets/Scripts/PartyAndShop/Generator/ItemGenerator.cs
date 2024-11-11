@@ -8,6 +8,12 @@ public class ItemGenerator : MonoBehaviour{
     [SerializeField] Transform itemContainer;
     [SerializeField] GameObject itemPrefab;
 
+    //for item hover
+    public TMP_Text itemName;
+    public TMP_Text itemType;
+    public TMP_Text itemAttackOrRecovery;    
+    public TMP_Text itemDescription;
+
     public InvenObject inventory;    
 
     public void GeneratePotions(){

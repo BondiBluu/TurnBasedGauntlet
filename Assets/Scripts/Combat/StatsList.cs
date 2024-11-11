@@ -48,6 +48,7 @@ public class StatsList : ScriptableObject
     [SerializeField] Immunity[] immunities;
 
     void OnEnable(){
+        //if the growths array is null or not the right size, create a new one
         if(growths == null || growths.Length != 9){
             growths = new LevelGrowth[9];
         }
