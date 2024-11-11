@@ -57,6 +57,18 @@ public class ShopButtonController : MonoBehaviour
         statsPanel.SetActive(false);
         itemGenerator.GeneratePotions();
     }
+    
+    public void CloseItem(){
+        itemPanel.SetActive(false);
+    }
+
+    public void OpenEquipFromParty(){
+        shopPanel.SetActive(false);
+        itemPanel.SetActive(true);
+        nextBattle.SetActive(false);
+        statsPanel.SetActive(false);
+        itemGenerator.GenerateEquips();
+    }
 
     public void CloseStatsPanel(){
         statsPanel.SetActive(false);

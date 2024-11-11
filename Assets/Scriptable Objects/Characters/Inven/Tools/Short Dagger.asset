@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0255c91bbda6e5b4bab0f2d3c490a361, type: 3}
   m_Name: Short Dagger
   m_EditorClassIdentifier: 
-  itemName: 
-  itemPlural: 
-  type: 0
-  itemDescription: 
+  itemName: Short Dagger
+  itemPlural: Short Daggers
+  type: 4
+  itemDescription: A dagger fit for throwing. In okay shape. Lowers enemy defenses
   itemPrice: 0
   ableToSell: 0
-  atkPwr: 0
+  atkPwr: 10
   magPwr: 0
   statusEffects: 
-  debuffs: 
-  debuffAmount: 0
+  debuffs: 01000000
+  debuffAmount: 4

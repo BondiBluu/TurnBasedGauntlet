@@ -23,6 +23,10 @@ public class ItemGenerator : MonoBehaviour{
         GenerateItems(ItemObject.ItemType.Equipment);
     }
 
+    public void GenerateBoosts(){
+        GenerateItems(ItemObject.ItemType.PermStatBoost);
+    }
+
     public void GenerateTools(){
         GenerateItems(ItemObject.ItemType.Tool);
     }
