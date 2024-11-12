@@ -9,9 +9,11 @@ using UnityEngine.EventSystems;
 
 
 
-public class ItemHover : MonoBehaviour
+public class ItemHover : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 {
     ItemGenerator generator;
+
+    public ItemObject Item {get; set;}
 
     void Start()
     {
@@ -20,10 +22,16 @@ public class ItemHover : MonoBehaviour
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        DisplayItemData(Item);
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        DisplayItemData(Item);
     }
 
     public void DisplayItemData(ItemObject item){
+
         generator.itemName.text = item.ItemName;
         generator.itemType.text = item.Type.ToString();
         generator.itemDescription.text = item.ItemDescription;

@@ -33,7 +33,6 @@ public class Generator : MonoBehaviour
     public TMP_Text moveExplanation;
 
     [Header("Item Hover")]
-    MoveHover itemHover;
     public TMP_Text itemName;
     public TMP_Text itemCost;
     public TMP_Text itemPower;

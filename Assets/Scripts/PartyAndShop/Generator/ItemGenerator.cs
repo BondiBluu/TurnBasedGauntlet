@@ -14,6 +14,7 @@ public class ItemGenerator : MonoBehaviour{
     public TMP_Text itemAttackOrRecovery;    
     public TMP_Text itemDescription;
 
+    ItemHover itemHover;
     public InvenObject inventory;    
 
     public void GeneratePotions(){
@@ -55,6 +56,7 @@ public class ItemGenerator : MonoBehaviour{
             GameObject item = Instantiate(itemPrefab, itemContainer);
             TMP_Text itemName = item.GetComponentInChildren<TMP_Text>();
             itemName.text = $"{slot.item.ItemName} x {slot.amount}";
+            
             }
             
         }
