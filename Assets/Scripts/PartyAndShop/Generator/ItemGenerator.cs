@@ -51,7 +51,6 @@ public class ItemGenerator : MonoBehaviour{
 
         //grab all from inventory
         foreach (InvenSlot slot in inventory.container){
-            ItemObject item = slot.item;
             if (slot.item.Type == type){
             //create a new item prefab
             GameObject button = Instantiate(itemPrefab, itemContainer);
