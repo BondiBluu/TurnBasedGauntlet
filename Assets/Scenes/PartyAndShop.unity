@@ -3935,6 +3935,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemContainer: {fileID: 1671227937}
   itemPrefab: {fileID: 6796560583658594182, guid: 2c9b12667d371174793eefbbb6dca9c2, type: 3}
+  itemName: {fileID: 950155587}
+  itemType: {fileID: 247546728}
+  itemAttackOrRecovery: {fileID: 826526085}
+  itemDescription: {fileID: 243822348}
   inventory: {fileID: 11400000, guid: 030d92d7196df264eb07a3a5c264bafc, type: 2}
 --- !u!1 &879045537
 GameObject:
@@ -6187,7 +6191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0251511, y: 0.5}
   m_AnchorMax: {x: 0.34060445, y: 0.82800007}
-  m_AnchoredPosition: {x: -1.4999847, y: 0.5629997}
+  m_AnchoredPosition: {x: -1.5, y: 0.5629997}
   m_SizeDelta: {x: -0.6187973, y: 1.1270008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184194614

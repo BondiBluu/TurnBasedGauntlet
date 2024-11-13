@@ -9,26 +9,26 @@ using UnityEngine.EventSystems;
 
 
 
-public class ItemHover : MonoBehaviour, IPointerEnterHandler, ISelectHandler
+public class ItemHover : MonoBehaviour//, IPointerEnterHandler
 {
     ItemGenerator generator;
 
     public ItemObject Item {get; set;}
 
-    void Start()
+    void Awake()
     {
         generator = FindObjectOfType<ItemGenerator>();
     }
     
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        DisplayItemData(Item);
-    }
+    // public void OnPointerEnter(PointerEventData eventData)
+    // {
+    //     DisplayItemData(Item);
+    // }
 
-    public void OnSelect(BaseEventData eventData)
-    {
-        DisplayItemData(Item);
-    }
+    // public void OnSelect(BaseEventData eventData)
+    // {
+    //     DisplayItemData(Item);
+    // }
 
     public void DisplayItemData(ItemObject item){
 

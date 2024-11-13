@@ -51,10 +51,12 @@ public class ItemGenerator : MonoBehaviour{
 
         //grab all from inventory
         foreach (InvenSlot slot in inventory.container){
+            ItemObject item = slot.item;
             if (slot.item.Type == type){
             //create a new item prefab
-            GameObject item = Instantiate(itemPrefab, itemContainer);
-            TMP_Text itemName = item.GetComponentInChildren<TMP_Text>();
+            GameObject button = Instantiate(itemPrefab, itemContainer);
+
+            TMP_Text itemName = button.GetComponentInChildren<TMP_Text>();
             itemName.text = $"{slot.item.ItemName} x {slot.amount}";
             
             }
