@@ -295,6 +295,14 @@ public class UIManager : MonoBehaviour
                     }
                     mainMPSlider.value = character.currentMP;
                 }
+                else if (mainMPSlider.value < character.currentMP){
+                        while(mainMPSlider.value < character.currentMP){
+                            mainMPSlider.value ++;
+                            characterMP.text = mainMPSlider.value + "/" + character.maxMP;
+                            yield return new WaitForSeconds(0.01f);
+                        }
+                        mainMPSlider.value = character.currentMP;
+                }
             }
         }
     }
