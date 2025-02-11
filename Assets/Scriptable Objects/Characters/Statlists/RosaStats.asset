@@ -17,15 +17,15 @@ MonoBehaviour:
   characterAbility: 
   abilityDesc: 
   baseLvl: 1
-  baseHP: 100
-  baseMP: 150
-  baseAttack: 7
-  baseDefense: 5
-  baseSpeed: 9
-  baseMagic: 8
-  baseResistance: 0
-  baseSkill: 5
-  baseEfficiency: 8
+  baseHP: 25
+  baseMP: 30
+  baseAttack: 2
+  baseDefense: 4
+  baseSpeed: 12
+  baseMagic: 18
+  baseResistance: 7
+  baseSkill: 7
+  baseEfficiency: 10
   baseExp: 200
-  growths: 050000000500000005000000050000000000000005000000000000000500000000000000
+  growths: 020000000200000004000000040000000000000000000000020000000200000001000000
   immunities: 
