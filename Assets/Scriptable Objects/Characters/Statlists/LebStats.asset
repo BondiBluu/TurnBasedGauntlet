@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bd5faef00337a4596fc25207b40c31, type: 3}
+  m_Name: LebStats
+  m_EditorClassIdentifier: 
+  characterName: 
+  characterDesc: 
+  characterAbility: 
+  abilityDesc: 
+  baseLvl: 0
+  baseHP: 0
+  baseMP: 0
+  baseAttack: 0
+  baseDefense: 0
+  baseSpeed: 0
+  baseMagic: 0
+  baseResistance: 0
+  baseSkill: 0
+  baseEfficiency: 0
+  baseExp: 0
+  growths: 
+  immunities: 
