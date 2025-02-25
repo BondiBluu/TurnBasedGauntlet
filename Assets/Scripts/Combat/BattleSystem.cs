@@ -294,7 +294,7 @@ public class BattleSystem : MonoBehaviour
         } else
         {
             currentGroupSet++;
-            Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded.");
+            Debug.Log($"Battle {currentGroupSet} of seed {currentSeed} has been loaded. Team of {partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers[0].characterData.CharaStatList.CharacterName} Here.");
             DeleteCurrentEnemies();
             StartCoroutine(EnemySetup());
         }
