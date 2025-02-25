@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Battle 3
   m_EditorClassIdentifier: 
   groupMembers:
-  - characterType: 0
+  - characterType: 1
     characterStatus: 0
-    characterData: {fileID: 11400000, guid: aed67b1132afe054fb2877c338ec39d4, type: 2}
+    characterData: {fileID: 11400000, guid: 32becace128b86c4e8eaf117fc8b464a, type: 2}
     currentLevel: 1
     currentEXP: 0
     maxEXP: 0

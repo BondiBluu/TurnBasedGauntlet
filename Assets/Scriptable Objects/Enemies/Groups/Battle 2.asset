@@ -12,6 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d6029d6af178541abe2e0a7e6aa1e8, type: 3}
   m_Name: Battle 2
   m_EditorClassIdentifier: 
-  groupMembers: []
+  groupMembers:
+  - characterType: 1
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 246551e799b7ad64abc2e26271e4051c, type: 2}
+    currentLevel: 0
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 0
+    currentHP: 0
+    maxMP: 0
+    currentMP: 0
+    maxAttack: 0
+    currentAttack: 0
+    maxDefense: 0
+    currentDefense: 0
+    maxSpeed: 0
+    currentSpeed: 0
+    maxMagic: 0
+    currentMagic: 0
+    maxResistance: 0
+    currentResistance: 0
+    maxSkill: 0
+    currentSkill: 0
+    maxEfficiency: 0
+    currentEfficiency: 0
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   currency: 0
   exp: 200

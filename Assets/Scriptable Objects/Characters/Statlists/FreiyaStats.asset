@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15bd5faef00337a4596fc25207b40c31, type: 3}
   m_Name: FreiyaStats
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: Freiya
   characterDesc: 
   characterAbility: 
   abilityDesc: 
-  baseLvl: 0
-  baseHP: 0
-  baseMP: 0
-  baseAttack: 0
-  baseDefense: 0
-  baseSpeed: 0
-  baseMagic: 0
-  baseResistance: 0
-  baseSkill: 0
-  baseEfficiency: 0
+  baseLvl: 1
+  baseHP: 20
+  baseMP: 10
+  baseAttack: 5
+  baseDefense: 7
+  baseSpeed: 15
+  baseMagic: 12
+  baseResistance: 9
+  baseSkill: 7
+  baseEfficiency: 6
   baseExp: 0
-  growths: 
+  growths: 030000000000000004000000030000000000000000000000010000000200000002000000
   immunities: 
