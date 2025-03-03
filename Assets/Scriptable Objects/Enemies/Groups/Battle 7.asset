@@ -12,6 +12,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d6029d6af178541abe2e0a7e6aa1e8, type: 3}
   m_Name: Battle 7
   m_EditorClassIdentifier: 
-  groupMembers: []
+  groupMembers:
+  - characterType: 1
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: e6e95be49005f4148afc6bcba3273fca, type: 2}
+    currentLevel: 1
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 50
+    currentHP: 50
+    maxMP: 10
+    currentMP: 10
+    maxAttack: 7
+    currentAttack: 7
+    maxDefense: 8
+    currentDefense: 8
+    maxSpeed: 6
+    currentSpeed: 6
+    maxMagic: 3
+    currentMagic: 3
+    maxResistance: 5
+    currentResistance: 5
+    maxSkill: 8
+    currentSkill: 8
+    maxEfficiency: 12
+    currentEfficiency: 12
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 1
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 76f37473b3c22ee43b599cf55ed90f3b, type: 2}
+    currentLevel: 1
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 40
+    currentHP: 40
+    maxMP: 10
+    currentMP: 10
+    maxAttack: 12
+    currentAttack: 12
+    maxDefense: 13
+    currentDefense: 13
+    maxSpeed: 6
+    currentSpeed: 6
+    maxMagic: 5
+    currentMagic: 5
+    maxResistance: 8
+    currentResistance: 8
+    maxSkill: 7
+    currentSkill: 7
+    maxEfficiency: 6
+    currentEfficiency: 6
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 1
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: bf8d93cff298a7248ae36584707f2aaf, type: 2}
+    currentLevel: 1
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 25
+    currentHP: 25
+    maxMP: 30
+    currentMP: 30
+    maxAttack: 2
+    currentAttack: 2
+    maxDefense: 4
+    currentDefense: 4
+    maxSpeed: 12
+    currentSpeed: 12
+    maxMagic: 18
+    currentMagic: 18
+    maxResistance: 7
+    currentResistance: 7
+    maxSkill: 7
+    currentSkill: 7
+    maxEfficiency: 10
+    currentEfficiency: 10
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   currency: 0
   exp: 20

@@ -12,6 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d6029d6af178541abe2e0a7e6aa1e8, type: 3}
   m_Name: Battle 5
   m_EditorClassIdentifier: 
-  groupMembers: []
+  groupMembers:
+  - characterType: 1
+    characterStatus: 0
+    characterData: {fileID: 11400000, guid: 4e4bffc9930fbd34c9f98e2560dbbf92, type: 2}
+    currentLevel: 1
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 30
+    currentHP: 30
+    maxMP: 10
+    currentMP: 10
+    maxAttack: 12
+    currentAttack: 12
+    maxDefense: 2
+    currentDefense: 2
+    maxSpeed: 15
+    currentSpeed: 15
+    maxMagic: 7
+    currentMagic: 7
+    maxResistance: 5
+    currentResistance: 5
+    maxSkill: 9
+    currentSkill: 9
+    maxEfficiency: 4
+    currentEfficiency: 4
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   currency: 0
   exp: 14

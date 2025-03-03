@@ -12,6 +12,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d6029d6af178541abe2e0a7e6aa1e8, type: 3}
   m_Name: Battle 4
   m_EditorClassIdentifier: 
-  groupMembers: []
+  groupMembers:
+  - characterType: 1
+    characterStatus: 5
+    characterData: {fileID: 11400000, guid: 5c97aa7d69118a3498a5fcf7367d5fd4, type: 2}
+    currentLevel: 1
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 25
+    currentHP: 0
+    maxMP: 10
+    currentMP: 10
+    maxAttack: 5
+    currentAttack: 5
+    maxDefense: 4
+    currentDefense: 4
+    maxSpeed: 5
+    currentSpeed: 5
+    maxMagic: 5
+    currentMagic: 5
+    maxResistance: 4
+    currentResistance: 4
+    maxSkill: 14
+    currentSkill: 14
+    maxEfficiency: 12
+    currentEfficiency: 12
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
+  - characterType: 1
+    characterStatus: 5
+    characterData: {fileID: 11400000, guid: 662dd5031d64fd74e8b9c5695493d7f3, type: 2}
+    currentLevel: 1
+    currentEXP: 0
+    maxEXP: 0
+    maxHP: 40
+    currentHP: 0
+    maxMP: 10
+    currentMP: 10
+    maxAttack: 5
+    currentAttack: 5
+    maxDefense: 9
+    currentDefense: 6
+    maxSpeed: 12
+    currentSpeed: 9
+    maxMagic: 2
+    currentMagic: 2
+    maxResistance: 4
+    currentResistance: 4
+    maxSkill: 14
+    currentSkill: 14
+    maxEfficiency: 10
+    currentEfficiency: 10
+    characterGrowths: []
+    previousCharaMaxStats: []
+    weapon: {fileID: 0}
+    equip1: {fileID: 0}
+    equip2: {fileID: 0}
   currency: 0
   exp: 200
