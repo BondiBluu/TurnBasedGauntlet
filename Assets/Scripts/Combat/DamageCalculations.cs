@@ -121,6 +121,7 @@ public class DamageCalculations : MonoBehaviour
 
     void LogMessage(string message){
         Debug.Log(message);
+        uiManager.DisplayCombatText(message);
         generator.AddToBattleLog(message);
     }
 

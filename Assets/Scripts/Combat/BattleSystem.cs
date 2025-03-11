@@ -156,7 +156,6 @@ public class BattleSystem : MonoBehaviour
     public IEnumerator EnemyTurn()
     {
         Debug.Log("Enemy Turn");
-        uiManager.DisplayCombatText("Enemy Turn!");
 
         int enemyCount = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers.Count;
 
@@ -224,6 +223,7 @@ public class BattleSystem : MonoBehaviour
             if(action.user.characterStatus == CharacterTemplate.CharacterStatus.Downed)
             {
                 Debug.Log($"{action.user.characterData.CharaStatList.CharacterName} is downed! They can't perform an action!");
+                uiManager.DisplayCombatText($"{action.user.characterData.CharaStatList.CharacterName} is downed! They can't perform an action!");
                 continue;
             }
 
@@ -273,8 +273,11 @@ public class BattleSystem : MonoBehaviour
 
     public void Win(){
         Debug.Log("Battle Won!");
+        uiManager.DisplayCombatText("Battle Won!");
          int exp = partyManager.seed[currentSeed].GroupSet[currentGroupSet].Exp;
          Debug.Log($"Party gained {exp} exp each!");
+         uiManager.DisplayCombatText($"Party gained {exp} exp each!");
+
          //have the player gain experience
          foreach(CharacterTemplate character in partyManager.currentParty)
          {
@@ -319,6 +322,7 @@ public class BattleSystem : MonoBehaviour
 
     public void Lose(){
         Debug.Log("Battle Lost!");
+        uiManager.DisplayCombatText("Battle Lost!");
         currentGroupSet = 0;
         Debug.Log($"Current battle: {currentGroupSet} of seed {currentSeed} has been loaded.");
         //game over
