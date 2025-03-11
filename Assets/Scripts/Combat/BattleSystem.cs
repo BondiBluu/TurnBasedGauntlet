@@ -77,6 +77,8 @@ public class BattleSystem : MonoBehaviour
     }
 
     public void Setup(int groupCount, Transform[] battleStations, List <CharacterTemplate> charaTemplate){
+
+        uiManager.DisplayCombatText("Battle Start!");
         
         for(int i = 0; i < groupCount; i++)
         {
@@ -104,7 +106,7 @@ public class BattleSystem : MonoBehaviour
     {
         buttonController.EnableButtons();
         buttonController.atkButton.Select();
-        Debug.Log("Battle Start. Player Turn");
+        Debug.Log("Battle Start!");
 
 
         for(int i = startingCycle; i < partyManager.currentParty.Count; i++)
@@ -128,9 +130,12 @@ public class BattleSystem : MonoBehaviour
             {
                 continue;
             }
+
+            string currentCharacter = savedCharacter.characterData.CharaStatList.CharacterName;
             
             
-            Debug.Log("Current Character: " + savedCharacter.characterData.CharaStatList.CharacterName + "'s turn.");   
+            Debug.Log("Current Character: " + currentCharacter + "'s turn."); 
+            uiManager.DisplayCombatText($"{currentCharacter}'s turn.");  
 
             yield return new WaitUntil(() => targetSelected == true);
 
@@ -151,6 +156,7 @@ public class BattleSystem : MonoBehaviour
     public IEnumerator EnemyTurn()
     {
         Debug.Log("Enemy Turn");
+        uiManager.DisplayCombatText("Enemy Turn!");
 
         int enemyCount = partyManager.seed[currentSeed].GroupSet[currentGroupSet].GroupMembers.Count;
 

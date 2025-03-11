@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public GameObject enemyMainHUDPanelPrefab;
     public GameObject allyHUDPanelPrefab;
     public GameObject enemyHUDPanelPrefab;
+    public TMP_Text combatText;
 
     public Vector2[] enemyUIPositions = new Vector2[4]{
         new Vector2(0, 0),
@@ -400,6 +401,10 @@ public class UIManager : MonoBehaviour
                 mainMPSlider.value = character.currentMP;
             }
         }
+    }
+
+    public void DisplayCombatText(string text){
+        combatText.text = text;
     }
     
 }
